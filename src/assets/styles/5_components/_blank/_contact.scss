@@ -1,0 +1,28 @@
+.contact {
+    margin-top: 90px;
+    &__title {
+        font-size: 36px;
+        font-family: "Junegull";
+        color: #06d6a0;
+        text-align: center;
+    }
+    &__content {
+        display: flex;
+    }
+    &__info {
+        box-sizing: border-box;
+        width: 40%;
+        padding: 100px 80px 70px;
+        font-size: 18px;
+        color: #455a64;
+        font-family: "Lato";
+        background: #f1f8fb;
+    }
+    &__block {
+        display: flex;
+        flex-direction: column;
+        // justify-content: flex-end;
+        max-width: 200px;
+        text-align: left;
+    }
+}
