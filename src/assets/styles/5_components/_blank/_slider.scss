@@ -1,7 +1,7 @@
 .slider {
     &__wrapper {
-        width: 950px;
-        height: 450px;
+        max-width: 950px;
+        height: auto;
         margin: 0 auto;
         position: relative;
     }
@@ -18,11 +18,11 @@
         cursor: pointer;
     }
     &__left {
-        left: -75px;
+        left: -100px;
         transform: rotate(220deg) translateX(-50%);
     }
     &__right {
-        right: -75px;
+        right: -100px;
         transform: rotate(45deg) translateX(-50%);
     }
     &__dots {

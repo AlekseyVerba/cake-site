@@ -1,0 +1,19 @@
+@media (max-width: 1160px) {
+    .slider {
+        &__left {
+            left: 15px
+        }
+        &__right {
+            right: 15px;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    button {
+        display: none;
+    }
+}

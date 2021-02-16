@@ -1,18 +1,26 @@
 .main {
     background: url(./assets/images/static/background.jpg)center no-repeat;
-    background-size: cover;
+    // background-size: cover;
+    object-fit: cover;
 
-    padding-top: 190px;
-    height: 510px;
+    height: 532px;
+    position: relative;
     &__content {
         text-align: center;
         margin: 0 auto;
     }
     &__title {
+        padding-top: 190px;
         font-size: 72px;
         font-family: "Junegull";
         color: #26547c;
         font-weight: bold;
 
+    }
+    &__circle {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -32%;
     }
 }

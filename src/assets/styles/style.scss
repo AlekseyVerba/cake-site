@@ -5,3 +5,6 @@
 @import "4_elements/index";
 @import "5_components/index";
 @import "6_patterns/index";
+body {
+    box-sizing: border-box;
+}

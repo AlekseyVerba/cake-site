@@ -20,7 +20,7 @@
         left: 200px;
     }
     &-three {
-        left: 50%;
+        left: 40%;
         top: 300px;
         transform: translateX(-50%);
     }
@@ -31,4 +31,43 @@
     &-five {
         right: 0;
     }
+}
+
+.cake__item{
+    animation-name: floating;
+    -webkit-animation-name: floating;
+ 
+    animation-duration: 3s;   
+    -webkit-animation-duration: 3s;
+ 
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.cake-three {
+    animation-duration: 6s;   
+    -webkit-animation-duration: 6s;
+}
+ 
+@keyframes floating {
+    0% {
+        transform: translateY(0%);  
+    }
+    50% {
+        transform: translateY(20%);  
+    }   
+    100% {
+        transform: translateY(0%);
+    }           
+}
+ 
+@-webkit-keyframes floating {
+    0% {
+        -webkit-transform: translateY(0%);  
+    }
+    50% {
+        -webkit-transform: translateY(20%);  
+    }   
+    100% {
+        -webkit-transform: translateY(0%);
+    }           
 }

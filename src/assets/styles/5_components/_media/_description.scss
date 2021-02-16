@@ -1,0 +1,25 @@
+@media (max-width: 758px) {
+    .description {
+        &__text {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 25px 50px;
+        }
+    }
+}
+
+@media (max-width: 547px) {
+    .description {
+        &__text {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 10px 15px 30px;
+            &::after{
+                display: none;
+            }
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
