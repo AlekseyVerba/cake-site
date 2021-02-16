@@ -1,0 +1,22 @@
+.header {
+    &__list {
+        display: flex;
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        width: 700px;
+        margin: 0 auto;
+        align-items: center;
+        padding: 35px;
+    }
+    &__item + &__item {
+        margin-left: 35px;
+    }
+    &__link {
+        font-family: "Gotham";
+        font-size: 14px;
+        text-decoration: none;
+        color: #26547c;
+    }
+}

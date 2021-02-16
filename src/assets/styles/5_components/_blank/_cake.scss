@@ -1,0 +1,34 @@
+.cake {
+    margin-top: 60px;
+    &__ponchik {
+        width: 100px;
+        margin: 0 auto;
+    }
+    &__items {
+        display: flex;
+        position: relative;
+        height: 740px;
+    }
+    &__item {
+        position: absolute;
+    }
+    &-one {
+        left: 0;
+    }
+    &-two {
+        top: 192px;
+        left: 200px;
+    }
+    &-three {
+        left: 50%;
+        top: 300px;
+        transform: translateX(-50%);
+    }
+    &-four {
+        top: 192px;
+        right: 200px;
+    }
+    &-five {
+        right: 0;
+    }
+}

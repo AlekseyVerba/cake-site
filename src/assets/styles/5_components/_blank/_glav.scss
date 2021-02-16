@@ -1,0 +1,18 @@
+.main {
+    background: url(./assets/images/static/background.jpg)center no-repeat;
+    background-size: cover;
+
+    padding-top: 190px;
+    height: 510px;
+    &__content {
+        text-align: center;
+        margin: 0 auto;
+    }
+    &__title {
+        font-size: 72px;
+        font-family: "Junegull";
+        color: #26547c;
+        font-weight: bold;
+
+    }
+}
