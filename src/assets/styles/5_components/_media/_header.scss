@@ -1,0 +1,51 @@
+@media (max-width: 1090px) {
+    .header {
+        &__content {
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0;
+        }
+        &__first {
+            max-width: 170px;
+            margin-left: 10px;
+        }
+    }
+}
+@media (max-width: 880px) {
+    .header {
+        &__content {
+            justify-content: flex-start;
+        }
+        &__network {
+            right: 10px;
+        }
+    }
+}
+
+@media (max-width: 773px) {
+    .header {
+        &__list {
+            display: none;
+        }
+        &__content {
+            width: 50px;
+            padding: 10px;
+        }
+        &__network {
+            display: none;
+        }
+    }
+}
+@media (max-width: 390px) {
+    .header {
+        &__whiteline {
+            display: block;
+            z-index: 1000;
+            bottom: -14px;
+            height: 23px;
+            position: absolute;
+            width: 100%;
+            background: url(./assets/images/static/white-line.png) center no-repeat;
+        }
+    }
+}

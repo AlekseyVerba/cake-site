@@ -4,14 +4,15 @@
         padding: 50px 100px;
         border: 1px solid #ffd166;
         border-radius: 40px;
-        width: 700px;
+        max-width: 700px;
         font-family: "Lato";
         margin: 0 auto;
         text-align: center;
-        font-size: 22px;
+        font-size: 16px;
         color: #26547c;
         line-height: 22px;
         position: relative;
+        box-sizing: border-box;
         &::before {
             content: "";
             width: 40px;
@@ -38,14 +39,18 @@
     &__button {
         position: absolute;
         left: 50%;
-        bottom: -14px;
+        bottom: -17px;
         transform: translateX(-50%);
         background-color: #ffd166;
-        border-radius: 13px;
+        border-radius: 25px;
         border: none;
-        padding: 3px 25px;
+        padding: 6px 25px 9px;
         font-size: 16px;
+        transition: all .3s;
         color: #787d76;
         cursor: pointer;
+        &:hover {
+            background-color: #fabd2e;
+        }
     }
 }

@@ -1,0 +1,15 @@
+@media (max-width: 390px) {
+    .main {
+        height: 400px;
+        &__circle {
+            bottom: -28%;
+            img {
+                width: 200px;
+            }
+        }
+        &__title {
+            padding-top: 120px;
+            font-size: 40px;
+        }
+    }
+} 
