@@ -38,6 +38,14 @@
                         </li>
                     </ul>
             </div>
+            <div class="header__network">
+                <a href="#" class="header__instagram">
+                    <img src="./assets/images/static/blue_instagram.png" alt="instagram" class="network">
+                </a>
+                <a href="#">
+                    <img src="./assets/images/static/blue_vk.png" alt="vk" class="network">
+                </a>
+            </div>
             <div class="menu-icon">
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -49,14 +57,36 @@
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
-            <div class="header__network">
-                <a href="#" class="header__instagram">
-                    <img src="./assets/images/static/blue_instagram.png" alt="instagram" class="network">
-                </a>
-                <a href="#">
-                    <img src="./assets/images/static/blue_vk.png" alt="vk" class="network">
-                </a>
-            </div>
+            <ul class="header__list-hamburger">
+                <li class="header__item-hamburger">
+                    <a href="" class="header__link-hamburger">
+                        Меню
+                    </a>
+                </li>
+                <li class="header__item-hamburger">
+                    <a href="" class="header__link-hamburger">
+                        Целые торты
+                    </a>
+                </li>
+                <li class="header__item-hamburger">
+                    <a href="" class="header__link-hamburger">
+                        Программа лояльности
+                    </a>
+                </li>
+                <li class="header__item-hamburger">
+                    <a href="" class="header__link-hamburger">
+                        Контакты
+                    </a>
+                </li>
+                <li class="header__item-hamburger">
+                    <a href="" class="header__network-hamburger">
+                        <img src="./assets/images/static/blue_instagram.png" alt="instagram" class="network">
+                    </a>
+                    <a href="" class="header__network-hamburger">
+                        <img src="./assets/images/static/blue_vk.png" alt="vk" class="network">
+                    </a>
+                </li>
+            </ul>
         <div class="header__whiteline"></div>
     </div>
     <div class="main">
@@ -84,19 +114,21 @@
                 <img src="./assets/images/static/ponchik.jpg.png" alt="ponchik" class="cake__ponchik-img">
             </div>
             <div class="cake__items">
-                <div class="cake-one cake__item">
+                <div class="cake-one cake__item" data-name="Три шоколада" data-info="Муссовый торт из трёх видов бельгийского шоколада" data-gramm=120 data-price=220> 
                     <img src="./assets/images/static/one-cake.png" alt="cake" class="cake__item-img">
                 </div>
-                <div class="cake-two cake__item">
-                    <img src="./assets/images/static/two-cake.png" alt="cake" class="cake__item-img">
+                <div class="cake__wrapper">
+                    <div class="cake-two cake__item" data-name="Торт 'Красный 'бархат'" data-info="Нежный бисквит пропитанный малиновым вареньем в сочетании со сливочным сыром" data-gramm=160 data-price=190>
+                        <img src="./assets/images/static/two-cake.png" alt="cake" class="cake__item-img">
+                    </div>
                 </div>
-                <div class="cake-three cake__item">
+                <div class="cake-three cake__item"  data-name="Фисташка-Малина" data-info="Фисташковый бисквит с малиновым желе" data-gramm=125 data-price=220>
                     <img src="./assets/images/static/three-cake.png" alt="cake" class="cake__item-img">
                 </div>
-                <div class="cake-four cake__item">
+                <div class="cake-four cake__item" data-name="Наполеон с заварным кремом" data-info="Девять хрустящих коржей с фирменным заварным кремом" data-gramm=120 data-price=190>
                     <img src="./assets/images/static/four-cake.png" alt="cake" class="cake__item-img">
                 </div>
-                <div class="cake-five cake__item">
+                <div class="cake-five cake__item" data-name="Чизкейк классический" data-info="Творожно-сырный пирог на песочной основе" data-gramm=110 data-price=200>
                     <img src="./assets/images/static/five-cake.png" alt="cake" class="cake__item-img">
                 </div>
             </div>
@@ -146,11 +178,18 @@
                     <div class="slider__item">
                         <img src="./assets/images/static/IMG_1160.jpg.png" alt="slider" />
                     </div>
-                </div>
-                <div class="slider__dots">
-                    <div class="slider__dot"></div>
-                    <div class="slider__dot"></div>
-                    <div class="slider__dot"></div>
+                    <div class="slider__item">
+                        <img src="./assets/images/static/IMG_1160.jpg.png" alt="slider" />
+                    </div>
+                    <div class="slider__item">
+                        <img src="./assets/images/static/IMG_1160.jpg.png" alt="slider" />
+                    </div>
+                    <div class="slider__item">
+                        <img src="./assets/images/static/IMG_1160.jpg.png" alt="slider" />
+                    </div>
+                    <div class="slider__item">
+                        <img src="./assets/images/static/IMG_1160.jpg.png" alt="slider" />
+                    </div>
                 </div>
             </div>
         </div>
