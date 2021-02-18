@@ -1,0 +1,173 @@
+.tort {
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 740px;
+        padding: 0 15px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+    }
+    &__item {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+        min-height: 500px;
+        &:nth-child(n + 3) {
+            margin-top: 25px;
+        }
+        cursor: pointer;
+        &:hover{
+            .tort__dark {
+                opacity: 1;
+            }
+            .tort__footer {
+                &::after {
+                    opacity: .7;
+                }
+            }
+            .tort__title {
+                color: #38caa6;
+            }
+            .tort__description {
+                color: #38caa6;
+            }
+            .tort__footer-gram {
+                color: #38caa6;
+            }
+            .tort__footer-price {
+                color: #38caa6;
+            }
+            .tort__line {
+                background: url(./assets/images/static/bereza-line.png)center no-repeat;
+            }
+        }
+    }
+    &__head {
+        width: 100%;
+        margin-bottom: -3px;
+        position: relative;
+        transition: all .4s;
+        img {
+            z-index: -1;
+            width: 100%;
+        }
+    }
+    &__dark {
+        height: 100%;
+        width: 100%;
+        display: block;
+        position: absolute;
+        transition: all .4s;
+        top: 0;
+        left: 0;
+        background: #caf6ebea;
+        z-index: 1000;
+        opacity: 0;
+    }
+    &__order {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 50px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: #26547c;
+    }
+    &__footer {
+        margin-top: 0;
+        border: 1px solid #ebebeb;
+        padding: 25px 20px 20px 20px;
+        border-top: none;
+        height: 100%;
+        position: relative;
+        z-index: -1;
+        &::after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            display: block;
+            position: absolute;
+            transition: all .4s;
+            top: 0;
+            left: 0;
+            background: #ffffff;
+            z-index: 1000;
+            opacity: 0;
+        }
+        &-head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    }
+    &__title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #26547c;
+        transition: all 0.5s;
+        font-family: "Gotham";
+        word-wrap: break-word;
+        width: 85%;
+        line-height: 20px;
+    }
+    &__succes {
+        display: none;
+        font-size: 16px;
+        color: #ef476f;
+        font-family: "Gotham";
+    }
+    &__description {
+        font-size: 14px;
+        color: #26547c;
+        font-family: "Gotham";
+        transition: all 0.5s;
+        line-height: 20px;
+        margin-bottom: 40px;
+    }
+    &__line {
+        background: url(./assets/images/static/yellow-line.png);
+        height: 5px;
+        transition: all .5s;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    &__footer {
+        position: relative;
+        &-footer {
+            display: flex;
+            justify-content: center;
+        }
+        &-gram {
+            margin-right: 25px;
+            font-family: "Lato";
+            font-size: 18px;
+            color: #26547c;
+            transition: all 0.5s;
+            font-weight: 600;
+        }
+        &-price {
+            font-family: "Lato";
+            transition: all 0.5s;
+            font-size: 18px;
+            color: #26547c;
+            font-weight: 600;
+        }
+    }
+    &__bottom {
+        position: absolute;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+    }
+    &__loading {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 100px;
+    }
+    .tort__item.tort-hit .tort__succes {
+        display: block;
+    }
+}

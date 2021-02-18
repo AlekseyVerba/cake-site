@@ -1,0 +1,60 @@
+@media (max-width: 350px) {
+    .infoTorts {
+        padding: 0;
+        &__text {
+            text-align: center;
+            font-size: 13px;
+        }
+        &__text-bold {
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .tort {
+        &__item {
+            width: 70%;
+            margin: 0 auto;
+            &:nth-child(n+3) {
+                margin-top: 0;
+            }
+        }
+        &__item + &__item {
+            margin-top: 25px;
+        }
+        &__footer {
+            padding-bottom: 50px;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .tort {
+        &__items {
+            margin: 0 auto 50px;
+        }
+        &__loading {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    .tort {
+        &__item {
+            width: 100%;
+        }
+    }
+}
+@media (max-width: 435px) {
+    .tort {
+        &__item {
+            min-height: 450px;
+            text-align: center;
+        }
+        &__footer {
+            padding-bottom: 20px;
+        }
+    }
+}

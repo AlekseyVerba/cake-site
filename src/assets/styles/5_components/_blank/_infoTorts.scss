@@ -3,6 +3,7 @@
     max-width: 740px;
     padding: 0 15px;
     margin: 0 auto;
+    margin-bottom: 80px;
     &__title {
         text-align: center;
         font-family: "Junegull";
@@ -44,6 +45,18 @@
         }
         &-two {
             margin-bottom: 25px;
+            position: relative;
+            &::after {
+                content: "";
+                display: block;
+                width: 40px;
+                height: 10px;
+                position: absolute;
+                bottom: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: url(./assets/images/static/small-line.png)center no-repeat;
+            }
         }
         &-bold {
             padding: 25px 0;
@@ -53,5 +66,29 @@
     }
     &__br {
         height: 20px;
+    }
+    &__goHome {
+        display: block;
+        cursor: pointer;
+        text-align: right;
+        margin: 0 auto;
+        margin-top: 20px;
+        color: #26547c;
+        font-size: 14px;
+        padding-left: 10px;
+        position: relative;
+        width: 140px;
+        text-decoration: none;
+        &::after {
+            content: "";
+            background: url(./assets/images/static/arrow-left.png)center no-repeat;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 23px;
+            height: 18px;
+            display: block;
+        }
     }
 }

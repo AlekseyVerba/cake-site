@@ -1,0 +1,16 @@
+@media (max-width: 866px) {
+    .modal {
+        &__dialog {
+            max-width: 1000px;
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width: 545px) {
+    .modal {
+        &__dialog {
+            width: 100%;
+        }
+    }
+}
