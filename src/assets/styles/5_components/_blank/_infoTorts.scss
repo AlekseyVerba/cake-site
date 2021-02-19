@@ -1,0 +1,94 @@
+.infoTorts {
+    margin-top: 60px;
+    max-width: 740px;
+    padding: 0 15px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    &__title {
+        text-align: center;
+        font-family: "Junegull";
+        font-size: 48px;
+        color: #06d6a0;
+        margin-bottom: 7px;
+    };
+    &__bread {
+        font-family: "Gotham";
+        font-size: 11px;
+        color: #26547c;
+        text-align: center;
+    }
+    &__home {
+        color: #26547c;
+        text-decoration: none;
+        position: relative;
+        padding-right: 15px;
+        &::after {
+            content: "";
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: rotate(45deg) translateY(-50%);
+            height: 6px;
+            width: 6px;
+            border-top: 1px solid #26547c;
+            border-right: 1px solid #26547c;
+        }
+    }
+    &__text {
+        
+        font-size: 15px;
+        color: #26547c;
+        font-family: "Gotham";
+        line-height: 22px;
+        &-first {
+            margin-top: 40px;
+        }
+        &-two {
+            margin-bottom: 25px;
+            position: relative;
+            &::after {
+                content: "";
+                display: block;
+                width: 40px;
+                height: 10px;
+                position: absolute;
+                bottom: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: url(./assets/images/static/small-line.png)center no-repeat;
+            }
+        }
+        &-bold {
+            padding: 25px 0;
+            color: #26547c;
+            font-weight: 600;
+        }
+    }
+    &__br {
+        height: 20px;
+    }
+    &__goHome {
+        display: block;
+        cursor: pointer;
+        text-align: right;
+        margin: 0 auto;
+        margin-top: 20px;
+        color: #26547c;
+        font-size: 14px;
+        padding-left: 10px;
+        position: relative;
+        width: 140px;
+        text-decoration: none;
+        &::after {
+            content: "";
+            background: url(./assets/images/static/arrow-left.png)center no-repeat;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 23px;
+            height: 18px;
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+.adress {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    &__container {
+        max-width: 1050px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+    &__title {
+        font-size: 24px;
+        font-family: "Junegull";
+        color: #26547c;
+        width: 34%;
+    }
+    &__link-phone {
+        font-family: "Gotham";
+        font-size: 16px;
+        text-decoration: none;
+        color: #26547c;
+        margin-left: 5px;
+
+    }
+    &__phone {
+        display: flex;
+        align-items: center;
+    }
+    &__network {
+        display: flex;
+    }
+    &__network-link + &__network-link {
+        margin-left: 15px;
+    }
+    &__network-img {
+        opacity: 1;
+        transition: all .3s;
+        &:hover {
+            opacity: .7;
+        }
+    }
+    
+    &__network, &__phone {
+    display: flex;
+    width: 26%;
+    }
+}
+.contact{
+    &__map {
+        height: 535px;
+        width: 100%;
+    }
+}

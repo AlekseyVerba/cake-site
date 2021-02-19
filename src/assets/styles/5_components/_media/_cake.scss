@@ -53,15 +53,15 @@
         &-three {
             display: block;
             position: static;
-            width: 20%;
+            width: 100%;
         }
         &-four {
             display: block;
             position: static;
-            width: 70%;
+            width: 40%;
         }
         &__items {
-            height: 750px;
+            height: 1000px;
         }
     }
 }

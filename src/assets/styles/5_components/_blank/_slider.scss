@@ -1,11 +1,26 @@
 .slider {
+    img {
+        height: 100%;
+        display: block;
+    }
     &__wrapper {
-        max-width: 950px;
+        max-width: 944px;
+        max-height: 450px;
         height: auto;
         margin: 0 auto;
         position: relative;
+        overflow: hidden;
+    }
+    &__content {
+        display: flex;
+        height: 100%;
+        transition: all .7s;
+    }
+    &__item {
+        height: 100%;
     }
     &__button {
+        z-index: 1000;
         background: transparent;
         border: none;
         border-top: 4px solid #06d6a0;
@@ -18,12 +33,12 @@
         cursor: pointer;
     }
     &__left {
-        left: -100px;
-        transform: rotate(220deg) translateX(-50%);
+        left: 50px;
+        transform: rotate(220deg) translateY(-50%);
     }
     &__right {
-        right: -100px;
-        transform: rotate(45deg) translateX(-50%);
+        right: 50px;
+        transform: rotate(45deg) translateY(-50%);
     }
     &__dots {
         display: flex;
@@ -39,5 +54,8 @@
     &__dot + &__dot {
         margin-left: 8px;
         cursor: pointer;
+    }
+    &__dot-active {
+        background: #06d6a0;
     }
 }

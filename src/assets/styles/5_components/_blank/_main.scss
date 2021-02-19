@@ -20,9 +20,6 @@
         text-decoration: none;
         color: #26547c;
     }
-    &__logo {
-        
-    }
     &__first {
         width: 150px;
         display: flex;
@@ -71,6 +68,27 @@
     }
     &__whiteline {
         display: none;
+    }
+}
+.header-green {
+    background: #06d6a0;
+    &__blueLine {
+        display: block;
+            z-index: 1000;
+            bottom: -14px;
+            height: 23px;
+            position: absolute;
+            width: 100%;
+            background: url(./assets/images/static/blue-line.png) center no-repeat;
+    }
+    &__logo-img {
+        display: block;
+    }
+    &__link {
+        color: #e9faf4;
+    }
+    &__link-hamburger {
+        color: #e9faf4;
     }
 }
 

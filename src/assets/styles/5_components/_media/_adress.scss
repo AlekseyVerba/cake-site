@@ -1,0 +1,70 @@
+@media (max-width: 1300px) {
+    .contact {
+        &__map {
+            height: 470px;
+        }
+    }
+}
+
+@media (max-width: 1090px) {
+    .adress {
+        &__container {
+            flex-direction: column;
+        }
+        &__title {
+            text-align: center;
+            width: 100%;
+            margin: 10px;
+            margin-bottom: 15px;
+        }
+        &__phone {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        &__network {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .contact {
+        &__map {
+            height: 400px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .contact {
+        &__map {
+            height: 350px;
+        }
+    }
+}
+@media (max-width: 400px) {
+    .contact {
+        &__map {
+            height: 300px;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    .adress {
+
+        &__title {
+            font-size: 21px;
+        }
+    }
+}
+
+@media (max-width: 275px) {
+    .title__adapt {
+        font-size: 41px;
+    }
+}
+
+
