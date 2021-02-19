@@ -1,5 +1,5 @@
 try {
-    const btns = document.querySelectorAll(".tort__item");
+    const btns = document.querySelectorAll(".tort__click");
     const modal = document.querySelector(".modal");
     const dialog = document.querySelector(".modal__dialog");
     const block = document.querySelector(".modal__block");

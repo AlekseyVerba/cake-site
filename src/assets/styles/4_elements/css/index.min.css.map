@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../_blank/index.scss",
+        "../_blank/_settings.scss",
+        "../_blank/_tools.scss",
+        "../_blank/_main.scss",
+        "../_blank/_media.scss"
+    ],
+    "names": [],
+    "file": "index.min.css"
+}

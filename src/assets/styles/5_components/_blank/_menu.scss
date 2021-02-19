@@ -1,0 +1,87 @@
+.menu {
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto 70px;
+        padding: 0 15px;
+    }
+    &__menu {
+        color: #06d6a0;
+        font-family: "Junegull";
+        font-size: 28px;
+        letter-spacing: -0.48px;
+        text-decoration: none;
+        position: relative;
+        width: 95%;
+        display: block;
+        margin-bottom: 25px;
+        display: none;
+        &::after {
+            content: "";
+            width: 15px;
+            top: 0;
+            transform: rotate(135deg) translateY(-50%);
+            position: absolute;
+            height: 15px;
+            right: 0;
+            border-top: 2px solid #06d6a0;
+            border-right: 2px solid #06d6a0;
+        }
+        &-active {
+            &::after {
+                transform: rotate(315deg) translateY(-50%);
+                top: 18px;
+            }
+        }
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__head {
+        border: 1px solid #ebebeb;
+    }
+    &__list {
+        width: 28%;
+        border-right: 2px solid #f1f8fb;
+    }
+    &__item + &__item {
+        margin-top: 21px;
+    }
+    &__item {
+        &-link {
+            color: #26547c;
+            font-family: "Junegull";
+            font-size: 24px;
+            letter-spacing: -0.48px;
+            text-decoration: none;
+            position: relative;
+            width: 95%;
+            display: block;
+            &-active {
+                position: relative;
+                color: #06d6a0;
+                &::before {
+                    content: "";
+                    right: -35px;
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 39px;
+                    height: 5px;
+                    background: url(./assets/images/static/small-line.png);
+                }
+            }
+        }
+    }
+    &__foods {
+        width: 68%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &__loading {
+        margin-bottom: 0;
+        margin-top: 70px;
+    }
+}

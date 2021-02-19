@@ -1,0 +1,28 @@
+.question {
+    color: #26547c;
+    font-family: Verdana;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 10px;
+    text-align: left;
+    &__container {
+        max-width: 725px;
+        margin: 0 auto;
+        text-align: left;
+    }
+    &__title {
+        font-weight: 700;
+        letter-spacing: -0.32px;
+        margin-bottom: 30px;
+    }
+    &__text {
+        margin-bottom: 25px;
+    }
+    &__right {
+        color: #ef476f;
+        font-family: "Gotham";
+        font-size: 12px;
+        text-decoration: underline;
+        letter-spacing: -0.24px;
+    }
+}
