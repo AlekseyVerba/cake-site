@@ -57,7 +57,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
     </div>
-    <ul class="header__list-hamburger">
+    <ul class="header__list-hamburger header__list-hamburger-animate">
         <li class="header__item-hamburger">
             <a href="" class="header__link-hamburger header-green__link-hamburger">
                 Меню
@@ -92,20 +92,30 @@
     <div class="infoTorts program">
         <div class="container">
             <div class="infoTorts program">
-                <h2 class="infoTorts__title title__adapt program__title-adapt">
-                    Меню
+                <h2 class="infoTorts__title title__adapt program__title-adapt title-animate">
+                    Американский завтрак
                 </h2>
-                <div class="infoTorts__bread">
+                <div class="infoTorts__bread infoTorts__bread-aniamte">
                     <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Меню</span>
+                    <a class="infoTorts__home">Меню</a>
+                    <span class="infoTorts__next">Американский завтрак</span>
                 </div>
             </div>
+            <!-- <div class="program__wrapper menu__container">
+                <a href="#" class="infoTorts__goHome program__goHome">
+                    назад на главную
+                </a>
+            </div> -->
         </div>
     </div>
 
-
     <div class="menu">
         <div class="menu__container">
+            <div class="program__wrapper item__goHome">
+                <a href="#" class="infoTorts__goHome program__goHome">
+                    назад на главную
+                </a>
+            </div>
             <div class="menu__content">
                 <h3 class="menu__menu">
                     Меню кафе
@@ -114,6 +124,8 @@
                     <li class="menu__item">
                         <a href="#" class="menu__item-link menu__item-link-active">
                             ЗАВТРАКИ ЦЕЛЫЙ ДЕНЬ
+                            <p class="menu__opis">К любому завтраку предоставляется напиток
+                                на выбор (чай в чайнике, американо, капучино)</p>
                         </a>
                     </li>
                     <li class="menu__item">
@@ -167,8 +179,26 @@
                         </a>
                     </li>
                 </ul>
-                <div class="menu__foods">
-                        <div class="tort__item tort-hit food__click">
+                <div class="menu__foods menu__foods-animate">
+                        <div class="item__food">
+                            <div class="item__food-img">
+                                <img src="./assets/images/static/americanbreakfast.png" alt="breakfast">
+                            </div>
+                            <div class="item__food-info">
+                                <p class="item__food-text">
+                                    Классическая глазунья из двух яиц с сочными ломтиками обжаренного бекона, картофель Айдахо с соусом Барбекю и лист салата
+                                </p>
+                                <div class="item__food-info-footer">
+                                    <div class="item__food-info-gram">160 г.</div>
+                                    <div class="item__food-info-price">289 ₽</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="title__recomend">Рекомендуем</h3>
+
+
+                        <div class="tort__item tort-hit food__click item__one">
                             <div class="tort__head menu__head">
                                 <div class="tort__dark">
                                     <p class="tort__order">Подробнее</p>
@@ -264,6 +294,7 @@
     </div>
 
 
+    
     <div class="footer">
         <div class="footer__container">
             <div class="footer__content">
