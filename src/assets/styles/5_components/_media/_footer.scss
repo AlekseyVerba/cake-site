@@ -1,17 +1,14 @@
+
 @media (max-width: 702px) {
-    .footer {
-        &__first {
-            margin-left: 0;
-        }
-    }
-}
-@media (max-width: 626px) {
     .footer {
         &__content {
             flex-direction: column;
         }
         &__logo {
             margin: 15px 0;
+        }
+        &__first {
+            margin-left: 0;
         }
     }
 }

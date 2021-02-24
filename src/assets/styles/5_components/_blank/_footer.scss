@@ -34,8 +34,8 @@
         text-decoration: none;
     }
     &__first {
-        margin-left: 85px;
-        width: 170px;
+        margin-left: 120px;
+        width: 160px;
         justify-content: space-between;
         // margin-right: 60px;
     }
@@ -68,11 +68,19 @@
         text-align: center;
         font-family: "Ubunty";
         font-size: 12px;
+        display: block;
         color: #fff;
+        width: 100%;
+        margin: 0 auto;
+        text-decoration: none;
         span {
-            font-size: 19px;
-            font-weight: 600;
+            font-size: 12px;
+            margin-right: 15px;
             margin-left: 10px;
         }
     }
+}
+
+.footer__container {
+    max-width: 840px;
 }

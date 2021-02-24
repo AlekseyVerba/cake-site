@@ -1,11 +1,11 @@
 .description {
-    margin-top: 160px;
+    margin-top: 196px;
     &__text {
         padding: 50px 100px;
         border: 1px solid #ffd166;
         border-radius: 40px;
         max-width: 700px;
-        font-family: "Lato";
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         margin: 0 auto;
         text-align: center;
         font-size: 16px;
@@ -44,7 +44,7 @@
         background-color: #ffd166;
         border-radius: 25px;
         border: none;
-        padding: 6px 25px 9px;
+        padding: 4px 25px 6px;
         font-size: 16px;
         transition: all .3s;
         color: #787d76;
