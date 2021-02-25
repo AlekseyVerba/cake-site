@@ -1,0 +1,65 @@
+.error {
+    &__container {
+        max-width: 880px;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    &__title {
+        display: flex;
+        justify-content: center;
+        font-size: 302px;
+        font-family: "Junegull";
+        color: #06d6a0;
+        align-items: center;
+        margin: 0;
+    }
+    &__img {
+        max-width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+    &__descr {
+        font-size: 24px;
+        font-family: "Junegull";
+        color: #26547c;
+        text-align: center;
+        margin:  0 auto;
+        margin-top: 35px;
+        display: block;
+        max-width: 325px;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -10px;
+            width: 40px;
+            height: 40px;
+            background: url(./assets/images/static/rain-smile.png)center no-repeat;
+        }
+    }
+    &__goHome {
+        margin: 0 auto;
+        margin-top: 70px;
+        color: #ef476f;
+        &::after {
+            background: url(./assets/images/static/red-arrow.png)center no-repeat;
+        }
+    }
+    &__text {
+        font-family: "Gotham";
+        font-size: 16px;
+        color: #26547c;
+        text-align: center;
+        margin-top: 50px;
+    }
+    &__adress__title {
+        width: 40%;
+        text-align: right;
+    }
+    &__adress__network {
+        width: 18%;
+        text-align: right;
+    }
+}

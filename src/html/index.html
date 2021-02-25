@@ -24,9 +24,9 @@
                             <div class="header__line"></div>
                         </li>
                     </ul>
-                <div class="header__logo">
+                <a href="#" class="header__logo">
                     <img src="./assets/images/static/logo.png" alt="logo" class="header__logo-img">
-                </div>
+                </a>
                     <ul class="header__list header__second">
                         <li class="header__item">
                             <a href="#" class="header__link">Программа лояльности</a>
@@ -114,21 +114,21 @@
                 <img src="./assets/images/static/ponchik.jpg.png" alt="ponchik" class="cake__ponchik-img">
             </div>
             <div class="cake__items">
-                <div class="cake-one cake__item" data-name="Три шоколада" data-info="Муссовый торт из трёх видов бельгийского шоколада" data-gramm=120 data-price=220> 
+                <div class="cake-one cake__item" data-element="1" data-name="Три шоколада" data-info="Муссовый торт из трёх видов бельгийского шоколада" data-gramm=120 data-price=220> 
                     <img src="./assets/images/static/one-cake.png" alt="cake" class="cake__item-img">
                 </div>
                 <div class="cake__wrapper">
-                    <div class="cake-two cake__item" data-name="Торт 'Красный 'бархат'" data-info="Нежный бисквит пропитанный малиновым вареньем в сочетании со сливочным сыром" data-gramm=160 data-price=190>
+                    <div class="cake-two cake__item" data-element="1" data-name="Торт 'Красный 'бархат'" data-info="Нежный бисквит пропитанный малиновым вареньем в сочетании со сливочным сыром" data-gramm=160 data-price=190>
                         <img src="./assets/images/static/two-cake.png" alt="cake" class="cake__item-img">
                     </div>
                 </div>
-                <div class="cake-three cake__item"  data-name="Фисташка-Малина" data-info="Фисташковый бисквит с малиновым желе" data-gramm=125 data-price=220>
+                <div class="cake-three cake__item" data-element="2"  data-name="Фисташка-Малина" data-info="Фисташковый бисквит с малиновым желе" data-gramm=125 data-price=220>
                     <img src="./assets/images/static/three-cake.png" alt="cake" class="cake__item-img">
                 </div>
-                <div class="cake-four cake__item" data-name="Наполеон с заварным кремом" data-info="Девять хрустящих коржей с фирменным заварным кремом" data-gramm=120 data-price=190>
+                <div class="cake-four cake__item" data-element="3" data-name="Наполеон с заварным кремом" data-info="Девять хрустящих коржей с фирменным заварным кремом" data-gramm=120 data-price=190>
                     <img src="./assets/images/static/four-cake.png" alt="cake" class="cake__item-img">
                 </div>
-                <div class="cake-five cake__item" data-name="Чизкейк классический" data-info="Творожно-сырный пирог на песочной основе" data-gramm=110 data-price=200>
+                <div class="cake-five cake__item" data-element="3" data-name="Чизкейк классический" data-info="Творожно-сырный пирог на песочной основе" data-gramm=110 data-price=200>
                     <img src="./assets/images/static/five-cake.png" alt="cake" class="cake__item-img">
                 </div>
             </div>
@@ -170,10 +170,12 @@
     </div>
 
     <div class="slider">
-        <div class="container">
-            <div class="slider__wrapper">
+        <div class="slider__container">
+            <div class="slider__buttons">
                 <button class="slider__left slider__button"></button>
                 <button class="slider__right slider__button"></button>
+            </div>
+            <div class="slider__wrapper">
                 <div class="slider__content">
                     <div class="slider__item">
                         <img src="./assets/images/static/IMG_1160.jpg.png" alt="slider" />
@@ -260,9 +262,10 @@
                     </li>
                 </ul>
            </div>
-           <p class="footer__developer">
-                Разработка <span>true.code</span>
-           </p>
+           <a href="#" class="footer__developer">
+                <span>Разработка</span>
+                <img src="./assets/images/static/trueCode.png" alt="">
+           </a>
         </div>
     </div>
     <script src="assets/js/plugins.min.js"></script>

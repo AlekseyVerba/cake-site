@@ -1,0 +1,42 @@
+@media (max-width: 603px) {
+    .error {
+        &__title {
+            font-size: 210px;
+        }
+    }
+}
+
+@media (max-width: 470px) {
+    .error {
+        &__descr {
+           &::after {
+                left: 50%;
+                right: 0;
+                top: 50px;
+                transform: translateX(-50%);
+           }
+        }
+        &__goHome {
+            margin-top: 100px;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .error {
+        &__title {
+            font-size: 160px;
+        }
+        &__img {
+            max-width: 35%;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .error {
+        &__title {
+            font-size: 120px;
+        }
+    }
+}

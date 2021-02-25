@@ -1,0 +1,47 @@
+.title-animate {
+    opacity: 0;
+    visibility: visible;
+    animation-duration: 3s;
+    animation-delay: .3s;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
+}
+.item__goHome {
+    max-width: 2000px;
+    padding-right: 0;
+    width: 100%;
+}
+.infoTorts__bread-aniamte {
+    opacity: 0;
+    visibility: visible;
+    animation-duration: 3s;
+    animation-delay: .8s;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
+}
+.menu__foods-animate {
+    opacity: 0;
+    visibility: visible;
+    animation-duration: 3s;
+    animation-delay: 1.3s;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
+}
+.header__list-hamburger-animate {
+    opacity: 0;
+    visibility: visible;
+    animation-duration: 1s;
+    animation-delay: .5s;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}

@@ -57,6 +57,7 @@
             position: relative;
             width: 95%;
             display: block;
+            transition: all .3s;
             &-active {
                 position: relative;
                 color: #06d6a0;
@@ -65,14 +66,40 @@
                     right: -35px;
                     position: absolute;
                     display: block;
-                    top: 50%;
-                    transform: translateY(-50%);
+                    top: 11px;
                     width: 39px;
                     height: 5px;
                     background: url(./assets/images/static/small-line.png);
                 }
             }
         }
+        &:hover {
+            a {
+                position: relative;
+                color: #06d6a0;
+                &::before {
+                    content: "";
+                    right: -35px;
+                    position: absolute;
+                    display: block;
+                    top: 11px;
+                    width: 39px;
+                    height: 5px;
+                    background: url(./assets/images/static/small-line.png);
+                }
+            }
+        }
+    }
+    &__opis {
+        width: 87%;
+        margin: 0;
+        text-transform: none;
+        font-size: 12px;
+        color: #ef476f;
+        margin-top: 20px;
+        padding: 2px 0;
+        text-align: left;
+        font-family: "Gotham";
     }
     &__foods {
         width: 68%;

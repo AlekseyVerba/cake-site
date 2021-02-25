@@ -8,8 +8,11 @@
         justify-content: center;
         margin: 0 auto;
         align-items: center;
-        width: 740px;
+        width: 800px;
         padding: 35px 0;
+    }
+    &__logo {
+        margin: 0 33px;
     }
     &__item + &__item {
         margin-left: 35px;

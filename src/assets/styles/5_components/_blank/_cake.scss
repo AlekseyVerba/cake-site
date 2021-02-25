@@ -1,6 +1,6 @@
 .cake {
     position: relative;
-    margin-top: 60px;
+    margin-top: 51px;
     &__ponchik {
         width: 100px;
         margin: 0 auto;
@@ -8,29 +8,31 @@
     &__items {
         display: flex;
         position: relative;
-        height: 740px;
+        height: 534px;
     }
     &__item {
         position: absolute;
     }
     &-one {
         left: 0;
+        top: -70px;
     }
     &-two {
-        top: 192px;
+        top: 80px;
         left: 200px;
     }
     &-three {
         left: 40%;
-        top: 300px;
+        top: 145px;
         transform: translateX(-50%);
     }
     &-four {
-        top: 192px;
+        top: 80px;
         right: 200px;
     }
     &-five {
         right: 0;
+        top: -70px;
     }
     &__info {
         box-sizing: border-box;
@@ -47,19 +49,32 @@
         border: 1px solid #b7b7b7;
     }
     &__title {
-        font-size: 30px;
-        margin-bottom: 15px;
+        font-size: 18px;
+        font-family: "Gotham";
+        margin-bottom: 20px;
+        font-weight: 600;
     }
     &__description {
         margin-bottom: 20px;
+        font-size: 16px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     &__footer {
         text-align: right;
-        font-size: 23px;
-        font-weight: 600;
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         span + span {
             margin-left: 15px;
         }
+    }
+    &__goRight {
+        transform: translate(10%, -20%);
+    }
+    &__goCenter {
+        transform: translate(-50%, -55%);
+    }
+    &__goLeft {
+        transform: translate(-120%, -20%);
     }
 }
 
