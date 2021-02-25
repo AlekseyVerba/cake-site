@@ -75,14 +75,18 @@
 }
 .header-green {
     background: #06d6a0;
+    .header__content {
+        padding: 16px 0;
+    }
     &__blueLine {
         display: block;
             z-index: 1000;
             bottom: -14px;
-            height: 23px;
+            height: 24px;
             position: absolute;
             width: 100%;
-            background: url(./assets/images/static/blue-line.png) center no-repeat;
+            background: url(./assets/images/static/line.png) center no-repeat;
+            transform: rotate(180deg);
     }
     &__logo-img {
         display: block;

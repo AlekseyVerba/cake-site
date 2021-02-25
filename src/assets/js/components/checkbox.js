@@ -1,18 +1,16 @@
 try {
-    const labels = document.querySelectorAll(".application__label");
+    const checbox = document.querySelector(".application__label-checkbox");
 
-    labels.forEach(item => {
-        item.addEventListener("click", (e) => {
+    checbox.addEventListener("click", (e) => {
+        const oldCheckBox = checbox.querySelector(".application__checkbox-bad");
+        const newCheckBox = checbox.querySelector(".application__checkbox-bad-block");
 
-            const oldCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox")
-            const newCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox-block")
-            if (oldCheckBoxs.checked) {
-                oldCheckBoxs.checked = false;
-                newCheckBoxs.classList.remove("application__checkbox-block-active")
-            } else {
-                oldCheckBoxs.checked = true;
-                newCheckBoxs.classList.add("application__checkbox-block-active")
-            }
-        })
+        if (oldCheckBox.checked) {
+            oldCheckBox.checked = false;
+            newCheckBox.classList.remove("application__checkbox-bad-block-active");
+        } else {
+            oldCheckBox.checked = true;
+            newCheckBox.classList.add("application__checkbox-bad-block-active");
+        }
     })
 } catch {}
