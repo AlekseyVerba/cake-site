@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="style.min.css">
     <script src="assets/js/jquery.min.js"></script>
     <title>cc-union.ru</title>
+
 </head>
+        
 
 <body>
     
@@ -223,8 +225,10 @@
                     </div>
                 </div>
             </div>
-            <div class="contact__map">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor" frameborder="0"></iframe>
+            <div class="index__map" id="map">
+               
+                <!-- <div id="map" class="map__map"></div> -->
+               
             </div>
         </div>
     </div>
@@ -269,6 +273,54 @@
            </a>
         </div>
     </div>
+    <script>
+
+        function getYaMap(){
+            var myMap = new ymaps.Map("map", {
+                center: [52.281374, 104.284550],
+                controls: [],
+                zoom: 15
+            });
+            myMap.controls.remove();
+        }
+
+        function downloadJSAtOnload() {
+            var element = document.createElement("script");
+            element.src = "https://api-maps.yandex.ru/2.1/?&lang=ru_RU&onload=getYaMap";
+            document.head.appendChild(element);
+        }
+
+        window.addEventListener('load', function() {
+            downloadJSAtOnload();
+        });
+    </script>
+    <!-- <script>
+        function getYaMap(){
+            var myMap = new ymaps.Map("map", {
+                center: [52.259170, 104.320612],
+                controls: [],
+                zoom: 15
+            });
+
+            var myPlacemark = new ymaps.Placemark([52.259134, 104.320608], {
+                balloonContent: 'Гранд Байкал<br>Иркутск, улица Байкальская, 180А/4,  (ДЦ БаZа)',
+                iconContent: 'Гранд Байкал',
+                hintContent: 'Байкальская, 180А/4',
+            }, {
+                preset: 'islands#yellowStretchyIcon'
+            });
+            myMap.geoObjects.add(myPlacemark);  
+
+            myMap.controls.remove();
+            myMap.behaviors.disable('scrollZoom');
+
+            //на мобильных устройствах... (проверяем по userAgent браузера)
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                //... отключаем перетаскивание карты
+                myMap.behaviors.disable('drag');
+            }
+        }
+    </script> -->
     <script src="assets/js/plugins.min.js"></script>
     <script src="assets/js/main.min.js"></script>
 

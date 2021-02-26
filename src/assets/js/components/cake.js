@@ -1,5 +1,4 @@
 try {
-    const items = document.querySelectorAll(".cake__item");
 
 items.forEach(item => {
     item.addEventListener("mouseover", e => {

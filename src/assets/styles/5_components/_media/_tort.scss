@@ -39,6 +39,12 @@
         }
     }
 }
+@media (max-width: 699px) {
+    .all__loading {
+        margin-bottom: 90px;
+        max-width: 600px;
+    }
+}
 
 @media (max-width: 435px) {
     .tort {
