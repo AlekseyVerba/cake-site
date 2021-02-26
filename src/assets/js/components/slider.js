@@ -1,4 +1,12 @@
-try {
+// try {
+    if (window.NodeList && !NodeList.prototype.forEach) {
+        NodeList.prototype.forEach = function (callback, thisArg) {
+            thisArg = thisArg || window;
+            for (var i = 0; i < this.length; i++) {
+                callback.call(thisArg, this[i], i, this);
+            }
+        };
+    }
     const width = window.getComputedStyle(document.querySelector(".slider__wrapper")).width;
     const wrapper = document.querySelector(".slider__wrapper");
     const elements = document.querySelectorAll(".slider__item");
@@ -8,10 +16,11 @@ try {
     const slider = document.querySelector(".slider");
 
 let count = 1;
-
 function addDots() {
     const dots = document.createElement("div");
     dots.classList.add("slider__dots");
+
+
     elements.forEach((el, index) => {
         const dot = document.createElement("div")
         dot.classList.add("slider__dot");
@@ -19,9 +28,15 @@ function addDots() {
         if (index === 0) {
             dot.classList.add("slider__dot-active");  
         }
-        dots.append(dot);
+        dots.appendChild(dot);
     })
-    document.querySelector(".slider").append(dots);
+
+    // for (let index = 0; index < elements.length; i++) {
+        
+    // }
+
+
+    document.querySelector(".slider").appendChild(dots);
 }
 addDots();
 
@@ -97,6 +112,6 @@ function goPrev() {
     }
     changeDots(null, "changeColor")
 }
-}
+// }
 
-catch {}
+// catch {}

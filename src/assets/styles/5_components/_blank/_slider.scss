@@ -20,7 +20,7 @@
     &__buttons {
         position: absolute;
         width: 100%;
-        height: 448px;
+        height: 100%;
         z-index: 10000;
         margin: 0 auto;
     }
@@ -48,6 +48,15 @@
     &__left {
         left: -20px;
         transform: translateY(-50%) rotate(225deg);
+    }
+    &__des {
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 81%;
+        height: 80%;
+        border: 1px solid #ffd166;
     }
     &__right {
         right: -20px;

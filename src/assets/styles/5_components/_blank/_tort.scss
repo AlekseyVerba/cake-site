@@ -4,12 +4,12 @@
         flex-wrap: wrap;
         justify-content: space-between;
         max-width: 740px;
-        padding: 0 15px;
+        // padding: 0 15px;
         margin: 0 auto;
         margin-bottom: 100px;
     }
     &__item {
-        width: 48%;
+        width: 360px;
         display: flex;
         flex-direction: column;
         min-height: 500px;
@@ -104,7 +104,7 @@
     }
     &__title {
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 400;
         color: #26547c;
         transition: all 0.5s;
         font-family: "Gotham";
@@ -123,6 +123,7 @@
         color: #26547c;
         font-family: "Gotham";
         transition: all 0.5s;
+        opacity: .6;
         line-height: 20px;
         margin-bottom: 40px;
     }
@@ -163,11 +164,34 @@
         bottom: 20px;
     }
     &__loading {
-        width: 100%;
+        width: 80%;
         text-align: center;
+        margin: 0 auto;
         margin-bottom: 100px;
+        position: relative;
+        &::after {
+            content: "Подгрузка товаров, а это сам индикатор загрузки";
+            color: #26547c;
+            opacity: .6;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateX(-50%);
+        }
     }
     .tort__item.tort-hit .tort__succes {
         display: block;
     }
+}
+
+.tort__footer {
+    padding-bottom: 50px;
+}
+.tort__line-recomend {
+    // background-size: ;
+    background: #ffd166;
+    height: 1px;
+}
+.tort__bottom-recomend {
+    width: 100%;
 }

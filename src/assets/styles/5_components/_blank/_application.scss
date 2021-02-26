@@ -93,7 +93,8 @@
 }
 
 .cont {
-    width: 100%;
+    width: 93%;
+    margin: 0 auto;
     position: relative;
 }
 .cont + .cont {
@@ -112,7 +113,20 @@
         color: #f10c3d;
     }
 }
-
+.application__checkbox-bad {
+    visibility: hidden;
+    margin-right: 10px;
+    &-block {
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        border: 1px solid #06d6a0;
+        cursor: pointer;
+        &-active {
+            background: #ffd166;
+        }
+    }
+}
 .application__opis {
     color: #26547c;
     font-family: Verdana;

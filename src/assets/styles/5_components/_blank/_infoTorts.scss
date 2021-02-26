@@ -36,9 +36,9 @@
     }
     &__text {
         
-        font-size: 15px;
+        font-size: 16px;
         color: #26547c;
-        font-family: "Gotham";
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         line-height: 22px;
         &-first {
             margin-top: 40px;
@@ -61,7 +61,9 @@
         &-bold {
             padding: 25px 0;
             color: #26547c;
-            font-weight: 600;
+            font-weight: bold;
+            font-size: 16px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
     }
     &__br {
@@ -83,7 +85,7 @@
             content: "";
             background: url(./assets/images/static/arrow-left.png)center no-repeat;
             position: absolute;
-            left: 0;
+            left: -10px;
             top: 50%;
             transform: translateY(-50%);
             width: 23px;

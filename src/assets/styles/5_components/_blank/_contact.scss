@@ -45,6 +45,12 @@
     &__map {
         width: 60%;
     }
+    &__link {
+        color: #455a64;
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-decoration: none;
+    }
 }
 .network {
     transition: all .3s;

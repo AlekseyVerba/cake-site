@@ -25,6 +25,11 @@
         font-size: 38px;
     }
 }
+@media (max-width: 435px) {
+    .item__food {
+        width: 100%;
+    }
+}
 
 @media (max-width: 304px) {
     .program__title-adapt {

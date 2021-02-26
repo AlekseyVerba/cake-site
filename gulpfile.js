@@ -2,6 +2,7 @@
 
 const gulp = require("gulp");
 
+const poly = require("@babel/polyfill");
 // Utilites
 const del = require("del");
 const rename = require("gulp-rename");
@@ -41,6 +42,8 @@ const spritesmith = require('gulp.spritesmith');
 // Config
 const config = require('./config.json');
 const publicPath = config.build;
+
+
 
 // Server
 gulp.task("serve", function(done) {
@@ -89,6 +92,35 @@ gulp.task("style", function() {
 });
 
 // Scripts
+gulp.task("js:components", function () {
+  return gulp.src(config.src.js.components)
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(gulpInclude({
+        extensions: "js",
+        hardFail: true,
+        includePaths: [
+          __dirname + "/node_modules",
+        ]
+    }))
+    .pipe(concat('main.js'))
+    .pipe(babel({
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            "useBuiltIns": "entry"
+          }
+        ]
+      ]
+    }))
+    .pipe(gulp.dest(config.build.js))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(rename('main.min.js'))
+    .pipe(gulp.dest(config.build.js))
+    .pipe(reload({stream: true}));
+});
 gulp.task("js:copy", function () {
   return gulp.src(config.src.js.separate)
     .pipe(plumber())
@@ -123,28 +155,6 @@ gulp.task("js:plugins", function () {
     .pipe(reload({stream: true}));
 });
 
-gulp.task("js:components", function () {
-  return gulp.src(config.src.js.components)
-    .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(gulpInclude({
-        extensions: "js",
-        hardFail: true,
-        includePaths: [
-          __dirname + "/node_modules",
-        ]
-    }))
-    .pipe(concat('main.js'))
-    .pipe(babel({
-      presets: ['@babel/preset-env']
-    }))
-    .pipe(gulp.dest(config.build.js))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(rename('main.min.js'))
-    .pipe(gulp.dest(config.build.js))
-    .pipe(reload({stream: true}));
-});
 
 gulp.task('js', gulp.series('js:copy', 'js:plugins', 'js:components', function (done) {
    done();
