@@ -6,7 +6,6 @@
         max-width: 740px;
         // padding: 0 15px;
         margin: 0 auto;
-        margin-bottom: 100px;
     }
     &__item {
         width: 360px;
@@ -19,7 +18,7 @@
         cursor: pointer;
         &:hover{
             .tort__dark {
-                opacity: 1;
+                opacity: .9;
             }
             .tort__footer {
                 &::after {
@@ -61,7 +60,7 @@
         transition: all .4s;
         top: 0;
         left: 0;
-        background: #caf6ebea;
+        background: #caf6eb;
         z-index: 1000;
         opacity: 0;
     }

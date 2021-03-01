@@ -108,9 +108,6 @@ gulp.task("js:components", function () {
       presets: [
         [
           "@babel/preset-env",
-          {
-            "useBuiltIns": "entry"
-          }
         ]
       ]
     }))

@@ -26,3 +26,22 @@
 .footer__container {
     max-width: 840px;
 }
+.contact__map {
+    max-width: 1920px;
+    margin: 0 auto;
+    height: 550px;
+}
+iframe {
+    border: 0px;
+}
+.menu__loading {
+    margin-bottom: 0;
+    margin-top: 70px;
+    &::after {
+        right: -235px;
+    }
+}
+.all__loading {
+    margin-bottom: 70px;
+    max-width: 600px;
+}

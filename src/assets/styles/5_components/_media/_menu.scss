@@ -1,3 +1,27 @@
+@media (max-width: 1200px) {
+    .menu__loading {
+        &::after {
+            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 60px;
+            width: 335px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .menu__loading {
+        width: 10%;
+        &::after {
+            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 60px;
+            width: 220px;
+        }
+    }
+}
 @media (max-width: 584px) {
     .menu {
         &__menu {
