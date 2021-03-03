@@ -194,6 +194,12 @@ try {
 // });
 
 
+document.querySelectorAll("form").forEach(function (item) {
+  item.addEventListener("submit", function (e) {
+    e.preventDefault();
+  });
+});
+
 try {
   var checkbox = document.querySelector(".modal__checkbox");
   var btnSubmit = document.querySelector(".modal__button");
@@ -290,7 +296,7 @@ try {
   });
   inputs.forEach(function (item) {
     item.addEventListener("blur", function (e) {
-      if (e.target.value.trim() == '') e.target.nextElementSibling.style.display = "block";
+      if (e.target.value.trim() == '') e.target.parentElement.nextElementSibling.style.display = "block";
     });
   });
 } catch (_unused10) {}

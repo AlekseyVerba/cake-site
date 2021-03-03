@@ -12,6 +12,7 @@
 
     add_theme_support("menus");
     add_theme_support( 'custom-logo' );
+    add_theme_support( 'post-thumbnails' );
 
     add_filter('nav_menu_link_attributes', "nav_menu_link", 10, 3);
 

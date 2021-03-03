@@ -15,7 +15,7 @@ try {
     inputs.forEach(item => {
         item.addEventListener("blur", (e) => {
             if (e.target.value.trim() == '')
-            e.target.nextElementSibling.style.display = "block";
+            e.target.parentElement.nextElementSibling.style.display = "block";
         })
     })
 } catch {}

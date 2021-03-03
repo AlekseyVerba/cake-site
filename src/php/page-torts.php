@@ -10,22 +10,22 @@
         <div class="container">
             <div class="infoTorts">
                 <h1 class="infoTorts__title">
-                    Целые торты
+                    <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread">
                     <a href="#" class="infoTorts__home">Главная</a>
                     <span class="infoTorts__next">Торты на заказ</span>
                 </div>
-                <p class="infoTorts__text infoTorts__text-first">
-                    Жизненный цикл – череда важных событий, громких вечеринок, больших и маленьких побед, деловых посиделок, семейных праздников… Неизменным и незаменимым элементом которых является торт – основной атрибут всех торжеств. Вряд ли можно найти ребенка или взрослого, который откажется от кусочка торта – вкусного, ароматного, тающего во рту.
+                <p class="infoTorts__text infoTorts__text-first infoTorts__text-two">
+                   <?php the_field("tort_text_one") ?>
                 </p>
                     <div class="infoTorts__br"></div>
-                    <p class="infoTorts__text infoTorts__text-two">
+                    <!-- <p class="infoTorts__text infoTorts__text-two">
                         Кондитерская udc кафе создает торты на заказ, капкейки и десерты, как настоящие произведения искусства, чтобы украсить праздничный стол и поднять настроение всем окружающим.
-                    </p>
-                <h6 class="infoTorts__text-bold">Вкусные торты под заказ на любой праздник</h6>
+                    </p> -->
+                <h6 class="infoTorts__text-bold"><?php the_field("tort_text_two_bold") ?></h6>
                 <p class="infoTorts__text">
-                    Изготовление тортов на заказ – необыкновенное волшебство! Кондитерские торты, лишь одним взмахом руки опытных и талантливых кондитеров udcкафе превращаются в произведения искусства.
+                    <?php the_field("tort_text_two") ?>
                 </p>
             </div>
         </div>
@@ -164,7 +164,23 @@
         </div>
     </div>
 
-
+    <div class="modal">
+        <div class="modal__dialog">
+            <div class="modal__content">
+                <div class="modal__block"></div>
+                <form class="modal__form">
+                        <label  class="hidden__label"></label>
+                        <input type="text" name="phone" class="modal__input" placeholder="Ваш телефон"/>
+                        <textarea rows="9" name="comment" class="modal__area" placeholder="Комметарий к заказу"></textarea>
+                        <label class="modal__label">
+                            <input type="checkbox" name="check" class="modal__checkbox">
+                            Согласен(а) на обработку моих персональных данных
+                        </label>
+                        <button type="submit" class="modal__button modal__disabled" disabled>отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </div>
 <?php
     get_footer();
 ?>
