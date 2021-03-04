@@ -103,7 +103,7 @@
             </ul>
         <div class="header__whiteline"></div>
     </div>
-    <div class="main">
+    <div class="main" style="background: url(<?php the_field("img_back") ?>) center no-repeat;">
         <div class="container">
             <div class="main__content">
                 <h1 class="main__title"><?php the_field("title_main") ?></h1>
@@ -116,8 +116,7 @@
     <div class="description">
         <div class="container">
             <div class="description__text">
-                это кондитерская-кофейня со светлым, легким интерьером, множеством сладких радостей нашего производства и кофе, который обязательно порадует вас бодростью и вкусом! 
-                Помимо этого у нас вы найдете сытные завтраки, сандвичи, быстрый Wi-Fi и мнооооого розеток =)
+                <?php the_field("text_main") ?>
                 <button class="description__button">читать далее</button>
             </div>
         </div>
@@ -128,23 +127,46 @@
                 <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/ponchik.jpg.png" alt="ponchik" class="cake__ponchik-img">
             </div>
             <div class="cake__items">
-                <div class="cake-one cake__item" data-element="1" data-name="Три шоколада" data-info="Муссовый торт из трёх видов бельгийского шоколада" data-gramm=120 data-price=220> 
-                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/one-cake.png" alt="cake" class="cake__item-img">
-                </div>
-                <div class="cake__wrapper">
-                    <div class="cake-two cake__item" data-element="1" data-name="Торт 'Красный 'бархат'" data-info="Нежный бисквит пропитанный малиновым вареньем в сочетании со сливочным сыром" data-gramm=160 data-price=190>
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/two-cake.png" alt="cake" class="cake__item-img">
-                    </div>
-                </div>
-                <div class="cake-three cake__item" data-element="2"  data-name="Фисташка-Малина" data-info="Фисташковый бисквит с малиновым желе" data-gramm=125 data-price=220>
-                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/three-cake.png" alt="cake" class="cake__item-img">
-                </div>
-                <div class="cake-four cake__item" data-element="3" data-name="Наполеон с заварным кремом" data-info="Девять хрустящих коржей с фирменным заварным кремом" data-gramm=120 data-price=190>
-                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/four-cake.png" alt="cake" class="cake__item-img">
-                </div>
-                <div class="cake-five cake__item" data-element="3" data-name="Чизкейк классический" data-info="Творожно-сырный пирог на песочной основе" data-gramm=110 data-price=200>
-                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/five-cake.png" alt="cake" class="cake__item-img">
-                </div>
+            <?php 
+            $rows = get_field('torty_na_glavnoj');
+            if($rows)
+            {
+                $key = 0;
+                $className;
+                $count;
+                foreach($rows as $row)
+                {
+                    // echo '<li>sub_field_1 = ' . $row['sub_field_1'] . ', sub_field_2 = ' . $row['sub_field_2'] .', etc</li>';
+                    // echo $row['name_card'];
+                    if ($key === 0) {
+                        $className = "cake-one";
+                        $count = 1;
+                    }
+                    if ($key === 1) {
+                        $className = "cake-two";
+                        $count = 1;
+                    }
+                    if ($key === 2) {
+                        $className = "cake-three";
+                        $count = 2;
+                    }
+                    if ($key === 3) {
+                        $className = "cake-four";
+                        $count = 3;
+                    }
+                    if ($key === 4) {
+                        $className = "cake-five";
+                        $count = 3;
+                    }
+                    ?>
+                        <div class="<?php echo $className ?> cake__item" data-element="<?php echo $count ?>" data-name="<?php echo $row['name_card'] ?>" data-info="<?php echo $row['descr_card'] ?>" data-gramm=<?php echo $row['ves_card'] ?> data-price=<?php echo $row['price_card'] ?>> 
+                            <img src="<?php echo $row['card_img'] ?>" alt="cake" class="cake__item-img">
+                        </div>
+                    <?php
+                    $key += 1;
+                }
+            }
+?>
             </div>
         </div>
     </div>
@@ -152,33 +174,40 @@
     <div class="about">
         <div class="container">
             <div class="about__items">
-                <div class="about__item">
-                    <div class="about__item-img">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/one-logo.png" alt="logo">
-                    </div>
-                    <h3 class="about__item-title">ДЕСЕРТЫ</h3>
-                    <div class="about__item-text">
-                        Наши десерты с любовью приготовлены по секретным авторским рецептам, используя только качественные ингредиенты. О них давно уже ходят 
-                    </div>
-                </div>
-                <div class="about__item">
-                    <div class="about__item-img">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/two-logo.png" alt="logo">
-                    </div>
-                    <h3 class="about__item-title">ОСНОВНОЕ МЕНЮ</h3>
-                    <div class="about__item-text">
-                        В меню udcкафе можно найти блюдо на любой вкус: от легких фитнес-салатов до сочных бургеров и аппетитных паст. Кстати, завтраки мы подаем целый день!
-                    </div>
-                </div>
-                <div class="about__item">
-                    <div class="about__item-img">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/three-logo.png" alt="logo">
-                    </div>
-                    <h3 class="about__item-title">КОФЕ И НАПИТКИ</h3>
-                    <div class="about__item-text">
-                        Мы уделяем особое внимание кофе, отслеживая его качество от кофейного дерева до вашей чашки. У нас можно попробовать, как классические кофейные
-                    </div>
-                </div>
+
+
+                <?php
+
+                    // проверяем есть ли в повторителе данные
+                    if( have_rows('priemushhestva') ):
+
+                        // перебираем данные
+                        while ( have_rows('priemushhestva') ) : the_row();
+
+                            // отображаем вложенные поля
+                            // the_sub_field('sub_field_name');
+
+                            ?>
+                            <div class="about__item">
+                                <div class="about__item-img">
+                                    <img src="<?php the_sub_field('img_best'); ?>" alt="logo">
+                                </div>
+                                <h3 class="about__item-title"><?php the_sub_field('title_best'); ?></h3>
+                                <div class="about__item-text">
+                                <?php the_sub_field('descr_best'); ?>
+                                </div>
+                            </div>
+                            <?php
+
+                        endwhile;
+
+                    else :
+
+                        // вложенных полей не найдено
+
+                    endif;
+
+                ?>
             </div>
         </div>
     </div>
@@ -192,21 +221,25 @@
             </div>
             <div class="slider__wrapper">
                 <div class="slider__content">
-                    <div class="slider__item">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/IMG_1160.jpg.png" alt="slider" />
-                    </div>
-                    <div class="slider__item">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/IMG_1160.jpg.png" alt="slider" />
-                    </div>
-                    <div class="slider__item">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/IMG_1160.jpg.png" alt="slider" />
-                    </div>
-                    <div class="slider__item">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/IMG_1160.jpg.png" alt="slider" />
-                    </div>
-                    <div class="slider__item">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/IMG_1160.jpg.png" alt="slider" />
-                    </div>
+                <?php
+
+                // проверяем есть ли в повторителе данные
+                if( have_rows('slider') ):
+
+                    // перебираем данные
+                    while ( have_rows('slider') ) : the_row();
+                        // ?>
+                            <div class="slider__item">
+                                <img src="<?php the_sub_field('foto_slajdera'); ?>" alt="slider" />
+                            </div>
+                        <?php
+
+                    endwhile;
+
+                else :
+                endif;
+
+                ?>
                 </div>
             </div>
         </div>
@@ -219,16 +252,15 @@
             <div class="contact__info">
                 <div class="contact__wrapper">
                     <div class="contact__block">
-                        <p >г. Иркутск</p>
-                        <P>ул. Карла Маркса, 26А</P>
+                        <?php the_field("address_main") ?>
                     </div>
                     <div class="contact__block">
                         <h5 class="contact__subtitle">телефон:</h5>
-                        <a href="tel:8(395)276-71-00" class="contact__link">8 (395) 276-71-00</a>
+                        <a href="tel:<?php the_field("phone_main") ?>" class="contact__link"><?php the_field("phone_main") ?></a>
                     </div>
                     <div class="contact__block">
                         <h5 class="contact__subtitle">email:</h5>
-                        <a href="mailto:info@cc-union.ru" class="contact__link">info@cc-union.ru</a>
+                        <a href="mailto:<?php the_field("main_main") ?>" class="contact__link"><?php the_field("main_main") ?></a>
                     </div>
                     <div class="contact__block">
                         <h5 class="contact__subtitle">Мы в социальных сетях:</h5>
@@ -295,9 +327,35 @@
             var myMap = new ymaps.Map("map", {
                 center: [52.281374, 104.284550],
                 controls: [],
-                zoom: 15
+                zoom: 18
             });
-            myMap.controls.remove();
+
+            var myPlacemark = new ymaps.Placemark([52.281374, 104.284550], {
+                    balloonContent: 'cc-union<br>Иркутск, улица Карла Маркса, 26А',
+                    iconContent: 'cc-union',
+                    hintContent: 'улица Карла Маркса, 26А',
+                }, {
+                    preset: 'islands#greenStretchyIcon'
+                });
+                myMap.geoObjects.add(myPlacemark);  
+
+                myMap.controls.remove();
+                myMap.behaviors.disable('scrollZoom');
+
+                //на мобильных устройствах... (проверяем по userAgent браузера)
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                    //... отключаем перетаскивание карты
+                    myMap.behaviors.disable('drag');
+                }
+
+            // var myGeoObject = new ymaps.GeoObject({
+            //     geometry: {
+            //         type: "Point", // тип геометрии - точка
+            //         coordinates: [52.281374, 104.284550] // координаты точки
+            //     }
+            // });
+            // myMap.geoObjects.add(myGeoObject); 
+            // myMap.controls.remove();
         }
 
         function downloadJSAtOnload() {
