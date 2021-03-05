@@ -17,12 +17,35 @@
     add_filter('nav_menu_link_attributes', "nav_menu_link", 10, 3);
 
     function nav_menu_link($atts, $item, $args) {
-        if ($args -> menu === "head_left" || $args -> menu === "head_right") {
+        if ($args -> menu === "head_left" || $args -> menu === "head_right" || in_category("category_menu")) {
             $atts["class"] = "header__link header-green__link";
+            if ($item -> current) {
+                $atts["class"] .= " header-green__link-active";
+            }
+        }
+        if ($args -> menu === "main_footer_left" || $args -> menu === "main_footer_right" || in_category("category_menu")) {
+            $atts["class"] = "footer__link";
+            if ($item -> current) {
+                $atts["class"] .= " footer__link-active";
+            }
         }
 
         if ($args -> menu === "main_head_left" || $args -> menu === "main_head_right") {
             $atts["class"] = "header__link";
+        }
+
+        if ($args -> menu === "hamburger_main") {
+            $atts["class"] = "header__link-hamburger";
+        }
+
+        if ($args -> menu === "green_hamburger" || in_category("category_menu")) {
+            $atts["class"] = "header__link-hamburger header-green__link-hamburger";
+            if ($item -> current) {
+                $atts["class"] .= " burger-active";
+            }
+            // if (item -> current) {
+            //     $atts["class"] .= "burger_active";
+            // }
         }
 
         return $atts;

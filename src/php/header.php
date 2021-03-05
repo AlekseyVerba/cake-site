@@ -81,7 +81,18 @@
         <div class="dot"></div>
     </div>
     <ul class="header__list-hamburger">
-        <li class="header__item-hamburger">
+            <?php
+                wp_nav_menu( [
+                    'theme_location'  => '',
+                    'menu'            => 'green_hamburger', 
+                    'echo'            => true,
+                    'items_wrap'      => '%3$s',
+                    'depth'           => 1,
+                    'walker'          => '',
+                ] );
+            ?>
+
+        <!-- <li class="header__item-hamburger">
             <a href="" class="header__link-hamburger header-green__link-hamburger">
                 Меню
             </a>
@@ -100,7 +111,7 @@
             <a href="" class="header__link-hamburger header-green__link-hamburger">
                 Контакты
             </a>
-        </li>
+        </li> -->
         <li class="header__item-hamburger">
             <a href="<?php the_field("vk_url", 41) ?>" class="header__network-hamburger">
                 <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/white_instagram.png" alt="instagram" class="network">

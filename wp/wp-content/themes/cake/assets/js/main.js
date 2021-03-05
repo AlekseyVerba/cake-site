@@ -77,6 +77,30 @@ try {
 } catch (_unused) {}
 
 try {
+  var addClass = function addClass(selector, classLi, classLine) {
+    document.querySelectorAll(selector).forEach(function (item) {
+      item.classList.add(classLi);
+
+      if (classLine) {
+        var line = document.createElement("div");
+        line.classList.add(classLine);
+        item.append(line);
+      }
+    });
+  };
+
+  addClass(".footer li", "footer__item", "footer__line");
+  addClass(".header .header__list li", "header__item", "header__line");
+  addClass(".header__list-hamburger li", "header__item-hamburger", false);
+
+  try {
+    var burgerActive = document.createElement("div");
+    burgerActive.classList.add("burger-line");
+    document.querySelector(".burger-active").append(burgerActive);
+  } catch (_unused2) {}
+} catch (_unused3) {}
+
+try {
   items.forEach(function (item) {
     item.addEventListener("mouseover", function (e) {
       var body = e.target.closest(".cake__item");
@@ -120,7 +144,7 @@ try {
       document.querySelector(".cake__info").remove();
     });
   });
-} catch (_unused2) {}
+} catch (_unused4) {}
 
 try {
   var checbox = document.querySelector(".application__label-checkbox");
@@ -141,7 +165,7 @@ try {
       button.classList.add("modal__submit");
     }
   });
-} catch (_unused3) {} //   $('#btn-menu-mob').click(function(e) {
+} catch (_unused5) {} //   $('#btn-menu-mob').click(function(e) {
 //       e.preventDefault();
 //       $('.header__svg-mob').addClass('is-active');
 //       $('#menu-mobile').animate({ 
@@ -216,7 +240,7 @@ try {
         btnSubmit.classList.remove("modal__submit");
       }
     });
-  } catch (_unused4) {}
+  } catch (_unused6) {}
 
   try {
     applicationCheckBox.addEventListener("change", function (e) {
@@ -228,8 +252,8 @@ try {
         applicationSubmit.classList.remove("modal__submit");
       }
     });
-  } catch (_unused5) {}
-} catch (_unused6) {}
+  } catch (_unused7) {}
+} catch (_unused8) {}
 
 try {
   document.querySelector(".menu-icon").addEventListener("click", function (e) {
@@ -241,11 +265,11 @@ try {
       document.querySelector(".header__list-hamburger").classList.remove("active-list");
     }
   });
-} catch (_unused7) {}
+} catch (_unused9) {}
 
 try {
   var iframe = document.createElement("iframe"); // https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor
-} catch (_unused8) {}
+} catch (_unused10) {}
 
 try {
   var btns = document.querySelectorAll(".tort__click");
@@ -282,7 +306,7 @@ try {
       document.querySelector(".hidden__label").querySelector(".input__hidden").remove();
     }
   });
-} catch (_unused9) {}
+} catch (_unused11) {}
 
 try {
   var conts = document.querySelectorAll(".cont");
@@ -299,7 +323,7 @@ try {
       if (e.target.value.trim() == '') e.target.parentElement.nextElementSibling.style.display = "block";
     });
   });
-} catch (_unused10) {}
+} catch (_unused12) {}
 
 try {
   var labels = document.querySelectorAll(".application__label");
@@ -323,7 +347,7 @@ try {
 
     });
   });
-} catch (_unused11) {}
+} catch (_unused13) {}
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -492,4 +516,4 @@ try {
       return changeDots(e, null);
     });
   });
-} catch (_unused12) {}
+} catch (_unused14) {}

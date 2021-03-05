@@ -26,7 +26,25 @@
                     Меню кафе
                 </h3>
                 <ul class="menu__list">
-                    <li class="menu__item">
+                <?php            
+                                    $categories = get_terms('category_menu', 'orderby=name&hide_empty=0');                
+
+                                    if( $categories ): 
+                                        foreach( $categories as $cat ): 
+                                        $term_link = get_term_link($cat->term_id, "category_menu");
+
+                                        ?>
+                                        <li class="menu__item">
+                                            <a href="<?= $term_link;?>" class="menu__item-link">
+                                                <?= $cat->name;?>
+                                            </a>
+                                        </li>
+                                            <!-- <a href="<?= $cat->slug;?>" class="filter__link">
+                                                <?= $cat->name;?>
+                                            </a> -->
+                                        <?php endforeach;
+                                    endif;?>
+                    <!-- <li class="menu__item">
                         <a href="#" class="menu__item-link menu__item-link-active">
                             ЗАВТРАКИ ЦЕЛЫЙ ДЕНЬ
                         </a>
@@ -82,96 +100,62 @@
                         <a href="#" class="menu__item-link">
                             ТОРТЫ
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="menu__foods menu__foods-animate">
-                        <div class="tort__item tort-hit food__click">
+                <?php 
+                    $query = new WP_Query( array(
+                        'post_type' => array( 'menu' ),
+                        'posts_per_page'   => 4, 
+                        // 'tax_query' => array(
+                        // array(
+                        // 'taxonomy' => 'category_menu',
+                        // 'field'    => 'slug',
+                        // 'terms'    => $cat_slug
+                        // )
+                        // )
+                    ));
+                ?>
+                <?php if ($query->have_posts()) : ?>
+                    <?php
+                    while ($query->have_posts()) : $query->the_post();
+
+                        ?>
+                            <a href="<?php echo get_permalink(); ?>" class="tort__item tort-hit food__click">
                             <div class="tort__head menu__head">
                                 <div class="tort__dark">
                                     <p class="tort__order">Подробнее</p>
                                 </div>
                                 <div class="tort__img-block">
-                                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/americanbreakfast.png" alt="tort" class="tort__img">
+                                    <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img">
                                 </div>
                             </div>
                             <div class="tort__footer">
                                 <div class="tort__footer-head">
                                     <h4 class="tort__title">
-                                        Американский завтрак
+                                        <?php the_title() ?>
                                     </h4>
                                     <div class="tort__succes">ХИТ</div>
                                 </div>
                                 <p class="tort__description">
-                                    Классическая глазунья из двух яиц с сочными ломтиками обжаренного бекона, картофель Айдахо с соусом
-                                    Барбекю и лист салат
+                                    <?php the_field("text_tovar") ?>
                                 </p>
                                 <div class="tort__bottom">
                                     <div class="tort__line"></div>
                                     <div class="tort__footer-footer">
-                                        <span class="tort__footer-gram">160 г.</span>
-                                        <span class="tort__footer-price">289 ₽</span>
+                                        <span class="tort__footer-gram"><?php the_field("gram_tovar") ?> г.</span>
+                                        <span class="tort__footer-price"><?php the_field("price_tovar")  ?></span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tort__item tort-hit food__click">
-                            <div class="tort__head menu__head">
-                                <div class="tort__dark">
-                                    <p class="tort__order">Подробнее</p>
-                                </div>
-                                <div class="tort__img-block">
-                                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/russianBreakfast.png" alt="tort" class="tort__img">
-                                </div>
-                            </div>
-                            <div class="tort__footer">
-                                <div class="tort__footer-head">
-                                    <h4 class="tort__title">
-                                        Русский завтрак
-                                    </h4>
-                                    <div class="tort__succes">ХИТ</div>
-                                </div>
-                                <p class="tort__description">
-                                    Два яйца пашот в дуэте с малосоленой сёмгой, с ржаными тостами и лист салата с овощами, фирменные сырники со сметаной и клубничным джемом.
-                                </p>
-                                <div class="tort__bottom">
-                                    <div class="tort__line"></div>
-                                    <div class="tort__footer-footer">
-                                        <span class="tort__footer-gram">160 г.</span>
-                                        <span class="tort__footer-price">289 ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tort__item tort-hit food__click">
-                            <div class="tort__head menu__head">
-                                <div class="tort__dark">
-                                    <p class="tort__order">Подробнее</p>
-                                </div>
-                                <div class="tort__img-block">
-                                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/englishBreakfast.png" alt="tort" class="tort__img">
-                                </div>
-                            </div>
-                            <div class="tort__footer">
-                                <div class="tort__footer-head">
-                                    <h4 class="tort__title">
-                                        Английский завтрак
-                                    </h4>
-                                    <div class="tort__succes">ХИТ</div>
-                                </div>
-                                <p class="tort__description">
-                                    Овсяная каша с сезонными ягодами, нарезка 
-                                    из ветчины и сыра, домашний хлеб с
-                                    о сливочным маслом и блинчик с клубничным джемом.
-                                </p>
-                                <div class="tort__bottom">
-                                    <div class="tort__line"></div>
-                                    <div class="tort__footer-footer">
-                                        <span class="tort__footer-gram">1 кг.</span>
-                                        <span class="tort__footer-price">999 ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </a>
+                        <?php
+                        
+
+
+                    endwhile;
+                    ?>
+                <?php endif; ?>
                         <div class="tort__loading menu__loading">
                             <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">
                         </div>

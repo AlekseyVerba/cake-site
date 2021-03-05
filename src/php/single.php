@@ -1,41 +1,59 @@
-<?php
-    // Template Name: Меню
-?>
+<?php get_header(); ?>
 
-<?php
-    get_header();
-?>
-    <div class="infoTorts program">
+<div class="infoTorts program">
         <div class="container">
             <div class="infoTorts program">
                 <h1 class="infoTorts__title title__adapt program__title-adapt title-animate">
-                    Меню
+                    <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread infoTorts__bread-aniamte">
                     <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Меню</span>
+                    <a class="infoTorts__home">Меню</a>
+                    <span class="infoTorts__next">Американский завтрак</span>
                 </div>
             </div>
+            <!-- <div class="program__wrapper menu__container">
+                <a href="#" class="infoTorts__goHome program__goHome">
+                    назад на главную
+                </a>
+            </div> -->
         </div>
     </div>
 
-   <div class="menu">
+    <div class="menu">
         <div class="menu__container">
+            <div class="program__wrapper item__goHome">
+                <a href="<?php get_home_url(); ?>" class="infoTorts__goHome program__goHome">
+                    назад на главную
+                </a>
+            </div>
             <div class="menu__content">
                 <h3 class="menu__menu">
                     Меню кафе
                 </h3>
                 <ul class="menu__list">
+
+
                 <?php            
+                                    // $term_title = single_term_title('', 0);
+                                    // print_r(get_the_terms());
+                                  
+                                    $cat_slug= "";
                                     $categories = get_terms('category_menu', 'orderby=name&hide_empty=0');                
 
                                     if( $categories ): 
                                         foreach( $categories as $cat ): 
+
+                                            $class = "menu__item-link";
+                                            if ($term_title === $cat -> name ) {
+                                                $cat_slug = $cat -> slug;
+                                                $class = "menu__item-link menu__item-link-active";
+                                            }
                                         $term_link = get_term_link($cat->term_id, "category_menu");
 
                                         ?>
                                         <li class="menu__item">
-                                            <a href="<?= $term_link;?>" class="menu__item-link">
+                                            <a href="<?= $term_link;?>" class="<?php echo $class; ?>">
                                                 <?= $cat->name;?>
                                             </a>
                                         </li>
@@ -44,12 +62,14 @@
                                             </a> -->
                                         <?php endforeach;
                                     endif;?>
+
+
                     <!-- <li class="menu__item">
                         <a href="#" class="menu__item-link menu__item-link-active">
                             ЗАВТРАКИ ЦЕЛЫЙ ДЕНЬ
+                            <p class="menu__opis">К любому завтраку предоставляется напиток
+                                на выбор (чай в чайнике, американо, капучино)</p>
                         </a>
-                        <p class="menu__opis">К любому завтраку предоставляется напиток
-                            на выбор (чай в чайнике, американо, капучино)</p>
                     </li>
                     <li class="menu__item">
                         <a href="#" class="menu__item-link">
@@ -103,10 +123,26 @@
                     </li> -->
                 </ul>
                 <div class="menu__foods menu__foods-animate">
-                <?php 
+                        <div class="item__food">
+                            <div class="item__food-img">
+                                <img src="<?php the_field("img_tovar"); ?>" alt="breakfast">
+                            </div>
+                            <div class="item__food-info">
+                                <p class="item__food-text">
+                                    <?php the_field("text_tovar"); ?>
+                                </p>
+                                <div class="item__food-info-footer">
+                                    <div class="item__food-info-gram"><?php the_field("gram_tovar") ?> г.</div>
+                                    <div class="item__food-info-price"><?php the_field("price_tovar") ?> ₽</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="title__recomend">Рекомендуем</h3>
+                        <?php 
                     $query = new WP_Query( array(
                         'post_type' => array( 'menu' ),
-                        'posts_per_page'   => 4, 
+                        // 'posts_per_page'   => 12,, 
                         // 'tax_query' => array(
                         // array(
                         // 'taxonomy' => 'category_menu',
@@ -156,14 +192,11 @@
                     endwhile;
                     ?>
                 <?php endif; ?>
-                        <div class="tort__loading menu__loading">
-                            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">
-                        </div>
                 </div>
             </div>
         </div>
     </div>
 
-<?php
-    get_footer();
-?>
+
+
+<?php get_footer(); ?>

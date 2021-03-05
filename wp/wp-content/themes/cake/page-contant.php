@@ -52,13 +52,39 @@
 
     <script>
 
-        function getYaMap(){
+function getYaMap(){
             var myMap = new ymaps.Map("contact__map", {
-                center: [52.281374, 104.284550],
+                center: [<?php the_field("cordiante", 41); ?>],
                 controls: [],
-                zoom: 15
+                zoom: <?php the_field("zoom", 41); ?>
             });
-            myMap.controls.remove();
+
+            var myPlacemark = new ymaps.Placemark([<?php the_field("cordiante", 41); ?>], {
+                    balloonContent: '<?php the_field("map_text", 41) ?>',
+                    iconContent: '<?php the_field("icon_sontent", 41) ?>',
+                    hintContent: '<?php the_field("hint_Content", 41)?>',
+                }, {
+                    preset: 'islands#greenStretchyIcon'
+                });
+                myMap.geoObjects.add(myPlacemark);  
+
+                myMap.controls.remove();
+                myMap.behaviors.disable('scrollZoom');
+
+                //на мобильных устройствах... (проверяем по userAgent браузера)
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                    //... отключаем перетаскивание карты
+                    myMap.behaviors.disable('drag');
+                }
+
+            // var myGeoObject = new ymaps.GeoObject({
+            //     geometry: {
+            //         type: "Point", // тип геометрии - точка
+            //         coordinates: [52.281374, 104.284550] // координаты точки
+            //     }
+            // });
+            // myMap.geoObjects.add(myGeoObject); 
+            // myMap.controls.remove();
         }
 
         function downloadJSAtOnload() {

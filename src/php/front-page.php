@@ -26,9 +26,9 @@
                             'theme_location'  => '',
                             'menu'            => 'main_head_left', 
                             'container'       => '', 
-                            'menu_class'      => 'header__list header__first', 
+                            'menu_class'      => 'header__list header__first main__head__list', 
                             'echo'            => true,
-                            'items_wrap'      => '<ul class="header__list header__first">%3$s</ul>',
+                            'items_wrap'      => '<ul class="header__list main__head__list header__first">%3$s</ul>',
                             'depth'           => 1,
                             'walker'          => '',
                         ] );
@@ -43,9 +43,9 @@
                             'theme_location'  => '',
                             'menu'            => 'main_head_right', 
                             'container'       => '', 
-                            'menu_class'      => 'header__list header__first', 
+                            'menu_class'      => 'header__list main__head__list', 
                             'echo'            => true,
-                            'items_wrap'      => '<ul class="header__list header__first">%3$s</ul>',
+                            'items_wrap'      => '<ul class="header__list main__head__list">%3$s</ul>',
                             'depth'           => 1,
                             'walker'          => '',
                         ] );
@@ -72,7 +72,20 @@
                 <div class="dot"></div>
             </div>
             <ul class="header__list-hamburger">
-                <li class="header__item-hamburger">
+
+            <?php
+                        wp_nav_menu( [
+                            'theme_location'  => '',
+                            'menu'            => 'hamburger_main', 
+                            'container'       => '',  
+                            'echo'            => true,
+                            'items_wrap'      => '%3$s',
+                            'depth'           => 1,
+                            'walker'          => '',
+                        ] );
+                    ?>
+
+                <!-- <li class="header__item-hamburger">
                     <a href="" class="header__link-hamburger">
                         Меню
                     </a>
@@ -91,7 +104,7 @@
                     <a href="" class="header__link-hamburger">
                         Контакты
                     </a>
-                </li>
+                </li> -->
                 <li class="header__item-hamburger">
                     <a href="<?php the_field('inst_url') ?>" class="header__network-hamburger">
                         <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_instagram.png" alt="instagram" class="network">
@@ -284,14 +297,27 @@
         <div class="footer__container">
             <div class="footer__content">
                 <ul class="footer__list footer__first">
-                    <li class="footer__item">
+
+                    <?php 
+                        wp_nav_menu( [
+                            'theme_location'  => '',
+                            'menu'            => 'main_footer_left', 
+                            'container'       => '',  
+                            'echo'            => true,
+                            'items_wrap'      => '%3$s',
+                            'depth'           => 1,
+                            'walker'          => '',
+                        ] );
+                    ?>
+
+                    <!-- <li class="footer__item">
                         <a href="#" class="footer__link">Меню</a>
                         <div class="footer__line"></div>
                     </li>
                     <li class="footer__item">
                         <a href="#" class="footer__link">Целые торты</a>
                         <div class="footer__line"></div>
-                    </li>
+                    </li> -->
                 </ul>
                <div class="footer__logo">
                     <a href="<?php the_field('vk_url') ?>">
@@ -305,14 +331,26 @@
                     </a>
                </div>
                 <ul class="footer__list footer__second">
-                    <li class="footer__item">
+
+                    <?php 
+                        wp_nav_menu( [
+                            'theme_location'  => '',
+                            'menu'            => 'main_footer_right', 
+                            'container'       => '',  
+                            'echo'            => true,
+                            'items_wrap'      => '%3$s',
+                            'depth'           => 1,
+                            'walker'          => '',
+                        ] );
+                    ?>
+                    <!-- <li class="footer__item">
                         <a href="#" class="footer__link">Программа лояльности</a>
                         <div class="footer__line"></div>
                     </li>
                     <li class="footer__item">
                         <a href="#" class="footer__link">Контакты</a>
                         <div class="footer__line"></div>
-                    </li>
+                    </li> -->
                 </ul>
            </div>
            <a href="#" class="footer__developer">
@@ -323,17 +361,17 @@
     </div>
     <script>
 
-        function getYaMap(){
+function getYaMap(){
             var myMap = new ymaps.Map("map", {
-                center: [52.281374, 104.284550],
+                center: [<?php the_field("cordiante"); ?>],
                 controls: [],
-                zoom: 18
+                zoom: <?php the_field("zoom"); ?>
             });
 
-            var myPlacemark = new ymaps.Placemark([52.281374, 104.284550], {
-                    balloonContent: 'cc-union<br>Иркутск, улица Карла Маркса, 26А',
-                    iconContent: 'cc-union',
-                    hintContent: 'улица Карла Маркса, 26А',
+            var myPlacemark = new ymaps.Placemark([<?php the_field("cordiante"); ?>], {
+                    balloonContent: '<?php the_field("map_text") ?>',
+                    iconContent: '<?php the_field("icon_sontent") ?>',
+                    hintContent: '<?php the_field("hint_Content")?>',
                 }, {
                     preset: 'islands#greenStretchyIcon'
                 });
