@@ -7,9 +7,15 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread infoTorts__bread-aniamte">
-                    <a href="#" class="infoTorts__home">Главная</a>
+                    <!-- <a href="#" class="infoTorts__home">Главная</a>
                     <a class="infoTorts__home">Меню</a>
-                    <span class="infoTorts__next">Американский завтрак</span>
+                    <span class="infoTorts__next">Американский завтрак</span> -->
+                    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+                        <?php if(function_exists('bcn_display'))
+                        {
+                            bcn_display();
+                        }?>
+                    </div>
                 </div>
             </div>
             <!-- <div class="program__wrapper menu__container">
@@ -37,18 +43,19 @@
                 <?php            
                                     // $term_title = single_term_title('', 0);
                                     // print_r(get_the_terms());
-                                  
                                     $cat_slug= "";
-                                    $categories = get_terms('category_menu', 'orderby=name&hide_empty=0');                
+                                    $categories = get_terms('category_menu', 'orderby=name&hide_empty=0');     
+                                    
+                                    $cur_terms = get_the_terms( $post->ID, 'category_menu' );
 
                                     if( $categories ): 
                                         foreach( $categories as $cat ): 
-
                                             $class = "menu__item-link";
-                                            if ($term_title === $cat -> name ) {
+                                            if ($term_title === $cat -> name || $cur_terms[0] -> slug === $cat -> slug) {
                                                 $cat_slug = $cat -> slug;
                                                 $class = "menu__item-link menu__item-link-active";
                                             }
+                                            
                                         $term_link = get_term_link($cat->term_id, "category_menu");
 
                                         ?>
@@ -64,66 +71,10 @@
                                     endif;?>
 
 
-                    <!-- <li class="menu__item">
-                        <a href="#" class="menu__item-link menu__item-link-active">
-                            ЗАВТРАКИ ЦЕЛЫЙ ДЕНЬ
-                            <p class="menu__opis">К любому завтраку предоставляется напиток
-                                на выбор (чай в чайнике, американо, капучино)</p>
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ЯИЧНИЦЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            КАШИ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            САЛАТЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ПАСТА
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            СУПЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ГОРЯЧЕЕ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            СЭНДВИЧИ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            СЭНДВИЧ-РОЛЛЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ВЫПЕЧКА
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ТОРТЫ
-                        </a>
-                    </li> -->
                 </ul>
                 <div class="menu__foods menu__foods-animate">
                         <div class="item__food">
+                        <!-- <p><?php echo $terms; ?></p> -->
                             <div class="item__food-img">
                                 <img src="<?php the_field("img_tovar"); ?>" alt="breakfast">
                             </div>
@@ -142,7 +93,8 @@
                         <?php 
                     $query = new WP_Query( array(
                         'post_type' => array( 'menu' ),
-                        // 'posts_per_page'   => 12,, 
+                        'orderby' => "rand",
+                        'posts_per_page'   => 4, 
                         // 'tax_query' => array(
                         // array(
                         // 'taxonomy' => 'category_menu',
@@ -155,7 +107,6 @@
                 <?php if ($query->have_posts()) : ?>
                     <?php
                     while ($query->have_posts()) : $query->the_post();
-
                         ?>
                             <a href="<?php echo get_permalink(); ?>" class="tort__item tort-hit food__click">
                             <div class="tort__head menu__head">
@@ -171,7 +122,14 @@
                                     <h4 class="tort__title">
                                         <?php the_title() ?>
                                     </h4>
-                                    <div class="tort__succes">ХИТ</div>
+                                    <?php 
+                                        if (get_field("hit_tovar") === "yes") {
+                                            ?>
+                                                 <div class="tort__succes">ХИТ</div>
+                                            <?php
+                                        }
+                                    ?>
+                                   
                                 </div>
                                 <p class="tort__description">
                                     <?php the_field("text_tovar") ?>

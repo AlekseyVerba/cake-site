@@ -14,8 +14,14 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread">
-                    <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Программа лояльности</span>
+                    <!-- <a href="#" class="infoTorts__home">Главная</a>
+                    <span class="infoTorts__next">Программа лояльности</span> -->
+                    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+                        <?php if(function_exists('bcn_display'))
+                        {
+                            bcn_display();
+                        }?>
+                    </div>
                 </div>
             </div>
         </div>

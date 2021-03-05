@@ -13,8 +13,14 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread">
-                    <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Торты на заказ</span>
+                    <!-- <a href="#" class="infoTorts__home">Главная</a>
+                    <span class="infoTorts__next">Торты на заказ</span> -->
+                    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+                        <?php if(function_exists('bcn_display'))
+                        {
+                            bcn_display();
+                        }?>
+                    </div>
                 </div>
                 <p class="infoTorts__text infoTorts__text-first infoTorts__text-two">
                    <?php the_field("tort_text_one") ?>
@@ -34,127 +40,66 @@
         <div class="container">
             <div class="tort__content">
                 <div class="tort__items">
-                    <div class="tort__item tort__click" data-img="<?php echo bloginfo("template_url") ?>/assets/images/static/redTort.png" data-name-tort="Красный бархат"
-                    data-description="Нежный бисквит пропитанный малиновым вареньем в сочетании со
-                    сливочным сыром ." data-kg="1" data-rub="999"
-                    >
-                        <div class="tort__head">
-                            <div class="tort__dark">
-                                <p class="tort__order">Заказать</p>
-                            </div>
-                            <div class="tort__img-block">
-                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/redTort.png" alt="tort" class="tort__img">
-                            </div>
-                        </div>
-                        <div class="tort__footer">
-                            <div class="tort__footer-head">
-                                <h4 class="tort__title">
-                                    Красный бархат
-                                </h4>
-                                <div class="tort__succes">ХИТ</div>
-                            </div>
-                            <p class="tort__description">
-                                Нежный бисквит пропитанный малиновым вареньем в сочетании со
-                                сливочным сыром .
-                            </p>
-                            <div class="tort__bottom">
-                                <div class="tort__line"></div>
-                                <div class="tort__footer-footer">
-                                    <span class="tort__footer-gram">1 кг.</span>
-                                    <span class="tort__footer-price">999 ₽</span>
+
+
+                    <?php 
+                        $query = new WP_Query( array(
+                            'post_type' => array( 'celtorts' ),
+                            // 'posts_per_page'   => 12,, 
+                        ));
+                    ?>
+                    <?php if ($query->have_posts()) : ?>
+                        <?php
+                        while ($query->have_posts()) : $query->the_post();
+
+                            ?>
+                            <div class="tort__item tort__click" data-img="<?php the_field("tort_img") ?>" data-name-tort="<?php the_title(); ?>"
+                                data-description="<?php the_field("tort-text") ?>" data-kg="<?php the_field("tort_ves") ?>" data-rub="<?php the_field("tort_price") ?>"
+                                >
+                                <div class="tort__head">
+                                    <div class="tort__dark">
+                                        <p class="tort__order">Заказать</p>
+                                    </div>
+                                    <div class="tort__img-block">
+                                        <img src="<?php the_field("tort_img") ?>" alt="tort" class="tort__img">
+                                    </div>
+                                </div>
+                                <div class="tort__footer">
+                                    <div class="tort__footer-head">
+                                        <h4 class="tort__title">
+                                            <?php the_title(); ?>
+                                        </h4>
+                                        <?php 
+                                            if (get_field("tort_hit") === "yes") {
+                                                ?>
+                                                <div class="tort__succes">ХИТ</div>
+                                                <?php
+                                            }
+                                        ?>
+
+                                    </div>
+                                    <p class="tort__description">
+                                        <?php the_field("tort-text") ?>
+                                    </p>
+                                    <div class="tort__bottom">
+                                        <div class="tort__line"></div>
+                                        <div class="tort__footer-footer">
+                                            <span class="tort__footer-gram"><?php the_field("tort_ves") ?> кг.</span>
+                                            <span class="tort__footer-price"><?php the_field("tort_price") ?> ₽</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="tort__item tort__click tort-hit" data-img="<?php echo bloginfo("template_url") ?>/assets/images/static/three-chocko.png" data-name-tort="Три Шоколада"
-                    data-description="Муссовый торт из трех видов бельгийского шоколада" data-kg="1" data-rub="999">
-                        <div class="tort__head">
-                            <div class="tort__dark">
-                                <p class="tort__order">Заказать</p>
-                            </div>
-                            <div class="tort__img-block">
-                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/three-chocko.png" alt="tort" class="tort__img">
-                            </div>
-                        </div>
-                        <div class="tort__footer">
-                            <div class="tort__footer-head">
-                                <h4 class="tort__title">
-                                    Три Шоколада
-                                </h4>
-                                <div class="tort__succes">ХИТ</div>
-                            </div>
-                            <p class="tort__description">
-                                Муссовый торт из трех видов бельгийского шоколада
-                            </p>
-                            <div class="tort__bottom">
-                                <div class="tort__line"></div>
-                                <div class="tort__footer-footer">
-                                    <span class="tort__footer-gram">1 кг.</span>
-                                    <span class="tort__footer-price">999 ₽</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tort__item tort-hit tort__click"  data-img="<?php echo bloginfo("template_url") ?>/assets/images/static/snikers.png" data-name-tort="Сникерс"
-                    data-description="Шоколадный бисквит с обжаренным арахисом, домашней соленой карамелью и
-                    сливочным кремом" data-kg="1" data-rub="999">
-                        <div class="tort__head">
-                            <div class="tort__dark">
-                                <p class="tort__order">Заказать</p>
-                            </div>
-                            <div class="tort__img-block">
-                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/snikers.png" alt="tort" class="tort__img">
-                            </div>
-                        </div>
-                        <div class="tort__footer">
-                            <div class="tort__footer-head">
-                                <h4 class="tort__title">
-                                    Сникерс
-                                </h4>
-                                <div class="tort__succes">ХИТ</div>
-                            </div>
-                            <p class="tort__description">
-                                Шоколадный бисквит с обжаренным арахисом, домашней соленой карамелью и
-                                сливочным кремом
-                            </p>
-                            <div class="tort__bottom">
-                                <div class="tort__line"></div>
-                                <div class="tort__footer-footer">
-                                    <span class="tort__footer-gram">1 кг.</span>
-                                    <span class="tort__footer-price">999 ₽</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tort__item tort__click" data-img="<?php echo bloginfo("template_url") ?>/assets/images/static/napoleon.png" data-name-tort="Наполеон с заварным кремом"
-                    data-description=" Девять хрустящих коржей с фирменным заварным кремом" data-kg="1" data-rub="999">
-                        <div class="tort__head">
-                            <div class="tort__dark">
-                                <p class="tort__order">Заказать</p>
-                            </div>
-                            <div class="tort__img-block">
-                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/napoleon.png" alt="tort" class="tort__img">
-                            </div>
-                        </div>
-                        <div class="tort__footer">
-                            <div class="tort__footer-head">
-                                <h4 class="tort__title">
-                                    Наполеон с заварным кремом
-                                </h4>
-                                <div class="tort__succes">ХИТ</div>
-                            </div>
-                            <p class="tort__description">
-                                Девять хрустящих коржей с фирменным заварным кремом
-                            </p>
-                            <div class="tort__bottom">
-                                <div class="tort__line"></div>
-                                <div class="tort__footer-footer">
-                                    <span class="tort__footer-gram">1 кг.</span>
-                                    <span class="tort__footer-price">999 ₽</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <?php
+                            
+
+
+                        endwhile;
+                        ?>
+                    <?php endif; ?>
+
+
+                
                 </div>
                 <div class="tort__loading menu__loading all__loading">
                     <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">

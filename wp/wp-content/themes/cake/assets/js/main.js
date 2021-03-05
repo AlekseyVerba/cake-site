@@ -98,7 +98,17 @@ try {
     burgerActive.classList.add("burger-line");
     document.querySelector(".burger-active").append(burgerActive);
   } catch (_unused2) {}
-} catch (_unused3) {}
+} catch (_unused3) {} // const btnsHome = document.querySelectorAll(".home");
+
+
+var category = document.querySelectorAll(".taxonomy.category_menu");
+var spans = document.querySelectorAll(".current-item");
+category.forEach(function (item) {
+  item.classList.add("infoTorts__home");
+});
+spans.forEach(function (item) {
+  item.classList.add("infoTorts__next");
+}); // infoTorts__home
 
 try {
   items.forEach(function (item) {
@@ -270,6 +280,39 @@ try {
 try {
   var iframe = document.createElement("iframe"); // https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor
 } catch (_unused10) {}
+
+jQuery(function ($) {
+  $('#true_loadmore').click(function () {
+    $(this).text('Загружаю...'); // изменяем текст кнопки, вы также можете добавить прелоадер
+
+    var data = {
+      'action': 'loadmore',
+      'query': true_posts,
+      'page': current_page
+    };
+    console.log(data.page);
+    $.ajax({
+      url: ajaxurl,
+      // обработчик
+      data: data,
+      // данные
+      type: 'POST',
+      // тип запроса
+      success: function success(data) {
+        if (data) {
+          alert(data);
+          $('#true_loadmore').text('Загрузить ещё').before(data); // вставляем новые посты
+
+          current_page++; // увеличиваем номер страницы на единицу
+
+          if (current_page == max_pages) $("#true_loadmore").remove(); // если последняя страница, удаляем кнопку
+        } else {
+          $('#true_loadmore').remove(); // если мы дошли до последней страницы постов, скроем кнопку
+        }
+      }
+    });
+  });
+});
 
 try {
   var btns = document.querySelectorAll(".tort__click");

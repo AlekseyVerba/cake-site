@@ -4,6 +4,7 @@
 
 <?php
     get_header();
+                        global $query;
 ?>
     <div class="infoTorts program">
         <div class="container">
@@ -12,8 +13,14 @@
                     Меню
                 </h1>
                 <div class="infoTorts__bread infoTorts__bread-aniamte">
-                    <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Меню</span>
+                    <!-- <a href="#" class="infoTorts__home">Главная</a>
+                    <span class="infoTorts__next">Меню</span> -->
+                    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+                    <?php if(function_exists('bcn_display'))
+                    {
+                        bcn_display();
+                    }?>
+                </div>
                 </div>
             </div>
         </div>
@@ -44,69 +51,13 @@
                                             </a> -->
                                         <?php endforeach;
                                     endif;?>
-                    <!-- <li class="menu__item">
-                        <a href="#" class="menu__item-link menu__item-link-active">
-                            ЗАВТРАКИ ЦЕЛЫЙ ДЕНЬ
-                        </a>
-                        <p class="menu__opis">К любому завтраку предоставляется напиток
-                            на выбор (чай в чайнике, американо, капучино)</p>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ЯИЧНИЦЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            КАШИ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            САЛАТЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ПАСТА
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            СУПЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ГОРЯЧЕЕ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            СЭНДВИЧИ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            СЭНДВИЧ-РОЛЛЫ
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ВЫПЕЧКА
-                        </a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#" class="menu__item-link">
-                            ТОРТЫ
-                        </a>
-                    </li> -->
+
                 </ul>
                 <div class="menu__foods menu__foods-animate">
                 <?php 
                     $query = new WP_Query( array(
                         'post_type' => array( 'menu' ),
-                        'posts_per_page'   => 4, 
+                        'posts_per_page'   => 2, 
                         // 'tax_query' => array(
                         // array(
                         // 'taxonomy' => 'category_menu',
@@ -135,7 +86,13 @@
                                     <h4 class="tort__title">
                                         <?php the_title() ?>
                                     </h4>
-                                    <div class="tort__succes">ХИТ</div>
+                                    <?php 
+                                        if (get_field("hit_tovar") == "yes") {
+                                            ?>
+                                                 <div class="tort__succes">ХИТ</div>
+                                            <?php
+                                        }
+                                    ?>
                                 </div>
                                 <p class="tort__description">
                                     <?php the_field("text_tovar") ?>
@@ -155,6 +112,22 @@
 
                     endwhile;
                     ?>
+                    <!-- <h1>fsdf</h1> -->
+                    <?php
+                    // echo $query->max_num_pages;
+                    // print_r($query -> query_vars);
+                     if (  $query->max_num_pages > 1 ) : ?>
+                        <script>
+                        var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                        var true_posts = '<?php echo serialize($query->query_vars); ?>';
+                        var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
+                        var max_pages = '<?php echo $query->max_num_pages; ?>';
+                        </script>
+                        <div id="true_loadmore">Загрузить ещё</div>
+                    <?php endif; 
+                    ?>
+                    
+                    <!-- ?> -->
                 <?php endif; ?>
                         <div class="tort__loading menu__loading">
                             <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">
