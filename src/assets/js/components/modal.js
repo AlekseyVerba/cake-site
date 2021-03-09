@@ -1,13 +1,14 @@
 try {
-    const btns = document.querySelectorAll(".tort__click");
+    const btns = document.querySelector(".tort__items");
     const modal = document.querySelector(".modal");
     const dialog = document.querySelector(".modal__dialog");
     const block = document.querySelector(".modal__block");
 
 
 
-    btns.forEach(item => {
-        item.addEventListener("click", (e) => {
+    // btns.forEach(item => {
+        btns.addEventListener("click", (e) => {
+           if ( e.target.closest(".tort__item")) {
             document.body.style.overflow = "hidden";
             modal.style.transition = "all 1s";
             modal.style.overflow = "auto";
@@ -41,9 +42,10 @@ try {
             inputTort.classList.add("input__hidden");
             inputTort.value = target.dataset.nameTort;
             document.querySelector(".hidden__label").append(inputTort);
+           }
 
         })
-    })
+    // })
 
     modal.addEventListener("click", (e) => {
         if (e.target.classList.contains("modal")) {

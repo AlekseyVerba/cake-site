@@ -45,7 +45,7 @@
                     <?php 
                         $query = new WP_Query( array(
                             'post_type' => array( 'celtorts' ),
-                            // 'posts_per_page'   => 12,, 
+                            'posts_per_page'   => 2, 
                         ));
                     ?>
                     <?php if ($query->have_posts()) : ?>
@@ -96,14 +96,23 @@
 
                         endwhile;
                         ?>
+
+                        <?php
+                        if (  $query->max_num_pages > 1 ) : ?>
+                            <div class="tort__loading menu__loading">
+                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">
+                            </div>
+                            <script id="true_loadmore">
+                            // var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                            var true_posts = '<?php echo serialize($query->query_vars); ?>';
+                            var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
+                            var max_pages = <?php echo $query->max_num_pages ?>
+                            </script>
+                        <?php endif; ?>
                     <?php endif; ?>
 
 
                 
-                </div>
-                <div class="tort__loading menu__loading all__loading">
-                    <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">
-                    <!-- <div class="tort__loading-text">Подгрузка товаров, а это сам индикатор загрузки</div> -->
                 </div>
             </div>
         </div>

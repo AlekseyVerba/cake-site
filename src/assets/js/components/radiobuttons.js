@@ -8,10 +8,16 @@ try {
             const newCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox-block")
 
             if (!oldCheckBoxs.checked) {
-                document.querySelectorAll(".application__checkbox").forEach(element => {
-                    element.previousElementSibling.classList.remove("application__checkbox-block-active")
+                console.log("true")
+                document.querySelectorAll(".application__checkbox-block").forEach(element => {
+                    element.classList.remove("application__checkbox-block-active")
+                })
+                document.querySelectorAll(".application__checkbox").forEach(el => {
+                    el.checked = false;
                 })
                 newCheckBoxs.classList.add("application__checkbox-block-active")
+                oldCheckBoxs.checked = true;
+
             }
 
             // if (oldCheckBoxs.checked) {

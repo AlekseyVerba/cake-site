@@ -138,7 +138,7 @@
                                     <div class="tort__line"></div>
                                     <div class="tort__footer-footer">
                                         <span class="tort__footer-gram"><?php the_field("gram_tovar") ?> г.</span>
-                                        <span class="tort__footer-price"><?php the_field("price_tovar")  ?></span>
+                                        <span class="tort__footer-price"><?php the_field("price_tovar")  ?> р</span>
                                     </div>
                                 </div>
                             </div>
@@ -149,6 +149,8 @@
 
                     endwhile;
                     ?>
+
+                    
                 <?php endif; ?>
                 </div>
             </div>

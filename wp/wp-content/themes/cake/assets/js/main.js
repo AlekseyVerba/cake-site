@@ -228,9 +228,20 @@ try {
 // });
 
 
-document.querySelectorAll("form").forEach(function (item) {
-  item.addEventListener("submit", function (e) {
-    e.preventDefault();
+$('form').on('submit', function (e) {
+  e.preventDefault();
+  var form = $(this).serializeArray();
+  var action = $(this).attr('action');
+  $.post(myajax.url, {
+    form: form,
+    action: action
+  }, function (data) {
+    for (var i = 0; i < $('form').length; i++) {
+      $('form')[i].reset();
+    }
+
+    console.log(data);
+    $(this).find('.form__btn').toggleClass('is-disabled', true);
   });
 });
 
@@ -281,48 +292,81 @@ try {
   var iframe = document.createElement("iframe"); // https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor
 } catch (_unused10) {}
 
-jQuery(function ($) {
-  $('#true_loadmore').click(function () {
-    $(this).text('Загружаю...'); // изменяем текст кнопки, вы также можете добавить прелоадер
+try {
+  // jQuery(function($){
+  $(window).scroll(function () {
+    var bottomOffset = 1100; // console.log("top : " + $(document).scrollTop())
+    // console.log("height : " + $(document).height())
+    // console.log("minus: " + $(document).height() - bottomOffset)
+    // console.log(bottomOffset)
 
-    var data = {
-      'action': 'loadmore',
-      'query': true_posts,
-      'page': current_page
-    };
-    console.log(data.page);
-    $.ajax({
-      url: ajaxurl,
-      // обработчик
-      data: data,
-      // данные
-      type: 'POST',
-      // тип запроса
-      success: function success(data) {
-        if (data) {
-          alert(data);
-          $('#true_loadmore').text('Загрузить ещё').before(data); // вставляем новые посты
+    if ($(document).scrollTop() > $(document).height() - bottomOffset && !$('body').hasClass('loading')) {
+      if (typeof true_posts !== "undefined") {
+        console.log(true_posts);
+        $('body').addClass('loading');
+        $.post(myajax.url, {
+          action: 'news_loadmore',
+          query: true_posts || "",
+          page: current_page || "" //     beforeSend: function( xhr){
+          //     	$('body').addClass('loading');
+          //  },
 
-          current_page++; // увеличиваем номер страницы на единицу
+        }, function (data) {
+          if (data) {
+            // $('.menu__foods').append(data); // вставляем новые посты
+            current_page++; // увеличиваем номер страницы на единицу
 
-          if (current_page == max_pages) $("#true_loadmore").remove(); // если последняя страница, удаляем кнопку
-        } else {
-          $('#true_loadmore').remove(); // если мы дошли до последней страницы постов, скроем кнопку
-        }
+            $('.menu__loading').before(data);
+            $('body').removeClass('loading'); // 						current_page++;
+          } else {
+            // $('#news_loadmore').remove(); // если мы дошли до последней страницы постов, скроем кнопку
+            $('.menu__loading').remove();
+          }
+        });
       }
-    });
-  });
-});
+    }
+  }); // });
+} catch (_unused11) {} // jQuery(function($){
+// 	$(window).scroll(function(){
+// 		var bottomOffset = 400; // отступ от нижней границы сайта, до которого должен доскроллить пользователь, чтобы подгрузились новые посты
+// 		var data = {
+// 			'action': 'loadmore',
+// 			'query': true_posts,
+// 			'page' : current_page
+// 		};
+//         // console.log($(document).scrollTop())
+//         // console.log($(document).height())
+// 		if( $(document).scrollTop() > ($(document).height() - bottomOffset) && !$('body').hasClass('loading')){
+// 			$.ajax({
+// 				url:ajaxurl,
+// 				data:data,
+// 				type:'POST',
+// 				beforeSend: function( xhr){
+// 					$('body').addClass('loading');
+// 				},
+// 				success:function(data){
+// 					if( data ) { 
+// 						$('#true_loadmore').before(data);
+// 						$('body').removeClass('loading');
+// 						current_page++;
+// 					}
+// 				}
+// 			});
+// 		}
+// 	});
+// });
+
 
 try {
-  var btns = document.querySelectorAll(".tort__click");
+  var btns = document.querySelector(".tort__items");
   var modal = document.querySelector(".modal");
   var dialog = document.querySelector(".modal__dialog");
 
-  var _block = document.querySelector(".modal__block");
+  var _block = document.querySelector(".modal__block"); // btns.forEach(item => {
 
-  btns.forEach(function (item) {
-    item.addEventListener("click", function (e) {
+
+  btns.addEventListener("click", function (e) {
+    if (e.target.closest(".tort__item")) {
       document.body.style.overflow = "hidden";
       modal.style.transition = "all 1s";
       modal.style.overflow = "auto";
@@ -338,8 +382,9 @@ try {
       inputTort.classList.add("input__hidden");
       inputTort.value = target.dataset.nameTort;
       document.querySelector(".hidden__label").append(inputTort);
-    });
-  });
+    }
+  }); // })
+
   modal.addEventListener("click", function (e) {
     if (e.target.classList.contains("modal")) {
       document.body.style.overflow = "";
@@ -349,7 +394,7 @@ try {
       document.querySelector(".hidden__label").querySelector(".input__hidden").remove();
     }
   });
-} catch (_unused11) {}
+} catch (_unused12) {}
 
 try {
   var conts = document.querySelectorAll(".cont");
@@ -366,7 +411,7 @@ try {
       if (e.target.value.trim() == '') e.target.parentElement.nextElementSibling.style.display = "block";
     });
   });
-} catch (_unused12) {}
+} catch (_unused13) {}
 
 try {
   var labels = document.querySelectorAll(".application__label");
@@ -376,10 +421,15 @@ try {
       var newCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox-block");
 
       if (!oldCheckBoxs.checked) {
-        document.querySelectorAll(".application__checkbox").forEach(function (element) {
-          element.previousElementSibling.classList.remove("application__checkbox-block-active");
+        console.log("true");
+        document.querySelectorAll(".application__checkbox-block").forEach(function (element) {
+          element.classList.remove("application__checkbox-block-active");
+        });
+        document.querySelectorAll(".application__checkbox").forEach(function (el) {
+          el.checked = false;
         });
         newCheckBoxs.classList.add("application__checkbox-block-active");
+        oldCheckBoxs.checked = true;
       } // if (oldCheckBoxs.checked) {
       //     oldCheckBoxs.checked = false;
       //     newCheckBoxs.classList.remove("application__checkbox-block-active")
@@ -390,7 +440,7 @@ try {
 
     });
   });
-} catch (_unused13) {}
+} catch (_unused14) {}
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -559,4 +609,4 @@ try {
       return changeDots(e, null);
     });
   });
-} catch (_unused14) {}
+} catch (_unused15) {}

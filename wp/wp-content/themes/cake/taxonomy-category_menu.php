@@ -66,7 +66,7 @@
             <?php 
                     $query = new WP_Query( array(
                         'post_type' => array( 'menu' ),
-                        'posts_per_page'   => 4, 
+                        'posts_per_page'   => 2, 
                         "orderby" => "rand",
                         'tax_query' => array(
                         array(
@@ -111,7 +111,7 @@
                                     <div class="tort__line"></div>
                                     <div class="tort__footer-footer">
                                         <span class="tort__footer-gram"><?php the_field("gram_tovar") ?> г.</span>
-                                        <span class="tort__footer-price"><?php the_field("price_tovar")  ?></span>
+                                        <span class="tort__footer-price"><?php the_field("price_tovar")  ?> р</span>
                                     </div>
                                 </div>
                             </div>
@@ -122,12 +122,21 @@
 
                     endwhile;
                     ?>
-                <?php endif; ?>
-                
 
-                        <div class="tort__loading menu__loading">
+                    <?php
+                    if (  $query->max_num_pages > 1 ) : ?>
+                                            <div class="tort__loading menu__loading">
                             <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">
                         </div>
+                        <script id="true_loadmore">
+                        // var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                        var true_posts = '<?php echo serialize($query->query_vars); ?>';
+                        var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
+                        var max_pages = <?php echo $query->max_num_pages ?>
+                        </script>
+                    <?php endif; ?>
+                <?php endif; ?>
+                
                 </div>
             </div>
         </div>

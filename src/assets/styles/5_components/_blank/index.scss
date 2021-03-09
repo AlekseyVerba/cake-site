@@ -49,3 +49,35 @@ iframe {
 .tort__item {
     text-decoration: none;
 }
+
+.tort__loading {
+    margin-top: 70px;
+    // margin-bottom: 70px;
+}
+.tort__items {
+    margin-bottom: 70px;
+}
+.modal__disabled, .modal__submit {
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.application__label-one::after , .application__label-two::after {
+    display: none;
+}
+
+.application__label {
+    margin: 15px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    span {
+        padding-left: 25px;
+    }
+}
+.application__label-one {
+    left: 56px;
+}
+.infoTorts__goHome {
+    font-family: "Lato";
+}

@@ -4,7 +4,7 @@
 
 <?php
     get_header();
-                        global $query;
+                        // global $query;
 ?>
     <div class="infoTorts program">
         <div class="container">
@@ -101,7 +101,7 @@
                                     <div class="tort__line"></div>
                                     <div class="tort__footer-footer">
                                         <span class="tort__footer-gram"><?php the_field("gram_tovar") ?> г.</span>
-                                        <span class="tort__footer-price"><?php the_field("price_tovar")  ?></span>
+                                        <span class="tort__footer-price"><?php the_field("price_tovar")  ?> р</span>
                                     </div>
                                 </div>
                             </div>
@@ -113,19 +113,15 @@
                     endwhile;
                     ?>
                     <!-- <h1>fsdf</h1> -->
-                    <?php
-                    // echo $query->max_num_pages;
-                    // print_r($query -> query_vars);
-                     if (  $query->max_num_pages > 1 ) : ?>
-                        <script>
-                        var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+
+                    <?php if (  $query->max_num_pages > 1 ) : ?>
+                        <script id="true_loadmore">
+                        // var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
                         var true_posts = '<?php echo serialize($query->query_vars); ?>';
                         var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
-                        var max_pages = '<?php echo $query->max_num_pages; ?>';
+                        var max_pages = <?php echo $query->max_num_pages ?>
                         </script>
-                        <div id="true_loadmore">Загрузить ещё</div>
-                    <?php endif; 
-                    ?>
+                    <?php endif; ?>
                     
                     <!-- ?> -->
                 <?php endif; ?>
