@@ -41,6 +41,7 @@ try {
             const inputTort = document.createElement("input");
             inputTort.classList.add("input__hidden");
             inputTort.value = target.dataset.nameTort;
+            inputTort.setAttribute("name", "tort");
             document.querySelector(".hidden__label").append(inputTort);
            }
 
@@ -48,7 +49,7 @@ try {
     // })
 
     modal.addEventListener("click", (e) => {
-        if (e.target.classList.contains("modal")) {
+        if (e.target.classList.contains("modal") || e.target.classList.contains("modal_close")) {
             document.body.style.overflow = "";
             modal.style.transition = "none";
             modal.classList.remove("modal-active");

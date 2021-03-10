@@ -149,7 +149,9 @@ function myajax_data(){
 
     // Отправка формы партнеры
 add_action('wp_ajax_application_fun', 'parthers'); 
-add_action('wp_ajax_nopriv_application_fun', 'parthers'); 
+add_action('wp_ajax_nopriv_application_fun', 'parthers');
+add_action("wp_ajax_page-cont", 'parthers');
+add_action("wp_ajax_page-cont", 'parthers');
 function parthers() { 
 
   global $email_from; 
@@ -157,7 +159,7 @@ function parthers() {
   $mail = new PHPMailer; 
   $mail->setFrom($email_from, 'Заявка с сайта');
   $mail->addAddress($email_to); 
-  $mail->addAddress("porone8944@mailnest.net");
+  $mail->addAddress("test@t-code.ru");
   $mail->IsHTML(true); 
   $mail->CharSet = 'UTF-8'; 
 
@@ -175,6 +177,10 @@ function parthers() {
       case 'title': 
       $mail->Body .= 'Тема письма: '.$data['value'].'<br>'; 
       break;
+
+      case 'tort': 
+    $mail->Body .= 'Торт: '.$data['value'].'<br>'; 
+    break;
         
         case "choise":
             $mail -> Body .= "Скидка ".$data['value']."<br>";

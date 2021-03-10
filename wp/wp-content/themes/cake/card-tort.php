@@ -1,4 +1,4 @@
-<div class="tort__item tort__click" data-img="<?php the_field("tort_img") ?>" data-name-tort="<?php the_title(); ?>"
+<div class="tort__item tort__click" data-img="<?php $sr=get_field("tort_img"); echo $sr["sizes"]["thumbnail"]; ?>" data-name-tort="<?php the_title(); ?>"
     data-description="<?php the_field("tort-text") ?>" data-kg="<?php the_field("tort_ves") ?>" data-rub="<?php the_field("tort_price") ?>"
     >
     <div class="tort__head">
@@ -6,7 +6,17 @@
             <p class="tort__order">Заказать</p>
         </div>
         <div class="tort__img-block">
-            <img src="<?php the_field("tort_img") ?>" alt="tort" class="tort__img">
+            <?php 
+                $per = get_field("tort_img");
+                // var_dump($per);
+            ?>
+            <!-- <img src="<?php echo $per["sizes"]["large"] ?>" alt="tort" class="tort__img"> -->
+            <picture>
+                <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                <!-- <source srcset="<?php echo $per["url"] ?>"> -->
+                <img src="<?php echo $per["url"] ?>" alt="tort" />
+            </picture>
         </div>
     </div>
     <div class="tort__footer">

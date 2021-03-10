@@ -32,7 +32,13 @@
         </a>
     </div>
     <div class="program__bigImg">
-        <img src="<?php the_field("img_program"); ?>" alt="img" class="program__bigImg-img">
+        <!-- <img src="<?php the_field("img_program"); ?>" alt="img" class="program__bigImg-img"> -->
+        <picture>
+            <?php $per=get_field("img_program"); ?>
+            <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
+            <source srcset="<?php echo $per["sizes"]["medium-large"] ?>" media="(max-width: 768px)">
+            <img src="<?php echo $per["url"] ?>" alt="item" />
+        </picture>
     </div>
     <div class="description program">
         <div class="container">
@@ -122,17 +128,18 @@
 
                         if ($key === 1) {
                             $class = "application__label-two";
-                            $val = "Скидка на кофе"
+                            $val = "Скидка на кофе";
                         }
 
                         ?>
-                            <div class="application__label ">
-                                <div class="application__checkbox-block <?php echo $class; ?>"></div>
+                            <div class="application__label  <?php echo $class; ?>">
+                                <div class="application__checkbox-block"></div>
                                 <img src="<?php the_sub_field('radio_img');?>" alt="page" />
-                                <input type="radio" value=<?php $val ?> name="choise" class="application__checkbox"/>
+                                <input type="radio" value="<?php echo $val ?>" name="choise" class="application__checkbox"/>
                                 <span><?php the_sub_field('radio_text'); ?></span>
                             </div>
                         <?php
+                        $key += 1;
 
                     endwhile;
 
@@ -196,7 +203,7 @@
                     <input type="checkbox" name="check" class="application__checkbox-bad">
                     Согласен(а) на обработку моих персональных данных
                 </div>
-                <button type="submit">отправить заявку</button>
+                <button type="submit" class="application__submit modal__button modal__disabled" disabled="true">отправить заявку</button>
             </form>
         </div>
     </div>

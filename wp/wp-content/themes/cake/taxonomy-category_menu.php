@@ -66,7 +66,7 @@
             <?php 
                     $query = new WP_Query( array(
                         'post_type' => array( 'menu' ),
-                        'posts_per_page'   => 2, 
+                        'posts_per_page'   => 4, 
                         "orderby" => "rand",
                         'tax_query' => array(
                         array(
@@ -88,7 +88,42 @@
                                     <p class="tort__order">Подробнее</p>
                                 </div>
                                 <div class="tort__img-block">
-                                    <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img">
+                                    <!-- <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img"> -->
+                                    <!-- <?php $per=get_field("img_tovar") ?>
+                                    <?php if (empty($per)) {
+                                        ?>
+                                            <picture>
+                                        <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                                        <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                                        <img src="<?php echo $per["url"] ?>" alt="item" />
+                                    </picture>
+                                        <?php
+                                    } ?> -->
+
+
+                                    <?php
+                                        $per=get_field("img_tovar");
+                                        if ($per) {
+                                            ?>
+                                                <picture>
+                                                    <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                                                    <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                                                    <img src="<?php echo $per["url"] ?>" alt="item" />
+                                                </picture>
+                                            <?php
+                                        } else {
+                                            $perTwo = get_field("no_found", 41);
+                                            ?>
+                                                <picture>
+                                                    <source srcset="<?php echo $perTwo["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                                                    <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" />
+                                                </picture>
+
+                                            <?php
+                                        }
+                                    
+                                    ?>
                                 </div>
                             </div>
                             <div class="tort__footer">

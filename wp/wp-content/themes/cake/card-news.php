@@ -4,7 +4,13 @@
             <p class="tort__order">Подробнее</p>
         </div>
         <div class="tort__img-block">
-            <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img">
+            <!-- <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img"> -->
+            <picture>
+                <?php $per=get_field("img_tovar") ?>
+                <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                <img src="<?php echo $per["url"] ?>" alt="item" />
+            </picture>
         </div>
     </div>
     <div class="tort__footer">

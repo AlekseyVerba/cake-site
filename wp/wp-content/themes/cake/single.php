@@ -29,7 +29,7 @@
     <div class="menu">
         <div class="menu__container">
             <div class="program__wrapper item__goHome">
-                <a href="<?php get_home_url(); ?>" class="infoTorts__goHome program__goHome">
+                <a href="<?php echo get_home_url(); ?>" class="infoTorts__goHome program__goHome">
                     назад на главную
                 </a>
             </div>
@@ -76,7 +76,30 @@
                         <div class="item__food">
                         <!-- <p><?php echo $terms; ?></p> -->
                             <div class="item__food-img">
-                                <img src="<?php the_field("img_tovar"); ?>" alt="breakfast">
+                                <!-- <img src="<?php the_field("img_tovar"); ?>" alt="breakfast"> -->
+                                <?php
+                                        $per=get_field("img_tovar");
+                                        if ($per) {
+                                            ?>
+                                                <picture>
+                                                    <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                                                    <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                                                    <img src="<?php echo $per["url"] ?>" alt="item" />
+                                                </picture>
+                                            <?php
+                                        } else {
+                                            $perTwo = get_field("no_found", 41);
+                                            ?>
+                                                <picture>
+                                                    <source srcset="<?php echo $perTwo["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                                                    <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" />
+                                                </picture>
+
+                                            <?php
+                                        }
+                                    
+                                    ?>
                             </div>
                             <div class="item__food-info">
                                 <p class="item__food-text">
@@ -114,7 +137,31 @@
                                     <p class="tort__order">Подробнее</p>
                                 </div>
                                 <div class="tort__img-block">
-                                    <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img">
+                                    <!-- <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img"> -->
+                                    <?php
+                                        $per=get_field("img_tovar");
+                                        if ($per) {
+                                            ?>
+                                                <picture>
+                                                    <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                                                    <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                                                    <img src="<?php echo $per["url"] ?>" alt="item" />
+                                                </picture>
+                                            <?php
+                                        } else {
+                                            $perTwo = get_field("no_found", 41);
+                                            ?>
+                                                <picture>
+                                                    <source srcset="<?php echo $perTwo["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
+                                                    <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
+                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" />
+                                                </picture>
+
+                                            <?php
+                                        }
+                                    
+                                    ?>
+                                    
                                 </div>
                             </div>
                             <div class="tort__footer">

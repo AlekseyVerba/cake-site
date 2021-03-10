@@ -75,9 +75,29 @@ iframe {
         padding-left: 25px;
     }
 }
-.application__label-one {
-    left: 56px;
-}
+// .application__label-one {
+//     left: 56px;
+// }
 .infoTorts__goHome {
     font-family: "Lato";
+}
+.application__checkbox-block {
+    left: 55px;
+}
+.tort__img-block {
+    height: 100%;
+    img {
+        height: 100%;
+    }
+}
+
+.header__link-hamburger {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contact__block {
+    font-family: "Lato";
+    a {
+        font-family: "Lato";
+    }
 }

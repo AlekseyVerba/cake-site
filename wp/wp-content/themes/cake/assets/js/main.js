@@ -168,11 +168,13 @@ try {
       newCheckBox.classList.remove("application__checkbox-bad-block-active");
       button.classList.add("modal__disabled");
       button.classList.remove("modal__submit");
+      button.setAttribute("disabled", "true");
     } else {
       oldCheckBox.checked = true;
       newCheckBox.classList.add("application__checkbox-bad-block-active");
       button.classList.remove("modal__disabled");
       button.classList.add("modal__submit");
+      button.removeAttribute("disabled");
     }
   });
 } catch (_unused5) {} //   $('#btn-menu-mob').click(function(e) {
@@ -232,17 +234,53 @@ $('form').on('submit', function (e) {
   e.preventDefault();
   var form = $(this).serializeArray();
   var action = $(this).attr('action');
-  $.post(myajax.url, {
-    form: form,
-    action: action
-  }, function (data) {
-    for (var i = 0; i < $('form').length; i++) {
-      $('form')[i].reset();
+  var radioButtons = document.querySelectorAll(".application__checkbox");
+  var hasRadio = false;
+  radioButtons.forEach(function (item) {
+    if (item.checked) {
+      hasRadio = true;
     }
-
-    console.log(data);
-    $(this).find('.form__btn').toggleClass('is-disabled', true);
   });
+
+  if (hasRadio) {
+    $.post(myajax.url, {
+      form: form,
+      action: action
+    }, function (data) {
+      for (var i = 0; i < $('form').length; i++) {
+        $('form')[i].reset();
+        document.querySelectorAll(".placeholder").forEach(function (item) {
+          item.style.display = "block";
+        });
+      }
+
+      if (action === "application_fun") {
+        var el = document.createElement("div");
+        el.classList.add("goodFetch");
+        el.textContent = "Успешно.Ваша заявка отправлена";
+        document.querySelector(".application__form").append(el);
+        setTimeout(function () {
+          el.remove();
+        }, 4000);
+      } else if (action === "page-cont") {
+        document.querySelector(".modal__content").style.display = "none";
+
+        var _el = document.createElement("div");
+
+        _el.classList.add("goodFetch");
+
+        _el.textContent = "Успешно.Ваша заявка отправлена";
+        document.querySelector(".modal__dialog").append(_el);
+        setTimeout(function () {
+          _el.remove();
+
+          document.querySelector(".modal__content").style.display = "block";
+        }, 4000);
+      }
+    });
+  } else {
+    alert("Выберите скидку");
+  }
 });
 
 try {
@@ -256,25 +294,27 @@ try {
       if (checkbox.checked) {
         btnSubmit.classList.remove("modal__disabled");
         btnSubmit.classList.add("modal__submit");
+        btnSubmit.removeAttribute("disabled");
       } else {
         btnSubmit.classList.add("modal__disabled");
+        btnSubmit.setAttribute("disabled", "true");
         btnSubmit.classList.remove("modal__submit");
       }
     });
-  } catch (_unused6) {}
+  } catch (_unused6) {} // try {
+  //     applicationCheckBox.addEventListener("change", (e) => {
+  //         if (applicationCheckBox.checked) {
+  //             applicationSubmit.classList.remove("modal__disabled");
+  //             btnSubmit.removeAttribute("disabled");
+  //             applicationSubmit.classList.add("modal__submit");
+  //         } else {
+  //             applicationSubmit.classList.add("modal__disabled");
+  //             applicationSubmit.classList.remove("modal__submit");
+  //         }
+  //     })
+  // } catch {}
 
-  try {
-    applicationCheckBox.addEventListener("change", function (e) {
-      if (applicationCheckBox.checked) {
-        applicationSubmit.classList.remove("modal__disabled");
-        applicationSubmit.classList.add("modal__submit");
-      } else {
-        applicationSubmit.classList.add("modal__disabled");
-        applicationSubmit.classList.remove("modal__submit");
-      }
-    });
-  } catch (_unused7) {}
-} catch (_unused8) {}
+} catch (_unused7) {}
 
 try {
   document.querySelector(".menu-icon").addEventListener("click", function (e) {
@@ -286,11 +326,11 @@ try {
       document.querySelector(".header__list-hamburger").classList.remove("active-list");
     }
   });
-} catch (_unused9) {}
+} catch (_unused8) {}
 
 try {
   var iframe = document.createElement("iframe"); // https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor
-} catch (_unused10) {}
+} catch (_unused9) {}
 
 try {
   // jQuery(function($){
@@ -326,7 +366,7 @@ try {
       }
     }
   }); // });
-} catch (_unused11) {} // jQuery(function($){
+} catch (_unused10) {} // jQuery(function($){
 // 	$(window).scroll(function(){
 // 		var bottomOffset = 400; // отступ от нижней границы сайта, до которого должен доскроллить пользователь, чтобы подгрузились новые посты
 // 		var data = {
@@ -381,12 +421,13 @@ try {
       var inputTort = document.createElement("input");
       inputTort.classList.add("input__hidden");
       inputTort.value = target.dataset.nameTort;
+      inputTort.setAttribute("name", "tort");
       document.querySelector(".hidden__label").append(inputTort);
     }
   }); // })
 
   modal.addEventListener("click", function (e) {
-    if (e.target.classList.contains("modal")) {
+    if (e.target.classList.contains("modal") || e.target.classList.contains("modal_close")) {
       document.body.style.overflow = "";
       modal.style.transition = "none";
       modal.classList.remove("modal-active");
@@ -394,7 +435,7 @@ try {
       document.querySelector(".hidden__label").querySelector(".input__hidden").remove();
     }
   });
-} catch (_unused12) {}
+} catch (_unused11) {}
 
 try {
   var conts = document.querySelectorAll(".cont");
@@ -408,10 +449,10 @@ try {
   });
   inputs.forEach(function (item) {
     item.addEventListener("blur", function (e) {
-      if (e.target.value.trim() == '') e.target.parentElement.nextElementSibling.style.display = "block";
+      if (e.target.value.trim() == '') e.target.nextElementSibling.style.display = "block";
     });
   });
-} catch (_unused13) {}
+} catch (_unused12) {}
 
 try {
   var labels = document.querySelectorAll(".application__label");
@@ -440,7 +481,7 @@ try {
 
     });
   });
-} catch (_unused14) {}
+} catch (_unused13) {}
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -609,4 +650,4 @@ try {
       return changeDots(e, null);
     });
   });
-} catch (_unused15) {}
+} catch (_unused14) {}

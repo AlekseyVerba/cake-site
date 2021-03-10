@@ -11,11 +11,13 @@ try {
             newCheckBox.classList.remove("application__checkbox-bad-block-active");
             button.classList.add("modal__disabled");
             button.classList.remove("modal__submit");
+            button.setAttribute("disabled", "true")
         } else {
             oldCheckBox.checked = true;
             newCheckBox.classList.add("application__checkbox-bad-block-active");
             button.classList.remove("modal__disabled");
             button.classList.add("modal__submit");
+            button.removeAttribute("disabled")
         }
     })
 } catch {}

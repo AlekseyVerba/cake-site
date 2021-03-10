@@ -173,7 +173,10 @@
                     }
                     ?>
                         <div class="<?php echo $className ?> cake__item" data-element="<?php echo $count ?>" data-name="<?php echo $row['name_card'] ?>" data-info="<?php echo $row['descr_card'] ?>" data-gramm=<?php echo $row['ves_card'] ?> data-price=<?php echo $row['price_card'] ?>> 
-                            <img src="<?php echo $row['card_img'] ?>" alt="cake" class="cake__item-img">
+                            <picture>
+                                <source srcset="..." media="(max-width: 830px)">
+                                <img src="<?php echo $row['card_img'] ?>" alt="cake" class="cake__item-img">
+                            </picture>
                         </div>
                     <?php
                     $key += 1;
@@ -243,7 +246,14 @@
                     while ( have_rows('slider') ) : the_row();
                         // ?>
                             <div class="slider__item">
-                                <img src="<?php the_sub_field('foto_slajdera'); ?>" alt="slider" />
+                                <!-- <img src="<?php the_sub_field('foto_slajdera'); ?>" alt="slider" /> -->
+                                <!-- <?php var_dump(get_sub_field('foto_slajdera')) ?> -->
+                                <picture>
+                                    <?php $per=get_sub_field('foto_slajdera'); ?>
+                                    <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
+                                    <source srcset="<?php echo $per["sizes"]["medium-large"] ?>" media="(max-width: 768px)">
+                                    <img src="<?php echo $per["url"] ?>" alt="item" />
+                                </picture>
                             </div>
                         <?php
 
@@ -277,12 +287,14 @@
                     </div>
                     <div class="contact__block">
                         <h5 class="contact__subtitle">Мы в социальных сетях:</h5>
-                        <a href="<?php the_field('vk_url') ?>" />
-                            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_vk.png" alt="network" class="contant__network network"/>
-                        </a>
-                        <a href="<?php the_field('inst_url') ?>" />
-                            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_instagram.png" alt="network" class="contant__network network"/>
-                        </a>
+                        <div style="display: flex">
+                            <a href="<?php the_field('vk_url') ?>" style="margin-right: 5px" />
+                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_vk.png" alt="network" class="contant__network network"/>
+                            </a>
+                            <a href="<?php the_field('inst_url') ?>" />
+                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_instagram.png" alt="network" class="contant__network network"/>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

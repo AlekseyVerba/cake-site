@@ -35,7 +35,7 @@
             <h2 class="adress__title"><?php the_field("address_contact") ?></h2>
             <div class="adress__phone">
                 <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/circle-phone.png" alt="logo" class="adress__phone-img">
-                <a href="tel:<?php the_field("phone_contact") ?>" class="adress__link-phone"><?php the_field("phone_contact") ?></a>
+                <a href="tel:<?php the_field("phone_main", 41) ?>" class="adress__link-phone"><?php the_field("phone_main", 41) ?></a>
             </div>
             <div class="adress__network">
                 <a href="<?php the_field("url_facebook", 41) ?>" class="adress__network-link">

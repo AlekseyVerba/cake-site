@@ -1,8 +1,14 @@
 
-
-<?php get_header(); ?>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ошибка</title>
+    <?php wp_head(); ?>
+</head>
+<body>
 <div class="error">
         <div class="error__container">
             <div class="error__title">
@@ -27,7 +33,7 @@
             <h2 class="adress__title error__adress__title"><?php the_field("address_contact", 14) ?></h2>
             <div class="adress__phone error__adress__phone">
                 <img src="<?php bloginfo("template_url") ?>/assets/images/static/circle-phone.png" alt="logo" class="adress__phone-img">
-                <a href="tel:<?php the_field('phone_contact', 14) ?>" class="adress__link-phone"><?php the_field("phone_contact", 14) ?></a>
+                <a href="tel:<?php the_field("phone_main", 41) ?>" class="adress__link-phone"><?php the_field("phone_main", 41) ?></a>
             </div>
             <div class="adress__network error__adress__network">
                 <a href="<?php the_field("url_facebook", 41) ?>" class="adress__network-link">
@@ -42,6 +48,7 @@
             </div>
         </div>
     </div>
+    <?php wp_footer(); ?>
+    </body>
+</html>
 
-
-<?php get_footer(); ?>

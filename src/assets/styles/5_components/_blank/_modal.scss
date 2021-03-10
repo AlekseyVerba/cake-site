@@ -90,6 +90,16 @@
         flex-direction: column;
         width: 80%;
     }
+    &__content {
+        position: relative;
+    }
+    &_close {
+        position: absolute;
+        right: 15px;
+        top: 19px;
+        font-size: 40px;
+        cursor: pointer;
+    }
     &__input {
         width: 100%;
         margin-bottom: 40px;
