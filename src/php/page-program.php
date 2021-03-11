@@ -36,9 +36,15 @@
         <picture>
             <?php $per=get_field("img_program"); ?>
             <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
-            <source srcset="<?php echo $per["sizes"]["medium-large"] ?>" media="(max-width: 768px)">
-            <img src="<?php echo $per["url"] ?>" alt="item" />
+            <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)">
+            <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
         </picture>
+        <!-- <img 
+        data-sizes="auto"
+        data-src="<?php echo $per["sizes"]["medium"] ?>"
+        data-srcset="<?php echo $per["sizes"]["medium-large"] ?> 300w,
+        <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
+        /> -->
     </div>
     <div class="description program">
         <div class="container">

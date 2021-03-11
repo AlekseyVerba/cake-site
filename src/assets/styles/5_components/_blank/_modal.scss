@@ -92,6 +92,7 @@
     }
     &__content {
         position: relative;
+        padding-bottom: 30px;
     }
     &_close {
         position: absolute;
@@ -106,8 +107,16 @@
         padding: 7px 15px;
         border: 1px solid #ffd166;
         &::placeholder {
-            color: #26547c;
+            // color: #26547c;
             font-size: 16px;
+            font-family: "Lato";
+        }
+    }
+    &__area {
+        &::placeholder {
+            // color: #26547c;
+            font-size: 16px;
+            font-family: "Lato";
         }
     }
     &__area {

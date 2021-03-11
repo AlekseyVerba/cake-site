@@ -140,9 +140,10 @@ try {
           }
 
           var el = document.createElement("div");
-          el.classList.add("cake__info", tranClass);
+          el.classList.add("cake__info");
+          el.classList.add(tranClass);
           console.log(el);
-          el.innerHTML = "\n                <h3 class=\"cake__title\">".concat(body.dataset.name, "</h3>\n                <p class=\"cake__description\">").concat(body.dataset.info, "</p>\n                <div class=\"cake__footer\">\n                <span class=\"cake__gram\">").concat(body.dataset.gramm, "\u0433.</span>\n                <span class=\"cake__price\">").concat(body.dataset.price, "\u0420</span>\n                ");
+          el.innerHTML = "\n                <h3 class=\"cake__title\">".concat(body.dataset.name, "</h3>\n                <p class=\"cake__description\">").concat(body.dataset.info, "</p>\n                <div class=\"cake__footer\">\n                <span class=\"cake__gram\">").concat(body.dataset.gramm, " \u0433.</span>\n                <span class=\"cake__price\">").concat(body.dataset.price, " \u0440.</span>\n                ");
           body.append(el);
         }
       }
@@ -157,27 +158,58 @@ try {
 } catch (_unused4) {}
 
 try {
-  var checbox = document.querySelector(".application__label-checkbox");
-  var button = document.querySelector(".application__submit");
-  checbox.addEventListener("click", function (e) {
-    var oldCheckBox = checbox.querySelector(".application__checkbox-bad");
-    var newCheckBox = checbox.querySelector(".application__checkbox-bad-block");
+  // const  = document.querySelector(".application__label-checkbox");
+  // const button = document.querySelector(".application__submit");
+  var changeCheckBox = function changeCheckBox(selectorLabel, selectorCheckOld, selectorCheckNew, buttonSelector) {
+    var checboxBlock = document.querySelector(selectorLabel);
+    var button = document.querySelector(buttonSelector);
+    checboxBlock.addEventListener("click", function (e) {
+      var oldCheckBox = checboxBlock.querySelector(selectorCheckOld);
+      var newCheckBox = checboxBlock.querySelector(selectorCheckNew);
 
-    if (oldCheckBox.checked) {
-      oldCheckBox.checked = false;
-      newCheckBox.classList.remove("application__checkbox-bad-block-active");
-      button.classList.add("modal__disabled");
-      button.classList.remove("modal__submit");
-      button.setAttribute("disabled", "true");
-    } else {
-      oldCheckBox.checked = true;
-      newCheckBox.classList.add("application__checkbox-bad-block-active");
-      button.classList.remove("modal__disabled");
-      button.classList.add("modal__submit");
-      button.removeAttribute("disabled");
-    }
-  });
-} catch (_unused5) {} //   $('#btn-menu-mob').click(function(e) {
+      if (oldCheckBox.checked) {
+        oldCheckBox.checked = false;
+        newCheckBox.classList.remove("application__checkbox-bad-block-active");
+        button.classList.add("modal__disabled");
+        button.classList.remove("modal__submit");
+        button.setAttribute("disabled", "true");
+      } else {
+        oldCheckBox.checked = true;
+        newCheckBox.classList.add("application__checkbox-bad-block-active");
+        button.classList.remove("modal__disabled");
+        button.classList.add("modal__submit");
+        button.removeAttribute("disabled");
+      }
+    });
+  };
+
+  try {
+    changeCheckBox(".application__label-checkbox", ".application__checkbox-bad", ".application__checkbox-bad-block", ".application__submit");
+  } catch (_unused5) {}
+
+  try {
+    changeCheckBox(".modal__label", ".modal__checkbox", ".application__checkbox-bad-block", ".modal__button");
+  } catch (_unused6) {} // checbox.addEventListener("click", (e) => {
+  //     // const oldCheckBox = checbox.querySelector(".application__checkbox-bad");
+  //     // const newCheckBox = checbox.querySelector(".application__checkbox-bad-block");
+  //     if (oldCheckBox.checked) {
+  //         oldCheckBox.checked = false;
+  //         newCheckBox.classList.remove("application__checkbox-bad-block-active");
+  //         button.classList.add("modal__disabled");
+  //         button.classList.remove("modal__submit");
+  //         button.setAttribute("disabled", "true")
+  //     } else {
+  //         oldCheckBox.checked = true;
+  //         newCheckBox.classList.add("application__checkbox-bad-block-active");
+  //         button.classList.remove("modal__disabled");
+  //         button.classList.add("modal__submit");
+  //         button.removeAttribute("disabled")
+  //     }
+  // })
+  // try {
+  // }
+
+} catch (_unused7) {} //   $('#btn-menu-mob').click(function(e) {
 //       e.preventDefault();
 //       $('.header__svg-mob').addClass('is-active');
 //       $('#menu-mobile').animate({ 
@@ -234,13 +266,18 @@ $('form').on('submit', function (e) {
   e.preventDefault();
   var form = $(this).serializeArray();
   var action = $(this).attr('action');
-  var radioButtons = document.querySelectorAll(".application__checkbox");
-  var hasRadio = false;
-  radioButtons.forEach(function (item) {
-    if (item.checked) {
-      hasRadio = true;
-    }
-  });
+  var hasRadio = true;
+
+  if (action === "application_fun") {
+    var radioButtons = document.querySelectorAll(".application__checkbox");
+    radioButtons.forEach(function (item) {
+      if (item.checked) {
+        hasRadio = true;
+      } else {
+        hasRadio = false;
+      }
+    });
+  }
 
   if (hasRadio) {
     $.post(myajax.url, {
@@ -301,7 +338,7 @@ try {
         btnSubmit.classList.remove("modal__submit");
       }
     });
-  } catch (_unused6) {} // try {
+  } catch (_unused8) {} // try {
   //     applicationCheckBox.addEventListener("change", (e) => {
   //         if (applicationCheckBox.checked) {
   //             applicationSubmit.classList.remove("modal__disabled");
@@ -314,7 +351,7 @@ try {
   //     })
   // } catch {}
 
-} catch (_unused7) {}
+} catch (_unused9) {}
 
 try {
   document.querySelector(".menu-icon").addEventListener("click", function (e) {
@@ -326,11 +363,11 @@ try {
       document.querySelector(".header__list-hamburger").classList.remove("active-list");
     }
   });
-} catch (_unused8) {}
+} catch (_unused10) {}
 
 try {
   var iframe = document.createElement("iframe"); // https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor
-} catch (_unused9) {}
+} catch (_unused11) {}
 
 try {
   // jQuery(function($){
@@ -366,7 +403,7 @@ try {
       }
     }
   }); // });
-} catch (_unused10) {} // jQuery(function($){
+} catch (_unused12) {} // jQuery(function($){
 // 	$(window).scroll(function(){
 // 		var bottomOffset = 400; // отступ от нижней границы сайта, до которого должен доскроллить пользователь, чтобы подгрузились новые посты
 // 		var data = {
@@ -435,24 +472,34 @@ try {
       document.querySelector(".hidden__label").querySelector(".input__hidden").remove();
     }
   });
-} catch (_unused11) {}
+} catch (_unused13) {}
 
 try {
   var conts = document.querySelectorAll(".cont");
-  var inputs = document.querySelector(".application").querySelectorAll(".application-input");
+  var inputs = document.querySelector(".application").querySelectorAll(".application-input"); // conts.forEach(item => {
+  //     item.addEventListener("click", (e) => {
+  //     const target = e.target.closest(".cont");
+  //     target.querySelector("input").focus();
+  //     target.querySelector(".placeholder").style.display = "none";
+  //     })
+  // })
+
   conts.forEach(function (item) {
     item.addEventListener("click", function (e) {
-      var target = e.target.closest(".cont");
-      target.querySelector("input").focus();
-      target.querySelector(".placeholder").style.display = "none";
+      if (e.target.classList.contains("placeholder")) {
+        e.target.previousElementSibling.focus();
+      }
     });
   });
   inputs.forEach(function (item) {
+    item.addEventListener("focus", function (e) {
+      e.target.nextElementSibling.style.display = "none";
+    });
     item.addEventListener("blur", function (e) {
       if (e.target.value.trim() == '') e.target.nextElementSibling.style.display = "block";
     });
   });
-} catch (_unused12) {}
+} catch (_unused14) {}
 
 try {
   var labels = document.querySelectorAll(".application__label");
@@ -481,7 +528,7 @@ try {
 
     });
   });
-} catch (_unused13) {}
+} catch (_unused15) {}
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -494,81 +541,6 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 }
 
 try {
-  var addDots = function addDots() {
-    var dots = document.createElement("div");
-    dots.classList.add("slider__dots");
-    elements.forEach(function (el, index) {
-      var dot = document.createElement("div");
-      dot.classList.add("slider__dot");
-      dot.setAttribute("data-count", index + 1);
-
-      if (index === 0) {
-        dot.classList.add("slider__dot-active");
-      }
-
-      dots.appendChild(dot);
-    }); // for (let index = 0; index < elements.length; i++) {
-    // }
-
-    document.querySelector(".slider").appendChild(dots);
-  };
-
-  var startInterval = function startInterval() {
-    interval = setInterval(goNext, 6000);
-  };
-
-  var changeDots = function changeDots(e, color) {
-    if (e) {
-      slider.querySelectorAll(".slider__dot").forEach(function (element) {
-        element.classList.remove("slider__dot-active");
-      });
-      e.target.classList.add("slider__dot-active");
-      var index = e.target.getAttribute("data-count");
-      count = index;
-      var result = count * parseInt(width) - parseInt(width);
-      content.style.transform = "translateX(-".concat(result, "px)");
-    }
-
-    if (color) {
-      slider.querySelectorAll(".slider__dot").forEach(function (item, index) {
-        item.classList.remove("slider__dot-active");
-
-        if (index + 1 === count) {
-          item.classList.add("slider__dot-active");
-        }
-      });
-    }
-  };
-
-  var goNext = function goNext() {
-    if (count === elements.length) {
-      content.style.transform = "translateX(0)";
-      count = 1;
-    } else {
-      count++;
-      var result = (count - 1) * parseInt(width);
-      content.style.transform = "translateX(-".concat(result, "px)");
-    }
-
-    changeDots(null, "changeColor");
-  };
-
-  var goPrev = function goPrev() {
-    if (count === 1) {
-      var result = (elements.length - 1) * parseInt(width) + "px";
-      content.style.transform = "translateX(-".concat(result, ")");
-      count = elements.length;
-    } else {
-      count--;
-
-      var _result = count * parseInt(width) - parseInt(width);
-
-      content.style.transform = "translateX(-".concat(_result, "px)");
-    }
-
-    changeDots(null, "changeColor");
-  };
-
   // if (!Array.prototype.forEach) {
   //     Array.prototype.forEach = function (callback, thisArg) {
   //       var T, k;
@@ -623,31 +595,141 @@ try {
         return null;
       } else return this.parentElement.closest(selector);
     };
-  })(Element.prototype);
+  })(Element.prototype); //   var mySwiper = new Swiper ('.swiper-container', {
+  //     // направление: «вертикальное», // опция вертикального переключения (по умолчанию переключение по горизонтали, если не установлено)
+  //     loop: true, // опция режима петли
+  //     // Если нужен пейджер
+  // pagination: {
+  //  el: '.swiper-pagination',
+  // },
+  //     // Если вам нужно двигаться вперед и назад
+  // navigation: {
+  //  nextEl: '.swiper-button-next',
+  //  prevEl: '.swiper-button-prev',
+  // },
+  //     // Если вам нужна полоса прокрутки
+  // scrollbar: {
+  //  el: '.swiper-scrollbar',
+  // },
+  // })
+  // const swiper = new Swiper('.swiper-container', {
+  //     navigation: {
+  //         nextEl: '.swiper-button-next',
+  //         prevEl: '.swiper-button-prev',
+  //       },
+  //   });
 
-  var width = window.getComputedStyle(document.querySelector(".slider__wrapper")).width;
-  var wrapper = document.querySelector(".slider__wrapper");
-  var elements = document.querySelectorAll(".slider__item");
-  var content = document.querySelector(".slider__content");
-  var prev = document.querySelector(".slider__left");
-  var next = document.querySelector(".slider__right");
-  var slider = document.querySelector(".slider");
-  var count = 1;
-  addDots();
-  content.style.width = elements.length * parseInt(width) + "px";
-  next.addEventListener("click", goNext);
-  prev.addEventListener("click", goPrev);
-  var interval;
-  startInterval();
-  wrapper.addEventListener("mouseenter", function () {
-    clearInterval(interval);
-  });
-  wrapper.addEventListener("mouseleave", function () {
-    startInterval();
-  });
-  slider.querySelectorAll(".slider__dot").forEach(function (item) {
-    item.addEventListener("click", function (e) {
-      return changeDots(e, null);
-    });
-  });
-} catch (_unused14) {}
+
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  }); //   swiper.slideNext();
+  // const width = window.getComputedStyle(document.querySelector(".slider__wrapper")).width;
+  // const wrapper = document.querySelector(".slider__wrapper");
+  // const elements = document.querySelectorAll(".slider__item");
+  // const content = document.querySelector(".slider__content");
+  // const prev = document.querySelector(".slider__left");
+  // const next = document.querySelector(".slider__right");
+  // const slider = document.querySelector(".slider");
+  // let count = 1;
+  // function addDots() {
+  //     const dots = document.createElement("div");
+  //     dots.classList.add("slider__dots");
+  //     elements.forEach((el, index) => {
+  //         const dot = document.createElement("div")
+  //         dot.classList.add("slider__dot");
+  //         dot.setAttribute("data-count", index + 1)
+  //         if (index === 0) {
+  //             dot.classList.add("slider__dot-active");  
+  //         }
+  //         dots.appendChild(dot);
+  //     })
+  //     // for (let index = 0; index < elements.length; i++) {
+  //     // }
+  //     document.querySelector(".slider").appendChild(dots);
+  // }
+  // addDots();
+  // content.style.width = elements.length * parseInt(width) + "px";
+  // next.addEventListener("click", goNext);
+  // prev.addEventListener("click", goPrev);
+  // let interval;
+  // function startInterval() {
+  //     interval = setInterval(goNext, 6000);
+  // }
+  // startInterval();
+  // wrapper.addEventListener("mouseenter", () => {
+  //     clearInterval(interval);
+  // })
+  // wrapper.addEventListener("mouseleave", () => {
+  //     startInterval();
+  // })
+  // slider.querySelectorAll(".slider__dot").forEach(item => {
+  //     item.addEventListener("click", (e) => changeDots(e, null))
+  // })
+  // function changeDots(e, color) {
+  //     if (e) {
+  //         slider.querySelectorAll(".slider__dot").forEach(element => {
+  //             element.classList.remove("slider__dot-active");
+  //         })
+  //         e.target.classList.add("slider__dot-active");
+  //         const index = e.target.getAttribute("data-count");
+  //         count = index;
+  //         const result = (count * parseInt(width)) - parseInt(width);
+  //         content.style.transform = `translateX(-${result}px)`;
+  //     }
+  //     if (color) {
+  //         slider.querySelectorAll(".slider__dot").forEach((item, index)=> {
+  //             item.classList.remove("slider__dot-active");
+  //             if (index+1 === count) {
+  //                 item.classList.add("slider__dot-active");
+  //             }
+  //         });
+  //     }
+  // }
+  // function goNext() {
+  //     if (count === elements.length) {
+  //         content.style.transform = `translateX(0)`;
+  //         count = 1;
+  //     } else {
+  //         count++;
+  //         const result = (count - 1) * parseInt(width);
+  //         content.style.transform = `translateX(-${result}px)`;
+  //     }
+  //     changeDots(null, "changeColor")
+  // }
+  // function goPrev() {
+  //     if (count === 1) {
+  //         const result =( (elements.length - 1) * parseInt(width)) + "px";
+  //         content.style.transform = `translateX(-${result})`;
+  //         count = elements.length;
+  //     } else {
+  //         count--;
+  //         const result = (count * parseInt(width)) - parseInt(width);
+  //         content.style.transform = `translateX(-${result}px)`;
+  //     }
+  //     changeDots(null, "changeColor")
+  // }
+  // document.querySelector(".slider__buttons").addEventListener("pointermove", e => {
+  //     const el = e.target.nextElementSibling.querySelector(".slider__content");
+  //     // el.pointermove(() => {
+  //     //     console.log("fff")
+  //     // })
+  //     console.log(e);
+  //     console.log(el);
+  //     // document.onpointermove = () => {
+  //     //     console.log("[f[f[f")
+  //     // };
+  //     document.onpointerup = () => {
+  //         console.log("fff");
+  //     }
+  // });
+} catch (_unused16) {}

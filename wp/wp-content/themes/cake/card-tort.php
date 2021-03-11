@@ -6,17 +6,25 @@
             <p class="tort__order">Заказать</p>
         </div>
         <div class="tort__img-block">
-            <?php 
+            <!-- <?php 
                 $per = get_field("tort_img");
                 // var_dump($per);
-            ?>
+            ?> -->
             <!-- <img src="<?php echo $per["sizes"]["large"] ?>" alt="tort" class="tort__img"> -->
             <picture>
                 <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                 <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                <!-- <source srcset="<?php echo $per["url"] ?>"> -->
-                <img src="<?php echo $per["url"] ?>" alt="tort" />
-            </picture>
+                <source srcset="<?php echo $per["url"] ?>">
+                <img src="<?php echo $per["url"] ?>" alt="tort" class="lazyload"/>
+            <!-- <!-- </picture>  -->
+
+            <!-- <?php $per=get_field("tort_img") ?>
+            <img 
+            data-sizes="auto"
+            data-src="<?php echo $per["sizes"]["medium"] ?>"
+            data-srcset="<?php echo $per["sizes"]["thumbnail"] ?> 450w,
+            <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
+            /> -->
         </div>
     </div>
     <div class="tort__footer">

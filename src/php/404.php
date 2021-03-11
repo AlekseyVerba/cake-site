@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href=<?php the_field("favicon", 41); ?> sizes="32x32"/>
     <title>Ошибка</title>
+    <link rel="preload" />
+    <link rel="preload" href="assets/fonts/1440.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/3976.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/9622.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/14078.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/Lato-Regular.ttf" as="font"/>
     <?php wp_head(); ?>
 </head>
 <body>
@@ -14,7 +21,7 @@
             <div class="error__title">
                 <span class="error__title-one">4</span>
                 <div class="error__img">
-                    <img src="<?php bloginfo("template_url") ?>/assets/images/static/tarelka.png" alt="tarelka">
+                    <img src="<?php bloginfo("template_url") ?>/assets/images/static/tarelka.png" alt="lazyload tarelka">
                 </div>
                 <span class="error__title-two">4</span>
             </div>

@@ -30,7 +30,7 @@
                 </ul>
                <div class="footer__logo">
                     <a href="<?php the_field('vk_url') ?>">
-                        <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/white_vk.png" alt="vk" class="footer__vk network">
+                        <img  data-src="<?php echo bloginfo("template_url") ?>/assets/images/static/white_vk.png" alt="vk" class="footer__vk network lazyload">
                     </a>
                    <a href="<?php echo get_home_url(); ?>" class="footer__logo-link">
                         <img src="<?php the_field("footer_logo",41); ?>" alt="logo" class="footer__logo-img">

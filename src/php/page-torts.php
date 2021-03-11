@@ -69,8 +69,14 @@
                                                 <picture>
                                                     <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                                                     <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                                                    <img src="<?php echo $per["url"] ?>" alt="item" />
+                                                    <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
                                                 </picture>
+                                                <!-- <img 
+                                                data-sizes="auto"
+                                                data-src="<?php echo $per["sizes"]["thumbnail"] ?>"
+                                                data-srcset="<?php echo $per["sizes"]["medium"] ?> 450w,
+                                                <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
+                                                /> -->
                                             <?php
                                         } else {
                                             $perTwo = get_field("no_found", 41);
@@ -78,8 +84,14 @@
                                                 <picture>
                                                     <source srcset="<?php echo $perTwo["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                                                     <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" />
+                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" class="lazyload"/>
                                                 </picture>
+                                                <!-- <img 
+                                                data-sizes="auto"
+                                                data-src="<?php echo $perTwo["sizes"]["medium"] ?>"
+                                                data-srcset="<?php echo $perTwo["sizes"]["medium-large"] ?> 450w,
+                                                <?php echo $perTwo["sizes"]["medium"] ?> 768w" class="lazyload"
+                                                /> -->
 
                                             <?php
                                         }
@@ -150,10 +162,11 @@
                         <label  class="hidden__label"></label>
                         <input type="text" name="phone" class="modal__input" placeholder="Ваш телефон"/>
                         <textarea rows="9" name="message" class="modal__area" placeholder="Комметарий к заказу"></textarea>
-                        <label class="modal__label">
-                            <input type="checkbox" name="check" class="modal__checkbox">
+                        <div class="modal__label" style="position: relative">
+                            <div class="application__checkbox-bad-block"></div>
+                            <input type="checkbox" name="check" class="modal__checkbox application__checkbox-bad">
                             Согласен(а) на обработку моих персональных данных
-                        </label>
+                        </div>
                         <button type="submit" class="modal__button modal__disabled" disabled>отправить заявку</button>
                 </form>
             </div>

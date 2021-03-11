@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php the_title(); ?></title>
+    <link rel="icon" href=<?php the_field("favicon", 41); ?> sizes="32x32"/>
+    <link rel="preload" href="assets/fonts/1440.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/3976.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/9622.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/14078.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/Lato-Regular.ttf" as="font"/>
     <?php wp_head(); ?>
 </head>
 <body>

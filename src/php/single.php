@@ -84,8 +84,14 @@
                                                 <picture>
                                                     <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                                                     <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                                                    <img src="<?php echo $per["url"] ?>" alt="item" />
+                                                    <img src="<?php echo $per["url"] ?>" alt="item"  class="lazyload"/>
                                                 </picture>
+                                                <!-- <img 
+                                                data-sizes="auto"
+                                                data-src="<?php echo $perTwo["sizes"]["thumbnail"] ?>"
+                                                data-srcset="<?php echo $perTwo["sizes"]["medium"] ?> 450w,
+                                                <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
+                                                /> -->
                                             <?php
                                         } else {
                                             $perTwo = get_field("no_found", 41);
@@ -93,8 +99,14 @@
                                                 <picture>
                                                     <source srcset="<?php echo $perTwo["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                                                     <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" />
+                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" class="lazyload"/>
                                                 </picture>
+                                                <!-- <img 
+                                                data-sizes="auto"
+                                                data-src="<?php echo $perTwo["sizes"]["medium"] ?>"
+                                                data-srcset="<?php echo $perTwo["sizes"]["medium-large"] ?> 450w,
+                                                <?php echo $perTwo["sizes"]["medium"] ?> 768w" class="lazyload"
+                                                /> -->
 
                                             <?php
                                         }

@@ -57,7 +57,7 @@
 
 
     <script>
-
+    var twoIndex = false;
 function getYaMap(){
             var myMap = new ymaps.Map("contact__map", {
                 center: [<?php the_field("cordiante", 41); ?>],
@@ -99,8 +99,11 @@ function getYaMap(){
             document.head.appendChild(element);
         }
 
-        window.addEventListener('load', function() {
-            downloadJSAtOnload();
+        window.addEventListener('scroll', function() {
+            if (!twoIndex) {
+                downloadJSAtOnload();
+                twoIndex = true;
+            }
         });
     </script>
 

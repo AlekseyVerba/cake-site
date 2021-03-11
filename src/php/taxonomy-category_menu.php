@@ -108,7 +108,7 @@
                                                 <picture>
                                                     <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                                                     <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                                                    <img src="<?php echo $per["url"] ?>" alt="item" />
+                                                    <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
                                                 </picture>
                                             <?php
                                         } else {
@@ -117,7 +117,7 @@
                                                 <picture>
                                                     <source srcset="<?php echo $perTwo["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                                                     <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" />
+                                                    <img src="<?php echo $perTwo["url"] ?>" alt="item" class="lazyload"/>
                                                 </picture>
 
                                             <?php

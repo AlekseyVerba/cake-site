@@ -9,6 +9,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href=<?php the_field("favicon"); ?> sizes="32x32"/>   
+    <link rel="preload" href="assets/fonts/1440.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/3976.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/9622.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/14078.ttf" as="font"/>
+    <link rel="preload" href="assets/fonts/Lato-Regular.ttf" as="font"/>
     <title>cc-union.ru</title>
 
     <?php wp_head();?>
@@ -174,8 +180,8 @@
                     ?>
                         <div class="<?php echo $className ?> cake__item" data-element="<?php echo $count ?>" data-name="<?php echo $row['name_card'] ?>" data-info="<?php echo $row['descr_card'] ?>" data-gramm=<?php echo $row['ves_card'] ?> data-price=<?php echo $row['price_card'] ?>> 
                             <picture>
-                                <source srcset="..." media="(max-width: 830px)">
-                                <img src="<?php echo $row['card_img'] ?>" alt="cake" class="cake__item-img">
+                                <!-- <source srcset="..." media="(max-width: 830px)"> -->
+                                <img src="<?php echo $row['card_img'] ?>" alt="cake" class="lazyload cake__item-img">
                             </picture>
                         </div>
                     <?php
@@ -228,7 +234,7 @@
         </div>
     </div>
 
-    <div class="slider">
+    <!-- <div class="slider">
         <div class="slider__container">
             <div class="slider__des"></div>
             <div class="slider__buttons">
@@ -248,13 +254,21 @@
                             <div class="slider__item">
                                 <!-- <img src="<?php the_sub_field('foto_slajdera'); ?>" alt="slider" /> -->
                                 <!-- <?php var_dump(get_sub_field('foto_slajdera')) ?> -->
-                                <picture>
+                                <!-- <picture>
                                     <?php $per=get_sub_field('foto_slajdera'); ?>
                                     <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
-                                    <source srcset="<?php echo $per["sizes"]["medium-large"] ?>" media="(max-width: 768px)">
-                                    <img src="<?php echo $per["url"] ?>" alt="item" />
-                                </picture>
-                            </div>
+                                    <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)">
+                                    <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
+                                </picture> -->
+                                <!-- <?php $per = get_sub_field("foto_slajdera"); ?> -->
+                                <!-- <img 
+                                
+                                
+                                data-srcset="<?php echo $per["sizes"]["medium"] ?> 300w,
+                                <?php echo $per["sizes"]["medium_large"] ?> 768w,
+                                <?php echo $per["url"] ?> 2000w" class="lazyload"
+                                /> -->
+                            <!-- </div>
                         <?php
 
                     endwhile;
@@ -266,7 +280,89 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+
+
+    
+        <!-- <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+            </div>
+                <! - Если нужен пейджер->
+            <div class="swiper-pagination"></div>
+            
+                <! - Если вам нужна навигационная кнопка->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            
+                <! - Если вам нужна полоса прокрутки->
+            <div class="swiper-scrollbar"></div>
+        </div> -->
+        <!-- <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+      <div class="swiper-slide">Slide 9</div>
+      <div class="swiper-slide">Slide 10</div>
     </div>
+    <!-- Add Pagination -->
+    <!-- <div class="swiper-pagination"></div>
+  </div> --> 
+
+ <div style="position: relative; max-width: 1150px; margin: 0 auto">
+ <div class="yellowBlock"></div>
+ <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+ <div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+
+    <?php
+    if( have_rows('slider') ):
+
+// перебираем данные
+while ( have_rows('slider') ) : the_row();
+    // ?>
+        <div class="swiper-slide">
+            <picture>
+                <?php $per=get_sub_field('foto_slajdera'); ?>
+                <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
+                <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)">
+                <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
+            </picture>
+        </div>
+    <?php
+
+endwhile;
+
+else :
+endif;
+
+?>
+  </div>
+  <!-- If we need pagination -->
+
+  <!-- If we need navigation buttons -->
+
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+  
+</div>
+<div class="swiper-pagination"></div>
+ </div>
+
+
     <div class="contact">
         <div class="contact__title">
             Контакты
@@ -371,8 +467,8 @@
            </a>
         </div>
     </div>
-    <script>
-
+    <script class="lazyload">
+    var index = false;
 function getYaMap(){
             var myMap = new ymaps.Map("map", {
                 center: [<?php the_field("cordiante"); ?>],
@@ -414,8 +510,11 @@ function getYaMap(){
             document.head.appendChild(element);
         }
 
-        window.addEventListener('load', function() {
-            downloadJSAtOnload();
+        window.addEventListener('scroll', function() {
+            if (index !== true) {
+                downloadJSAtOnload();
+                index = true;
+            }
         });
     </script>
     <?php wp_footer();?>

@@ -2,13 +2,17 @@ $('form').on('submit', function(e) {
     e.preventDefault();
     var form = $(this).serializeArray();
     var action = $(this).attr('action');
-    let radioButtons = document.querySelectorAll(".application__checkbox");
-    let hasRadio = false;
-    radioButtons.forEach(item => {
-      if (item.checked) {
-        hasRadio = true
-      } 
-    })
+    let hasRadio = true;
+    if (action === "application_fun") {
+      let radioButtons = document.querySelectorAll(".application__checkbox");
+      radioButtons.forEach(item => {
+        if (item.checked) {
+          hasRadio = true
+        } else {
+          hasRadio = false;
+        }
+      })
+    }
     if (hasRadio) {
       $.post (
         myajax.url,

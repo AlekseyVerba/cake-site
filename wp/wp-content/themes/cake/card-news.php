@@ -5,12 +5,19 @@
         </div>
         <div class="tort__img-block">
             <!-- <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img"> -->
-            <picture>
+            <!-- <!-- <picture> -->
                 <?php $per=get_field("img_tovar") ?>
                 <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
                 <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                <img src="<?php echo $per["url"] ?>" alt="item" />
+                <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload"/>
             </picture>
+            <!-- <?php $per=get_field("img_tovar") ?> -->
+            <!-- <img 
+            data-sizes="auto"
+            data-src="<?php echo $per["sizes"]["medium"] ?>"
+            data-srcset="<?php echo $per["sizes"]["thumbnail"] ?> 450w,
+            <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
+            /> -->
         </div>
     </div>
     <div class="tort__footer">
