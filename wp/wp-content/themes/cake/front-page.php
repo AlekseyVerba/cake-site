@@ -95,7 +95,9 @@
             </ul>
         <div class="header__whiteline"></div>
     </div>
-    <div class="main" style="background: url(<?php echo get_field("img_back")["url"] ?>) no-repeat center">
+        <!-- style="background: url(<?php echo get_field("img_back")["url"] ?>) no-repeat center" -->
+        <div class="main">
+        <img src="<?php echo get_field("img_back")["url"] ?>" style="width: 100%; main: 0 auto;" class="main_img lazyload"/>
         <div class="container">
              <div class="main__content">
                 <h1 class="main__title"><?php the_field("title_main") ?></h1>

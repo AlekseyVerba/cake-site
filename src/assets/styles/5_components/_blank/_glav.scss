@@ -1,12 +1,19 @@
 .main {
     // background: url(./assets/images/static/background.jpg)center no-repeat;
     background-size: cover;
-
-    height: 532px;
     position: relative;
     &__content {
         text-align: center;
         margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        padding: 0 15px;
+        width: 100%;
+        transform: translateX(-50%);
+        top: 0;
+    }
+    &_img {
+        height: 532px;
     }
     &__title {
         padding-top: 190px;
@@ -20,6 +27,6 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        bottom: -32%;
+        bottom: -39%;
     }
 }
