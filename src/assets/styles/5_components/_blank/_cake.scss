@@ -39,7 +39,7 @@
         position: absolute;
         width: 300px;
         padding: 30px 30px 18px;
-        z-index: 1000;
+        z-index: 100000;
         background: rgba(255,255,255,.7);
         text-align: left;
         left: 50%;
@@ -53,6 +53,7 @@
         font-family: "Gotham";
         margin-bottom: 20px;
         font-weight: 600;
+        
     }
     &__description {
         margin-bottom: 20px;
@@ -76,6 +77,10 @@
     &__goLeft {
         transform: translate(-120%, -20%);
     }
+}
+
+.cake-two {
+    z-index: 1000;
 }
 
 .cake__item{

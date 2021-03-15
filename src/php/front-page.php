@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>cc-union.ru</title>
+    <link rel="shortcut icon" href="<?php bloginfo("template_url"); ?>/assets/images/static/fav.jpg" type="image/x-icon">    <link rel="preload" href="<?php bloginfo("template_url"); ?>/assets/fonts/1440.ttf" as="font" crossorigin="anonymous"/>
 
     <?php wp_head();?>
 
@@ -26,9 +26,9 @@
                             'theme_location'  => '',
                             'menu'            => 'main_head_left', 
                             'container'       => '', 
-                            'menu_class'      => 'header__list header__first', 
+                            'menu_class'      => 'header__list header__first main__head__list', 
                             'echo'            => true,
-                            'items_wrap'      => '<ul class="header__list header__first">%3$s</ul>',
+                            'items_wrap'      => '<ul class="header__list main__head__list header__first">%3$s</ul>',
                             'depth'           => 1,
                             'walker'          => '',
                         ] );
@@ -43,9 +43,9 @@
                             'theme_location'  => '',
                             'menu'            => 'main_head_right', 
                             'container'       => '', 
-                            'menu_class'      => 'header__list header__first', 
+                            'menu_class'      => 'header__list main__head__list', 
                             'echo'            => true,
-                            'items_wrap'      => '<ul class="header__list header__first">%3$s</ul>',
+                            'items_wrap'      => '<ul class="header__list main__head__list">%3$s</ul>',
                             'depth'           => 1,
                             'walker'          => '',
                         ] );
@@ -72,26 +72,18 @@
                 <div class="dot"></div>
             </div>
             <ul class="header__list-hamburger">
-                <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Меню
-                    </a>
-                </li>
-                <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Целые торты
-                    </a>
-                </li>
-                <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Программа лояльности
-                    </a>
-                </li>
-                <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Контакты
-                    </a>
-                </li>
+
+            <?php
+                        wp_nav_menu( [
+                            'theme_location'  => '',
+                            'menu'            => 'hamburger_main', 
+                            'container'       => '',  
+                            'echo'            => true,
+                            'items_wrap'      => '%3$s',
+                            'depth'           => 1,
+                            'walker'          => '',
+                        ] );
+                    ?>
                 <li class="header__item-hamburger">
                     <a href="<?php the_field('inst_url') ?>" class="header__network-hamburger">
                         <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_instagram.png" alt="instagram" class="network">
@@ -103,16 +95,16 @@
             </ul>
         <div class="header__whiteline"></div>
     </div>
-    <div class="main" style="background: url(<?php the_field("img_back") ?>) center no-repeat;">
+    <div class="main" style="background: url(<?php echo get_field("img_back")["url"] ?>) no-repeat center">
         <div class="container">
-            <div class="main__content">
+             <div class="main__content">
                 <h1 class="main__title"><?php the_field("title_main") ?></h1>
             </div>
         </div>
         <div class="main__circle">
-            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/circle.png" alt="circle">
+            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/circle.png" alt="circle" class="lazyload">
         </div>
-    </div> 
+    </div>
     <div class="description">
         <div class="container">
             <div class="description__text">
@@ -159,8 +151,21 @@
                         $count = 3;
                     }
                     ?>
+                    <!-- <?php 
+                        if( wp_is_mobile() ) {
+                            // тут выполняем действия только для мобильных устройств.
+                            
+                        } else {
+                            ?>
+                            <img src="<?php echo $row['card_img'] ?>" alt="cake" class="lazyload cake__item-img">
+                            <?php
+                        }
+                    ?> -->
                         <div class="<?php echo $className ?> cake__item" data-element="<?php echo $count ?>" data-name="<?php echo $row['name_card'] ?>" data-info="<?php echo $row['descr_card'] ?>" data-gramm=<?php echo $row['ves_card'] ?> data-price=<?php echo $row['price_card'] ?>> 
-                            <img src="<?php echo $row['card_img'] ?>" alt="cake" class="cake__item-img">
+                            <picture>
+                                <!-- <source srcset="/assets" media="(max-width: 830px)"> -->
+                                <img src="<?php echo $row['card_img'] ?>" alt="cake" class="lazyload cake__item-img">
+                            </picture>
                         </div>
                     <?php
                     $key += 1;
@@ -212,38 +217,53 @@
         </div>
     </div>
 
-    <div class="slider">
-        <div class="slider__container">
-            <div class="slider__des"></div>
-            <div class="slider__buttons">
-                <button class="slider__left slider__button"></button>
-                <button class="slider__right slider__button"></button>
-            </div>
-            <div class="slider__wrapper">
-                <div class="slider__content">
-                <?php
 
-                // проверяем есть ли в повторителе данные
-                if( have_rows('slider') ):
 
-                    // перебираем данные
-                    while ( have_rows('slider') ) : the_row();
-                        // ?>
-                            <div class="slider__item">
-                                <img src="<?php the_sub_field('foto_slajdera'); ?>" alt="slider" />
-                            </div>
-                        <?php
+ <div style="position: relative; max-width: 1150px; margin: 0 auto">
+ <div class="yellowBlock"></div>
+ <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+ <div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
 
-                    endwhile;
+    <?php
+    if( have_rows('slider') ):
 
-                else :
-                endif;
-
-                ?>
-                </div>
-            </div>
+// перебираем данные
+while ( have_rows('slider') ) : the_row();
+    // ?>
+        <div class="swiper-slide">
+            <picture>
+                <?php $per=get_sub_field('foto_slajdera'); ?>
+                <!-- <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
+                <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)"> -->
+                <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload slider-img" />
+            </picture>
         </div>
-    </div>
+    <?php
+
+endwhile;
+
+else :
+endif;
+
+?>
+  </div>
+  <!-- If we need pagination -->
+
+  <!-- If we need navigation buttons -->
+
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+  
+</div>
+<div class="swiper-pagination"></div>
+ </div>
+
+
     <div class="contact">
         <div class="contact__title">
             Контакты
@@ -264,12 +284,14 @@
                     </div>
                     <div class="contact__block">
                         <h5 class="contact__subtitle">Мы в социальных сетях:</h5>
-                        <a href="<?php the_field('vk_url') ?>" />
-                            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_vk.png" alt="network" class="contant__network network"/>
-                        </a>
-                        <a href="<?php the_field('inst_url') ?>" />
-                            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_instagram.png" alt="network" class="contant__network network"/>
-                        </a>
+                        <div style="display: flex">
+                            <a href="<?php the_field('vk_url') ?>" style="margin-right: 5px" />
+                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_vk.png" alt="network" class="contant__network network"/>
+                            </a>
+                            <a href="<?php the_field('inst_url') ?>" />
+                                <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_instagram.png" alt="network" class="contant__network network"/>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -284,14 +306,18 @@
         <div class="footer__container">
             <div class="footer__content">
                 <ul class="footer__list footer__first">
-                    <li class="footer__item">
-                        <a href="#" class="footer__link">Меню</a>
-                        <div class="footer__line"></div>
-                    </li>
-                    <li class="footer__item">
-                        <a href="#" class="footer__link">Целые торты</a>
-                        <div class="footer__line"></div>
-                    </li>
+
+                    <?php 
+                        wp_nav_menu( [
+                            'theme_location'  => '',
+                            'menu'            => 'main_footer_left', 
+                            'container'       => '',  
+                            'echo'            => true,
+                            'items_wrap'      => '%3$s',
+                            'depth'           => 1,
+                            'walker'          => '',
+                        ] );
+                    ?>
                 </ul>
                <div class="footer__logo">
                     <a href="<?php the_field('vk_url') ?>">
@@ -305,14 +331,18 @@
                     </a>
                </div>
                 <ul class="footer__list footer__second">
-                    <li class="footer__item">
-                        <a href="#" class="footer__link">Программа лояльности</a>
-                        <div class="footer__line"></div>
-                    </li>
-                    <li class="footer__item">
-                        <a href="#" class="footer__link">Контакты</a>
-                        <div class="footer__line"></div>
-                    </li>
+
+                    <?php 
+                        wp_nav_menu( [
+                            'theme_location'  => '',
+                            'menu'            => 'main_footer_right', 
+                            'container'       => '',  
+                            'echo'            => true,
+                            'items_wrap'      => '%3$s',
+                            'depth'           => 1,
+                            'walker'          => '',
+                        ] );
+                    ?>
                 </ul>
            </div>
            <a href="#" class="footer__developer">
@@ -321,19 +351,19 @@
            </a>
         </div>
     </div>
-    <script>
-
-        function getYaMap(){
+    <script class="lazyload">
+    var index = false;
+function getYaMap(){
             var myMap = new ymaps.Map("map", {
-                center: [52.281374, 104.284550],
+                center: [<?php the_field("cordiante"); ?>],
                 controls: [],
-                zoom: 18
+                zoom: <?php the_field("zoom"); ?>
             });
 
-            var myPlacemark = new ymaps.Placemark([52.281374, 104.284550], {
-                    balloonContent: 'cc-union<br>Иркутск, улица Карла Маркса, 26А',
-                    iconContent: 'cc-union',
-                    hintContent: 'улица Карла Маркса, 26А',
+            var myPlacemark = new ymaps.Placemark([<?php the_field("cordiante"); ?>], {
+                    balloonContent: '<?php the_field("map_text") ?>',
+                    iconContent: '<?php the_field("icon_sontent") ?>',
+                    hintContent: '<?php the_field("hint_Content")?>',
                 }, {
                     preset: 'islands#greenStretchyIcon'
                 });
@@ -348,14 +378,6 @@
                     myMap.behaviors.disable('drag');
                 }
 
-            // var myGeoObject = new ymaps.GeoObject({
-            //     geometry: {
-            //         type: "Point", // тип геометрии - точка
-            //         coordinates: [52.281374, 104.284550] // координаты точки
-            //     }
-            // });
-            // myMap.geoObjects.add(myGeoObject); 
-            // myMap.controls.remove();
         }
 
         function downloadJSAtOnload() {
@@ -364,8 +386,11 @@
             document.head.appendChild(element);
         }
 
-        window.addEventListener('load', function() {
-            downloadJSAtOnload();
+        window.addEventListener('scroll', function() {
+            if (index !== true) {
+                downloadJSAtOnload();
+                index = true;
+            }
         });
     </script>
     <?php wp_footer();?>

@@ -14,19 +14,30 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread">
-                    <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Программа лояльности</span>
+                    <!-- <a href="#" class="infoTorts__home">Главная</a>
+                    <span class="infoTorts__next">Программа лояльности</span> -->
+                    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+                        <?php if(function_exists('bcn_display'))
+                        {
+                            bcn_display();
+                        }?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="program__wrapper">
-        <a href="<?php get_home_url(); ?>" class="infoTorts__goHome program__goHome">
+        <a href="<?php echo get_home_url(); ?>" class="infoTorts__goHome program__goHome">
             назад на главную
         </a>
     </div>
     <div class="program__bigImg">
-        <img src="<?php the_field("img_program"); ?>" alt="img" class="program__bigImg-img">
+        <picture>
+            <?php $per=get_field("img_program"); ?>
+            <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
+            <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)">
+            <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
+        </picture>
     </div>
     <div class="description program">
         <div class="container">
@@ -93,7 +104,7 @@
     <div class="application">
         <div class="application__container">
             <h3 class="application__title"><?php the_field("title_form_program") ?></h3>
-            <form class="application__form">
+            <form class="application__form" action="application_fun">
 
 
                 <?php
@@ -104,26 +115,29 @@
                     // перебираем данные
                     $key = 0;
                     $class;
+                    $val;
                     while ( have_rows('radio_knopki_programmy') ) : the_row();
 
                         // отображаем вложенные поля
                         // the_sub_field('sub_field_name');
                         if ($key === 0) {
                             $class = "application__label-one";
+                            $val = "Скидка на тортик";
                         }
 
                         if ($key === 1) {
                             $class = "application__label-two";
+                            $val = "Скидка на кофе";
                         }
 
                         ?>
-                            <div class="application__label ">
-                                <div class="application__checkbox-block <?php echo $class; ?>"></div>
-                                <img src="<?php the_sub_field('radio_img');?>" alt="page" />
-                                <input type="radio" name="choise" class="application__checkbox" value="saleOnTort"/>
-                                <?php the_sub_field('radio_text'); ?>
-                            </div>
+                        <label class="radio application__label <?php echo $class; ?>">
+                            <img src="<?php the_sub_field('radio_img');?>" alt="page" />
+                            <input type="radio" class="application__radio" name="choise" value="<?php echo $val ?>"/>
+                            <div class="radio__text"><?php the_sub_field('radio_text'); ?></div>
+                        </label>
                         <?php
+                        $key += 1;
 
                     endwhile;
 
@@ -136,16 +150,6 @@
                 ?>
 
 
-                <!-- <div class="application__label application__label-one">
-                    <div class="application__checkbox-block"></div>
-                    <input type="radio" name="choise" class="application__checkbox" value="saleOnTort"/>
-                    Хочу скидку на тортики
-                </div>
-                <div class="application__label application__label-two">
-                    <div class="application__checkbox-block"></div>
-                    <input type="radio" name="choise" class="application__checkbox" value="saleOnCoffee"/>
-                    Очень люблю кофе, хочу скидку
-                </div> -->
                 <div class="cont">
                     <input type="text" class="application-input application__surname" name="surname" placeholder required>
                     <div class="placeholder">
@@ -182,12 +186,11 @@
                     </div>
                 </div>
                 <div class="application__opis">* Звездочкой отмечены поля, обязательные для заполнения.</div>
-                <div class="application__label-checkbox">
-                    <div class="application__checkbox-bad-block"></div>
-                    <input type="checkbox" name="check" class="application__checkbox-bad">
-                    Согласен(а) на обработку моих персональных данных
-                </div>
-                <button type="submit" class="modal__button modal__disabled application__submit" disabled>отправить заявку</button>
+                <label class="checkbox application__label-checkbox">
+                    <input type="checkbox" class="application-checkbox" name="sale"/>
+                    <div class="checkbox__text">Согласен(а) на обработку моих персональных данных</div>
+                </label>
+                <button type="submit" class="application__submit modal__button modal__disabled" disabled="true">отправить заявку</button>
             </form>
         </div>
     </div>
@@ -196,3 +199,6 @@
 <?php
     get_footer();
 ?>
+
+
+<!-- application__submit modal__button modal__disabled -->

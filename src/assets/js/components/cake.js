@@ -21,14 +21,15 @@ items.forEach(item => {
                     }
                 }
                 const el = document.createElement("div");
-                el.classList.add("cake__info", tranClass);
+                el.classList.add("cake__info");
+                el.classList.add(tranClass)
                 console.log(el);
                 el.innerHTML = `
                 <h3 class="cake__title">${body.dataset.name}</h3>
                 <p class="cake__description">${body.dataset.info}</p>
                 <div class="cake__footer">
-                <span class="cake__gram">${body.dataset.gramm}г.</span>
-                <span class="cake__price">${body.dataset.price}Р</span>
+                <span class="cake__gram">${body.dataset.gramm} г.</span>
+                <span class="cake__price">${body.dataset.price} р.</span>
                 `;
                 body.append(el);
             }

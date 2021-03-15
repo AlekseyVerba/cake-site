@@ -1,21 +1,30 @@
 try {
-    const checbox = document.querySelector(".application__label-checkbox");
-    const button = document.querySelector(".application__submit");
 
-    checbox.addEventListener("click", (e) => {
-        const oldCheckBox = checbox.querySelector(".application__checkbox-bad");
-        const newCheckBox = checbox.querySelector(".application__checkbox-bad-block");
 
-        if (oldCheckBox.checked) {
-            oldCheckBox.checked = false;
-            newCheckBox.classList.remove("application__checkbox-bad-block-active");
-            button.classList.add("modal__disabled");
-            button.classList.remove("modal__submit");
-        } else {
-            oldCheckBox.checked = true;
-            newCheckBox.classList.add("application__checkbox-bad-block-active");
-            button.classList.remove("modal__disabled");
-            button.classList.add("modal__submit");
-        }
-    })
-} catch {}
+    function changeDisabled(checkBtnSelector, buttonSelector) {
+        console.log("fff")
+        const check = document.querySelector(checkBtnSelector)
+        const button = document.querySelector(buttonSelector)
+        check.addEventListener("change", () => {
+            if (check.checked) {
+                button.removeAttribute("disabled")
+                button.classList.add("modal__submit")
+                button.classList.remove("modal__disabled")
+            } else {
+                button.setAttribute("disabled", "true")
+                button.classList.remove("modal__submit")
+                button.classList.add("modal__disabled")
+            }
+        })
+    }
+    try {
+        changeDisabled(".application-checkbox", ".application__submit")
+    } catch { }
+    try {
+        changeDisabled(".torts__checkbox", ".modal__tort")
+    } catch { }
+} catch { }
+
+
+
+

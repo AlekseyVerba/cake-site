@@ -15,8 +15,12 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread">
-                    <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Контакты</span>
+                    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+                        <?php if(function_exists('bcn_display'))
+                        {
+                            bcn_display();
+                        }?>
+                    </div>
                 </div>
                 <a href="<?php echo get_home_url(); ?>" class="infoTorts__goHome">
                     назад на главную
@@ -29,7 +33,7 @@
             <h2 class="adress__title"><?php the_field("address_contact") ?></h2>
             <div class="adress__phone">
                 <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/circle-phone.png" alt="logo" class="adress__phone-img">
-                <a href="tel:<?php the_field("phone_contact") ?>" class="adress__link-phone"><?php the_field("phone_contact") ?></a>
+                <a href="tel:<?php the_field("phone_main", 41) ?>" class="adress__link-phone"><?php the_field("phone_main", 41) ?></a>
             </div>
             <div class="adress__network">
                 <a href="<?php the_field("url_facebook", 41) ?>" class="adress__network-link">
@@ -51,14 +55,32 @@
 
 
     <script>
-
-        function getYaMap(){
+    var twoIndex = false;
+function getYaMap(){
             var myMap = new ymaps.Map("contact__map", {
-                center: [52.281374, 104.284550],
+                center: [<?php the_field("cordiante", 41); ?>],
                 controls: [],
-                zoom: 15
+                zoom: <?php the_field("zoom", 41); ?>
             });
-            myMap.controls.remove();
+
+            var myPlacemark = new ymaps.Placemark([<?php the_field("cordiante", 41); ?>], {
+                    balloonContent: '<?php the_field("map_text", 41) ?>',
+                    iconContent: '<?php the_field("icon_sontent", 41) ?>',
+                    hintContent: '<?php the_field("hint_Content", 41)?>',
+                }, {
+                    preset: 'islands#greenStretchyIcon'
+                });
+                myMap.geoObjects.add(myPlacemark);  
+
+                myMap.controls.remove();
+                myMap.behaviors.disable('scrollZoom');
+
+                //на мобильных устройствах... (проверяем по userAgent браузера)
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                    //... отключаем перетаскивание карты
+                    myMap.behaviors.disable('drag');
+                }
+
         }
 
         function downloadJSAtOnload() {
@@ -67,8 +89,11 @@
             document.head.appendChild(element);
         }
 
-        window.addEventListener('load', function() {
-            downloadJSAtOnload();
+        window.addEventListener('scroll', function() {
+            if (!twoIndex) {
+                downloadJSAtOnload();
+                twoIndex = true;
+            }
         });
     </script>
 

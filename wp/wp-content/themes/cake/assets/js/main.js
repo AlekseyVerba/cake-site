@@ -77,6 +77,40 @@ try {
 } catch (_unused) {}
 
 try {
+  var addClass = function addClass(selector, classLi, classLine) {
+    document.querySelectorAll(selector).forEach(function (item) {
+      item.classList.add(classLi);
+
+      if (classLine) {
+        var line = document.createElement("div");
+        line.classList.add(classLine);
+        item.append(line);
+      }
+    });
+  };
+
+  addClass(".footer li", "footer__item", "footer__line");
+  addClass(".header .header__list li", "header__item", "header__line");
+  addClass(".header__list-hamburger li", "header__item-hamburger", false);
+
+  try {
+    var burgerActive = document.createElement("div");
+    burgerActive.classList.add("burger-line");
+    document.querySelector(".burger-active").append(burgerActive);
+  } catch (_unused2) {}
+} catch (_unused3) {} // const btnsHome = document.querySelectorAll(".home");
+
+
+var category = document.querySelectorAll(".taxonomy.category_menu");
+var spans = document.querySelectorAll(".current-item");
+category.forEach(function (item) {
+  item.classList.add("infoTorts__home");
+});
+spans.forEach(function (item) {
+  item.classList.add("infoTorts__next");
+}); // infoTorts__home
+
+try {
   items.forEach(function (item) {
     item.addEventListener("mouseover", function (e) {
       var body = e.target.closest(".cake__item");
@@ -106,9 +140,10 @@ try {
           }
 
           var el = document.createElement("div");
-          el.classList.add("cake__info", tranClass);
+          el.classList.add("cake__info");
+          el.classList.add(tranClass);
           console.log(el);
-          el.innerHTML = "\n                <h3 class=\"cake__title\">".concat(body.dataset.name, "</h3>\n                <p class=\"cake__description\">").concat(body.dataset.info, "</p>\n                <div class=\"cake__footer\">\n                <span class=\"cake__gram\">").concat(body.dataset.gramm, "\u0433.</span>\n                <span class=\"cake__price\">").concat(body.dataset.price, "\u0420</span>\n                ");
+          el.innerHTML = "\n                <h3 class=\"cake__title\">".concat(body.dataset.name, "</h3>\n                <p class=\"cake__description\">").concat(body.dataset.info, "</p>\n                <div class=\"cake__footer\">\n                <span class=\"cake__gram\">").concat(body.dataset.gramm, " \u0433.</span>\n                <span class=\"cake__price\">").concat(body.dataset.price, " \u0440.</span>\n                ");
           body.append(el);
         }
       }
@@ -120,116 +155,111 @@ try {
       document.querySelector(".cake__info").remove();
     });
   });
-} catch (_unused2) {}
+} catch (_unused4) {}
 
 try {
-  var checbox = document.querySelector(".application__label-checkbox");
-  var button = document.querySelector(".application__submit");
-  checbox.addEventListener("click", function (e) {
-    var oldCheckBox = checbox.querySelector(".application__checkbox-bad");
-    var newCheckBox = checbox.querySelector(".application__checkbox-bad-block");
+  var changeDisabled = function changeDisabled(checkBtnSelector, buttonSelector) {
+    console.log("fff");
+    var check = document.querySelector(checkBtnSelector);
+    var button = document.querySelector(buttonSelector);
+    check.addEventListener("change", function () {
+      if (check.checked) {
+        button.removeAttribute("disabled");
+        button.classList.add("modal__submit");
+        button.classList.remove("modal__disabled");
+      } else {
+        button.setAttribute("disabled", "true");
+        button.classList.remove("modal__submit");
+        button.classList.add("modal__disabled");
+      }
+    });
+  };
 
-    if (oldCheckBox.checked) {
-      oldCheckBox.checked = false;
-      newCheckBox.classList.remove("application__checkbox-bad-block-active");
-      button.classList.add("modal__disabled");
-      button.classList.remove("modal__submit");
-    } else {
-      oldCheckBox.checked = true;
-      newCheckBox.classList.add("application__checkbox-bad-block-active");
-      button.classList.remove("modal__disabled");
-      button.classList.add("modal__submit");
-    }
-  });
-} catch (_unused3) {} //   $('#btn-menu-mob').click(function(e) {
-//       e.preventDefault();
-//       $('.header__svg-mob').addClass('is-active');
-//       $('#menu-mobile').animate({ 
-//         right: '0px' 
-//         }, 300);
-//       $('#menu-mobile').animate({ 
-//         right: '0px' 
-//         }, 300);
-//     $('body').css('overflow', 'hidden');
-//     $('.page').animate({ 
-//         right: '190px' 
-//     }, 200); 
-// });
-// $('.menu-mobile__svg-close').click(function(e) {
-//     e.preventDefault();
-//     $('.header__svg-mob').removeClass('is-active');
-//     $('#menu-mobile').animate({ 
-//       right: '-207px' 
-//   }, 300);
-//   $('body').css('overflow', 'auto');
-//   $('.page').animate({ 
-//       right: '0px' 
-//   }, 200); 
-// });
-// // header-swiper
-// var swiper = new Swiper('#main-swiper', {
-//   fadeEffect: {
-//     crossFade: true
-//   },
-//   navigation: {
-//     nextEl: '.swiper-button-next--header',
-//     prevEl: '.swiper-button-prev--header',
-//   },
-//   pagination: {
-//     el: '.swiper-pagination',
-//     type: 'bullets',
-//     clickable: true,
-//   },
-//   loop: true,
-//   // autoplay: {
-//   //   delay: 2300,
-//   // },
-//   fadeEffect: {
-//     crossFade: true
-//   },
-//   speed: 800,
-//   watchSlidesProgress: true,
-//   watchVisibility: true,
-//   disableOnInteraction: true,
-// });
+  try {
+    changeDisabled(".application-checkbox", ".application__submit");
+  } catch (_unused5) {}
 
+  try {
+    changeDisabled(".torts__checkbox", ".modal__tort");
+  } catch (_unused6) {}
+} catch (_unused7) {}
 
-document.querySelectorAll("form").forEach(function (item) {
-  item.addEventListener("submit", function (e) {
-    e.preventDefault();
-  });
+$('form').on('submit', function (e) {
+  e.preventDefault();
+  var form = $(this).serializeArray();
+  var action = $(this).attr('action');
+  var hasRadio = true;
+
+  if (action === "application_fun") {
+    var radioButtons = document.querySelectorAll(".application__radio");
+    radioButtons.forEach(function (item) {
+      if (item.checked) {
+        hasRadio = true;
+      } else {
+        hasRadio = false;
+      }
+    });
+  }
+
+  if (hasRadio) {
+    $.post(myajax.url, {
+      form: form,
+      action: action
+    }, function (data) {
+      for (var i = 0; i < $('form').length; i++) {
+        $('form')[i].reset();
+        document.querySelectorAll(".placeholder").forEach(function (item) {
+          item.style.display = "block";
+        });
+      }
+
+      if (action === "application_fun") {
+        var el = document.createElement("div");
+        el.classList.add("goodFetch");
+        el.textContent = "Успешно.Ваша заявка отправлена";
+        document.querySelector(".application__form").append(el);
+        setTimeout(function () {
+          el.remove();
+        }, 4000);
+      } else if (action === "page-cont") {
+        document.querySelector(".modal__content").style.display = "none";
+
+        var _el = document.createElement("div");
+
+        _el.classList.add("goodFetch");
+
+        _el.textContent = "Успешно.Ваша заявка отправлена";
+        document.querySelector(".modal__dialog").append(_el);
+        setTimeout(function () {
+          _el.remove();
+
+          document.querySelector(".modal__content").style.display = "block";
+        }, 4000);
+      }
+    });
+  } else {
+    alert("Выберите скидку");
+  }
 });
 
 try {
   var checkbox = document.querySelector(".modal__checkbox");
   var btnSubmit = document.querySelector(".modal__button");
-  var applicationCheckBox = document.querySelector(".application__checkbox-bad");
-  var applicationSubmit = document.querySelector(".application__submit");
 
   try {
     checkbox.addEventListener("change", function () {
       if (checkbox.checked) {
         btnSubmit.classList.remove("modal__disabled");
         btnSubmit.classList.add("modal__submit");
+        btnSubmit.removeAttribute("disabled");
       } else {
         btnSubmit.classList.add("modal__disabled");
+        btnSubmit.setAttribute("disabled", "true");
         btnSubmit.classList.remove("modal__submit");
       }
     });
-  } catch (_unused4) {}
-
-  try {
-    applicationCheckBox.addEventListener("change", function (e) {
-      if (applicationCheckBox.checked) {
-        applicationSubmit.classList.remove("modal__disabled");
-        applicationSubmit.classList.add("modal__submit");
-      } else {
-        applicationSubmit.classList.add("modal__disabled");
-        applicationSubmit.classList.remove("modal__submit");
-      }
-    });
-  } catch (_unused5) {}
-} catch (_unused6) {}
+  } catch (_unused8) {}
+} catch (_unused9) {}
 
 try {
   document.querySelector(".menu-icon").addEventListener("click", function (e) {
@@ -241,21 +271,79 @@ try {
       document.querySelector(".header__list-hamburger").classList.remove("active-list");
     }
   });
-} catch (_unused7) {}
+} catch (_unused10) {}
 
 try {
-  var iframe = document.createElement("iframe"); // https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor
-} catch (_unused8) {}
+  $(window).scroll(function () {
+    var bottomOffset = 1100;
+
+    if ($(document).scrollTop() > $(document).height() - bottomOffset && !$('body').hasClass('loading')) {
+      if (typeof true_posts !== "undefined") {
+        console.log(true_posts);
+        $('body').addClass('loading');
+        $.post(myajax.url, {
+          action: 'news_loadmore',
+          query: true_posts || "",
+          page: current_page || "" //     beforeSend: function( xhr){
+          //     	$('body').addClass('loading');
+          //  },
+
+        }, function (data) {
+          if (data) {
+            // $('.menu__foods').append(data); // вставляем новые посты
+            current_page++; // увеличиваем номер страницы на единицу
+
+            $('.menu__loading').before(data);
+            $('body').removeClass('loading'); // 						current_page++;
+          } else {
+            // $('#news_loadmore').remove(); // если мы дошли до последней страницы постов, скроем кнопку
+            $('.menu__loading').remove();
+          }
+        });
+      }
+    }
+  }); // });
+} catch (_unused11) {} // jQuery(function($){
+// 	$(window).scroll(function(){
+// 		var bottomOffset = 400; // отступ от нижней границы сайта, до которого должен доскроллить пользователь, чтобы подгрузились новые посты
+// 		var data = {
+// 			'action': 'loadmore',
+// 			'query': true_posts,
+// 			'page' : current_page
+// 		};
+//         // console.log($(document).scrollTop())
+//         // console.log($(document).height())
+// 		if( $(document).scrollTop() > ($(document).height() - bottomOffset) && !$('body').hasClass('loading')){
+// 			$.ajax({
+// 				url:ajaxurl,
+// 				data:data,
+// 				type:'POST',
+// 				beforeSend: function( xhr){
+// 					$('body').addClass('loading');
+// 				},
+// 				success:function(data){
+// 					if( data ) { 
+// 						$('#true_loadmore').before(data);
+// 						$('body').removeClass('loading');
+// 						current_page++;
+// 					}
+// 				}
+// 			});
+// 		}
+// 	});
+// });
+
 
 try {
-  var btns = document.querySelectorAll(".tort__click");
+  var btns = document.querySelector(".tort__items");
   var modal = document.querySelector(".modal");
   var dialog = document.querySelector(".modal__dialog");
 
-  var _block = document.querySelector(".modal__block");
+  var _block = document.querySelector(".modal__block"); // btns.forEach(item => {
 
-  btns.forEach(function (item) {
-    item.addEventListener("click", function (e) {
+
+  btns.addEventListener("click", function (e) {
+    if (e.target.closest(".tort__item")) {
       document.body.style.overflow = "hidden";
       modal.style.transition = "all 1s";
       modal.style.overflow = "auto";
@@ -270,11 +358,13 @@ try {
       var inputTort = document.createElement("input");
       inputTort.classList.add("input__hidden");
       inputTort.value = target.dataset.nameTort;
+      inputTort.setAttribute("name", "tort");
       document.querySelector(".hidden__label").append(inputTort);
-    });
-  });
+    }
+  }); // })
+
   modal.addEventListener("click", function (e) {
-    if (e.target.classList.contains("modal")) {
+    if (e.target.classList.contains("modal") || e.target.classList.contains("modal_close")) {
       document.body.style.overflow = "";
       modal.style.transition = "none";
       modal.classList.remove("modal-active");
@@ -282,48 +372,27 @@ try {
       document.querySelector(".hidden__label").querySelector(".input__hidden").remove();
     }
   });
-} catch (_unused9) {}
+} catch (_unused12) {}
 
 try {
   var conts = document.querySelectorAll(".cont");
   var inputs = document.querySelector(".application").querySelectorAll(".application-input");
   conts.forEach(function (item) {
     item.addEventListener("click", function (e) {
-      var target = e.target.closest(".cont");
-      target.querySelector("input").focus();
-      target.querySelector(".placeholder").style.display = "none";
+      if (e.target.classList.contains("placeholder")) {
+        e.target.previousElementSibling.focus();
+      }
     });
   });
   inputs.forEach(function (item) {
+    item.addEventListener("focus", function (e) {
+      e.target.nextElementSibling.style.display = "none";
+    });
     item.addEventListener("blur", function (e) {
-      if (e.target.value.trim() == '') e.target.parentElement.nextElementSibling.style.display = "block";
+      if (e.target.value.trim() == '') e.target.nextElementSibling.style.display = "block";
     });
   });
-} catch (_unused10) {}
-
-try {
-  var labels = document.querySelectorAll(".application__label");
-  labels.forEach(function (item) {
-    item.addEventListener("click", function (e) {
-      var oldCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox");
-      var newCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox-block");
-
-      if (!oldCheckBoxs.checked) {
-        document.querySelectorAll(".application__checkbox").forEach(function (element) {
-          element.previousElementSibling.classList.remove("application__checkbox-block-active");
-        });
-        newCheckBoxs.classList.add("application__checkbox-block-active");
-      } // if (oldCheckBoxs.checked) {
-      //     oldCheckBoxs.checked = false;
-      //     newCheckBoxs.classList.remove("application__checkbox-block-active")
-      // } else {
-      //     oldCheckBoxs.checked = true;
-      //     newCheckBoxs.classList.add("application__checkbox-block-active")
-      // }
-
-    });
-  });
-} catch (_unused11) {}
+} catch (_unused13) {}
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -336,124 +405,6 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 }
 
 try {
-  var addDots = function addDots() {
-    var dots = document.createElement("div");
-    dots.classList.add("slider__dots");
-    elements.forEach(function (el, index) {
-      var dot = document.createElement("div");
-      dot.classList.add("slider__dot");
-      dot.setAttribute("data-count", index + 1);
-
-      if (index === 0) {
-        dot.classList.add("slider__dot-active");
-      }
-
-      dots.appendChild(dot);
-    }); // for (let index = 0; index < elements.length; i++) {
-    // }
-
-    document.querySelector(".slider").appendChild(dots);
-  };
-
-  var startInterval = function startInterval() {
-    interval = setInterval(goNext, 6000);
-  };
-
-  var changeDots = function changeDots(e, color) {
-    if (e) {
-      slider.querySelectorAll(".slider__dot").forEach(function (element) {
-        element.classList.remove("slider__dot-active");
-      });
-      e.target.classList.add("slider__dot-active");
-      var index = e.target.getAttribute("data-count");
-      count = index;
-      var result = count * parseInt(width) - parseInt(width);
-      content.style.transform = "translateX(-".concat(result, "px)");
-    }
-
-    if (color) {
-      slider.querySelectorAll(".slider__dot").forEach(function (item, index) {
-        item.classList.remove("slider__dot-active");
-
-        if (index + 1 === count) {
-          item.classList.add("slider__dot-active");
-        }
-      });
-    }
-  };
-
-  var goNext = function goNext() {
-    if (count === elements.length) {
-      content.style.transform = "translateX(0)";
-      count = 1;
-    } else {
-      count++;
-      var result = (count - 1) * parseInt(width);
-      content.style.transform = "translateX(-".concat(result, "px)");
-    }
-
-    changeDots(null, "changeColor");
-  };
-
-  var goPrev = function goPrev() {
-    if (count === 1) {
-      var result = (elements.length - 1) * parseInt(width) + "px";
-      content.style.transform = "translateX(-".concat(result, ")");
-      count = elements.length;
-    } else {
-      count--;
-
-      var _result = count * parseInt(width) - parseInt(width);
-
-      content.style.transform = "translateX(-".concat(_result, "px)");
-    }
-
-    changeDots(null, "changeColor");
-  };
-
-  // if (!Array.prototype.forEach) {
-  //     Array.prototype.forEach = function (callback, thisArg) {
-  //       var T, k;
-  //       if (this == null) {
-  //         throw new TypeError(' this is null or not defined');
-  //       }
-  //       // 1. Положим O равным результату вызова ToObject passing the |this| value as the argument.
-  //       var O = Object(this);
-  //       // 2. Положим lenValue равным результату вызова внутреннего метода Get объекта O с аргументом "length".
-  //       // 3. Положим len равным ToUint32(lenValue).
-  //       var len = O.length >>> 0;
-  //       // 4. Если IsCallable(callback) равен false, выкинем исключение TypeError.
-  //       // Смотрите: http://es5.github.com/#x9.11
-  //       if (typeof callback !== 'function') {
-  //           throw new TypeError(callback + ' is not a function');
-  //       }
-  //       // 5. Если thisArg присутствует, положим T равным thisArg; иначе положим T равным undefined.
-  //       if (arguments.length > 1) {
-  //         T = thisArg;
-  //       }
-  //       // 6. Положим k равным 0
-  //       k = 0;
-  //       // 7. Пока k < len, будем повторять
-  //       while (k < len) {
-  //         var kValue;
-  //         // a. Положим Pk равным ToString(k).
-  //         //   Это неявное преобразование для левостороннего операнда в операторе in
-  //         // b. Положим kPresent равным результату вызова внутреннего метода HasProperty объекта O с аргументом Pk.
-  //         //   Этот шаг может быть объединён с шагом c
-  //         // c. Если kPresent равен true, то
-  //         if (k in O) {
-  //           // i. Положим kValue равным результату вызова внутреннего метода Get объекта O с аргументом Pk.
-  //           kValue = O[k];
-  //           // ii. Вызовем внутренний метод Call функции callback с объектом T в качестве значения this и
-  //           // списком аргументов, содержащим kValue, k и O.
-  //           callback.call(T, kValue, k, O);
-  //         }
-  //         // d. Увеличим k на 1.
-  //         k++;
-  //       }
-  //       // 8. Вернём undefined.
-  //     };
-  //   }
   (function (ELEMENT) {
     ELEMENT.matches = ELEMENT.matches || ELEMENT.mozMatchesSelector || ELEMENT.msMatchesSelector || ELEMENT.oMatchesSelector || ELEMENT.webkitMatchesSelector;
 
@@ -467,29 +418,115 @@ try {
     };
   })(Element.prototype);
 
-  var width = window.getComputedStyle(document.querySelector(".slider__wrapper")).width;
-  var wrapper = document.querySelector(".slider__wrapper");
-  var elements = document.querySelectorAll(".slider__item");
-  var content = document.querySelector(".slider__content");
-  var prev = document.querySelector(".slider__left");
-  var next = document.querySelector(".slider__right");
-  var slider = document.querySelector(".slider");
-  var count = 1;
-  addDots();
-  content.style.width = elements.length * parseInt(width) + "px";
-  next.addEventListener("click", goNext);
-  prev.addEventListener("click", goPrev);
-  var interval;
-  startInterval();
-  wrapper.addEventListener("mouseenter", function () {
-    clearInterval(interval);
-  });
-  wrapper.addEventListener("mouseleave", function () {
-    startInterval();
-  });
-  slider.querySelectorAll(".slider__dot").forEach(function (item) {
-    item.addEventListener("click", function (e) {
-      return changeDots(e, null);
-    });
-  });
-} catch (_unused12) {}
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  }); // const width = window.getComputedStyle(document.querySelector(".slider__wrapper")).width;
+  // const wrapper = document.querySelector(".slider__wrapper");
+  // const elements = document.querySelectorAll(".slider__item");
+  // const content = document.querySelector(".slider__content");
+  // const prev = document.querySelector(".slider__left");
+  // const next = document.querySelector(".slider__right");
+  // const slider = document.querySelector(".slider");
+  // let count = 1;
+  // function addDots() {
+  //     const dots = document.createElement("div");
+  //     dots.classList.add("slider__dots");
+  //     elements.forEach((el, index) => {
+  //         const dot = document.createElement("div")
+  //         dot.classList.add("slider__dot");
+  //         dot.setAttribute("data-count", index + 1)
+  //         if (index === 0) {
+  //             dot.classList.add("slider__dot-active");  
+  //         }
+  //         dots.appendChild(dot);
+  //     })
+  //     // for (let index = 0; index < elements.length; i++) {
+  //     // }
+  //     document.querySelector(".slider").appendChild(dots);
+  // }
+  // addDots();
+  // content.style.width = elements.length * parseInt(width) + "px";
+  // next.addEventListener("click", goNext);
+  // prev.addEventListener("click", goPrev);
+  // let interval;
+  // function startInterval() {
+  //     interval = setInterval(goNext, 6000);
+  // }
+  // startInterval();
+  // wrapper.addEventListener("mouseenter", () => {
+  //     clearInterval(interval);
+  // })
+  // wrapper.addEventListener("mouseleave", () => {
+  //     startInterval();
+  // })
+  // slider.querySelectorAll(".slider__dot").forEach(item => {
+  //     item.addEventListener("click", (e) => changeDots(e, null))
+  // })
+  // function changeDots(e, color) {
+  //     if (e) {
+  //         slider.querySelectorAll(".slider__dot").forEach(element => {
+  //             element.classList.remove("slider__dot-active");
+  //         })
+  //         e.target.classList.add("slider__dot-active");
+  //         const index = e.target.getAttribute("data-count");
+  //         count = index;
+  //         const result = (count * parseInt(width)) - parseInt(width);
+  //         content.style.transform = `translateX(-${result}px)`;
+  //     }
+  //     if (color) {
+  //         slider.querySelectorAll(".slider__dot").forEach((item, index)=> {
+  //             item.classList.remove("slider__dot-active");
+  //             if (index+1 === count) {
+  //                 item.classList.add("slider__dot-active");
+  //             }
+  //         });
+  //     }
+  // }
+  // function goNext() {
+  //     if (count === elements.length) {
+  //         content.style.transform = `translateX(0)`;
+  //         count = 1;
+  //     } else {
+  //         count++;
+  //         const result = (count - 1) * parseInt(width);
+  //         content.style.transform = `translateX(-${result}px)`;
+  //     }
+  //     changeDots(null, "changeColor")
+  // }
+  // function goPrev() {
+  //     if (count === 1) {
+  //         const result =( (elements.length - 1) * parseInt(width)) + "px";
+  //         content.style.transform = `translateX(-${result})`;
+  //         count = elements.length;
+  //     } else {
+  //         count--;
+  //         const result = (count * parseInt(width)) - parseInt(width);
+  //         content.style.transform = `translateX(-${result}px)`;
+  //     }
+  //     changeDots(null, "changeColor")
+  // }
+  // document.querySelector(".slider__buttons").addEventListener("pointermove", e => {
+  //     const el = e.target.nextElementSibling.querySelector(".slider__content");
+  //     // el.pointermove(() => {
+  //     //     console.log("fff")
+  //     // })
+  //     console.log(e);
+  //     console.log(el);
+  //     // document.onpointermove = () => {
+  //     //     console.log("[f[f[f")
+  //     // };
+  //     document.onpointerup = () => {
+  //         console.log("fff");
+  //     }
+  // });
+} catch (_unused14) {}

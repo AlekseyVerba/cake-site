@@ -1,0 +1,20 @@
+.header-green__link-active + .header__line {
+    opacity: 1;
+}
+
+.footer__link-active + .footer__line {
+    opacity: 1;
+}
+
+.burger-active {
+    position: relative;
+}
+
+.burger-line {
+    width: 100%;
+    position: absolute;
+    height: 3px;
+    background: #ffd166;
+    bottom: -7px;
+    left: 0;
+}
