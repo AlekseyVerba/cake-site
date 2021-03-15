@@ -32,19 +32,12 @@
         </a>
     </div>
     <div class="program__bigImg">
-        <!-- <img src="<?php the_field("img_program"); ?>" alt="img" class="program__bigImg-img"> -->
         <picture>
             <?php $per=get_field("img_program"); ?>
             <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
             <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)">
             <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
         </picture>
-        <!-- <img 
-        data-sizes="auto"
-        data-src="<?php echo $per["sizes"]["medium"] ?>"
-        data-srcset="<?php echo $per["sizes"]["medium-large"] ?> 300w,
-        <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
-        /> -->
     </div>
     <div class="description program">
         <div class="container">
@@ -138,12 +131,11 @@
                         }
 
                         ?>
-                            <div class="application__label  <?php echo $class; ?>">
-                                <div class="application__checkbox-block"></div>
-                                <img src="<?php the_sub_field('radio_img');?>" alt="page" />
-                                <input type="radio" value="<?php echo $val ?>" name="choise" class="application__checkbox"/>
-                                <span><?php the_sub_field('radio_text'); ?></span>
-                            </div>
+                        <label class="radio application__label <?php echo $class; ?>">
+                            <img src="<?php the_sub_field('radio_img');?>" alt="page" />
+                            <input type="radio" class="application__radio" name="choise" value="<?php echo $val ?>"/>
+                            <div class="radio__text"><?php the_sub_field('radio_text'); ?></div>
+                        </label>
                         <?php
                         $key += 1;
 
@@ -158,16 +150,6 @@
                 ?>
 
 
-                <!-- <div class="application__label application__label-one">
-                    <div class="application__checkbox-block"></div>
-                    <input type="radio" name="choise" class="application__checkbox" value="saleOnTort"/>
-                    Хочу скидку на тортики
-                </div>
-                <div class="application__label application__label-two">
-                    <div class="application__checkbox-block"></div>
-                    <input type="radio" name="choise" class="application__checkbox" value="saleOnCoffee"/>
-                    Очень люблю кофе, хочу скидку
-                </div> -->
                 <div class="cont">
                     <input type="text" class="application-input application__surname" name="surname" placeholder required>
                     <div class="placeholder">
@@ -204,11 +186,10 @@
                     </div>
                 </div>
                 <div class="application__opis">* Звездочкой отмечены поля, обязательные для заполнения.</div>
-                <div class="application__label-checkbox">
-                    <div class="application__checkbox-bad-block"></div>
-                    <input type="checkbox" name="check" class="application__checkbox-bad">
-                    Согласен(а) на обработку моих персональных данных
-                </div>
+                <label class="checkbox application__label-checkbox">
+                    <input type="checkbox" class="application-checkbox" name="sale"/>
+                    <div class="checkbox__text">Согласен(а) на обработку моих персональных данных</div>
+                </label>
                 <button type="submit" class="application__submit modal__button modal__disabled" disabled="true">отправить заявку</button>
             </form>
         </div>

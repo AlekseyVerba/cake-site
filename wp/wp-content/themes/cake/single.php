@@ -7,9 +7,6 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread infoTorts__bread-aniamte">
-                    <!-- <a href="#" class="infoTorts__home">Главная</a>
-                    <a class="infoTorts__home">Меню</a>
-                    <span class="infoTorts__next">Американский завтрак</span> -->
                     <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -18,11 +15,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="program__wrapper menu__container">
-                <a href="#" class="infoTorts__goHome program__goHome">
-                    назад на главную
-                </a>
-            </div> -->
         </div>
     </div>
 
@@ -64,9 +56,6 @@
                                                 <?= $cat->name;?>
                                             </a>
                                         </li>
-                                            <!-- <a href="<?= $cat->slug;?>" class="filter__link">
-                                                <?= $cat->name;?>
-                                            </a> -->
                                         <?php endforeach;
                                     endif;?>
 
@@ -74,9 +63,7 @@
                 </ul>
                 <div class="menu__foods menu__foods-animate">
                         <div class="item__food">
-                        <!-- <p><?php echo $terms; ?></p> -->
                             <div class="item__food-img">
-                                <!-- <img src="<?php the_field("img_tovar"); ?>" alt="breakfast"> -->
                                 <?php
                                         $per=get_field("img_tovar");
                                         if ($per) {
@@ -86,12 +73,6 @@
                                                     <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
                                                     <img src="<?php echo $per["url"] ?>" alt="item"  class="lazyload"/>
                                                 </picture>
-                                                <!-- <img 
-                                                data-sizes="auto"
-                                                data-src="<?php echo $perTwo["sizes"]["thumbnail"] ?>"
-                                                data-srcset="<?php echo $perTwo["sizes"]["medium"] ?> 450w,
-                                                <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
-                                                /> -->
                                             <?php
                                         } else {
                                             $perTwo = get_field("no_found", 41);
@@ -101,12 +82,6 @@
                                                     <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
                                                     <img src="<?php echo $perTwo["url"] ?>" alt="item" class="lazyload"/>
                                                 </picture>
-                                                <!-- <img 
-                                                data-sizes="auto"
-                                                data-src="<?php echo $perTwo["sizes"]["medium"] ?>"
-                                                data-srcset="<?php echo $perTwo["sizes"]["medium-large"] ?> 450w,
-                                                <?php echo $perTwo["sizes"]["medium"] ?> 768w" class="lazyload"
-                                                /> -->
 
                                             <?php
                                         }
@@ -130,13 +105,7 @@
                         'post_type' => array( 'menu' ),
                         'orderby' => "rand",
                         'posts_per_page'   => 4, 
-                        // 'tax_query' => array(
-                        // array(
-                        // 'taxonomy' => 'category_menu',
-                        // 'field'    => 'slug',
-                        // 'terms'    => $cat_slug
-                        // )
-                        // )
+
                     ));
                 ?>
                 <?php if ($query->have_posts()) : ?>
@@ -149,7 +118,6 @@
                                     <p class="tort__order">Подробнее</p>
                                 </div>
                                 <div class="tort__img-block">
-                                    <!-- <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img"> -->
                                     <?php
                                         $per=get_field("img_tovar");
                                         if ($per) {

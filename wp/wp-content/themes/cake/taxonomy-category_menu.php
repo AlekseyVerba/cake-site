@@ -48,9 +48,6 @@
                                                 <?= $cat->name;?>
                                             </a>
                                         </li>
-                                            <!-- <a href="<?= $cat->slug;?>" class="filter__link">
-                                                <?= $cat->name;?>
-                                            </a> -->
                                         <?php endforeach;
                                     endif;?>
 
@@ -88,17 +85,6 @@
                                     <p class="tort__order">Подробнее</p>
                                 </div>
                                 <div class="tort__img-block">
-                                    <!-- <img src="<?php the_field("img_tovar"); ?>" alt="tort" class="tort__img"> -->
-                                    <!-- <?php $per=get_field("img_tovar") ?>
-                                    <?php if (empty($per)) {
-                                        ?>
-                                            <picture>
-                                        <source srcset="<?php echo $per["sizes"]["thumbnail"] ?>" media="(max-width: 450px)">
-                                        <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
-                                        <img src="<?php echo $per["url"] ?>" alt="item" />
-                                    </picture>
-                                        <?php
-                                    } ?> -->
 
 
                                     <?php
@@ -164,7 +150,6 @@
                             <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/loading.png" alt="loading">
                         </div>
                         <script id="true_loadmore">
-                        // var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
                         var true_posts = '<?php echo serialize($query->query_vars); ?>';
                         var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
                         var max_pages = <?php echo $query->max_num_pages ?>

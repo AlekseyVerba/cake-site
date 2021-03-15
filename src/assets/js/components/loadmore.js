@@ -1,36 +1,31 @@
 try {
-    
 
-// jQuery(function($){
-    $(window).scroll(function() {
+
+    $(window).scroll(function () {
         let bottomOffset = 1100;
-        // console.log("top : " + $(document).scrollTop())
-        // console.log("height : " + $(document).height())
-        // console.log("minus: " + $(document).height() - bottomOffset)
-        // console.log(bottomOffset)
-        if( $(document).scrollTop() > ($(document).height() - bottomOffset) && !$('body').hasClass('loading')) {
+        if ($(document).scrollTop() > ($(document).height() - bottomOffset) && !$('body').hasClass('loading')) {
             if (typeof true_posts !== "undefined") {
                 console.log(true_posts)
                 $('body').addClass('loading')
-                $.post (
+                $.post(
                     myajax.url,
                     {
                         action: 'news_loadmore',
                         query: true_posts || "",
-                        page : current_page || ""
-                    //     beforeSend: function( xhr){
-                    //     	$('body').addClass('loading');
-                    //  },
+                        page: current_page || ""
+                        //     beforeSend: function( xhr){
+                        //     	$('body').addClass('loading');
+                        //  },
                     },
-                    function(data) {
-                        if( data ) { 
+                    function (data) {
+                        if (data) {
                             // $('.menu__foods').append(data); // вставляем новые посты
                             current_page++; // увеличиваем номер страницы на единицу
                             $('.menu__loading').before(data);
                             $('body').removeClass('loading');
-    // 						current_page++;
-                            
-            
+                            // 						current_page++;
+
+
                         } else {
                             // $('#news_loadmore').remove(); // если мы дошли до последней страницы постов, скроем кнопку
                             $('.menu__loading').remove();
@@ -40,11 +35,11 @@ try {
             }
         }
     });
-// });
+    // });
 
 
 
-} catch {}
+} catch { }
 
 
 

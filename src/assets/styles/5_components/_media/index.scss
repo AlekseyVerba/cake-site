@@ -14,3 +14,14 @@
 @import "menu";
 @import "item";
 @import "error";
+@media (max-width: 639px) {
+    .yellowBlock {
+        width: 90%;
+        top: 40px;
+    }
+}
+@media (max-width: 420px) {
+    .yellowBlock {
+        top: 28px;
+    }
+}

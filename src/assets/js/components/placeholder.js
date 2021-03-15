@@ -5,20 +5,14 @@ try {
 
 
 
-    // conts.forEach(item => {
-    //     item.addEventListener("click", (e) => {
-    //     const target = e.target.closest(".cont");
-    //     target.querySelector("input").focus();
-    //     target.querySelector(".placeholder").style.display = "none";
-    //     })
-    // })
+
 
     conts.forEach(item => {
         item.addEventListener("click", (e) => {
             if (e.target.classList.contains("placeholder")) {
                 e.target.previousElementSibling.focus();
             }
-            
+
         })
     })
 
@@ -30,8 +24,8 @@ try {
 
         item.addEventListener("blur", (e) => {
             if (e.target.value.trim() == '')
-            e.target.nextElementSibling.style.display = "block";
+                e.target.nextElementSibling.style.display = "block";
         })
     })
-} catch {}
+} catch { }
 

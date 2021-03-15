@@ -20,6 +20,7 @@
 
 // ** Параметры MySQL: Эту информацию можно получить у вашего хостинг-провайдера ** //
 /** Имя базы данных для WordPress */
+
 define( 'DB_NAME', 'cake' );
 
 /** Имя пользователя MySQL */
@@ -36,6 +37,7 @@ define( 'DB_CHARSET', 'utf8mb4' );
 
 /** Схема сопоставления. Не меняйте, если не уверены. */
 define( 'DB_COLLATE', '' );
+// define('WP_DEBUG', true);
 
 /**#@+
  * Уникальные ключи и соли для аутентификации.
@@ -76,7 +78,7 @@ $table_prefix = 'wp_';
  *
  * @link https://ru.wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 /* Это всё, дальше не редактируем. Успехов! */
 

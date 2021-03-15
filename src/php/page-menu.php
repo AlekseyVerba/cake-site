@@ -13,8 +13,7 @@
                     Меню
                 </h1>
                 <div class="infoTorts__bread infoTorts__bread-aniamte">
-                    <!-- <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Меню</span> -->
+
                     <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
                     <?php if(function_exists('bcn_display'))
                     {
@@ -58,13 +57,6 @@
                     $query = new WP_Query( array(
                         'post_type' => array( 'menu' ),
                         'posts_per_page'   => 4, 
-                        // 'tax_query' => array(
-                        // array(
-                        // 'taxonomy' => 'category_menu',
-                        // 'field'    => 'slug',
-                        // 'terms'    => $cat_slug
-                        // )
-                        // )
                     ));
                 ?>
                 <?php if ($query->have_posts()) : ?>
@@ -88,12 +80,6 @@
                                                     <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
                                                     <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload"/>
                                                 </picture>
-                                                <!-- <img 
-                                                data-sizes="auto"
-                                                data-src="<?php echo $per["sizes"]["thumbnail"] ?>"
-                                                data-srcset="<?php echo $per["sizes"]["medium-large"] ?> 450w,
-                                                <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
-                                                /> -->
                                             <?php
                                         } else {
                                             $perTwo = get_field("no_found", 41);
@@ -103,13 +89,6 @@
                                                     <source srcset="<?php echo $perTwo["sizes"]["medium"] ?>" media="(max-width: 768px)">
                                                     <img src="<?php echo $perTwo["url"] ?>" alt="item" class="lazyload"/>
                                                 </picture>
-
-                                                <!-- <img 
-                                                data-sizes="auto"
-                                                data-src="<?php echo $perTwo["sizes"]["thumbnail"] ?>"
-                                                data-srcset="<?php echo $perTwo["sizes"]["medium"] ?> 450w,
-                                                <?php echo $perTwo["sizes"]["medium"] ?> 768w" class="lazyload"
-                                                /> -->
 
                                             <?php
                                         }
@@ -152,7 +131,6 @@
 
                     <?php if (  $query->max_num_pages > 1 ) : ?>
                         <script id="true_loadmore">
-                        // var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
                         var true_posts = '<?php echo serialize($query->query_vars); ?>';
                         var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
                         var max_pages = <?php echo $query->max_num_pages ?>

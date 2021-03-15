@@ -15,8 +15,6 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread">
-                    <!-- <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Контакты</span> -->
                     <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -83,14 +81,6 @@ function getYaMap(){
                     myMap.behaviors.disable('drag');
                 }
 
-            // var myGeoObject = new ymaps.GeoObject({
-            //     geometry: {
-            //         type: "Point", // тип геометрии - точка
-            //         coordinates: [52.281374, 104.284550] // координаты точки
-            //     }
-            // });
-            // myMap.geoObjects.add(myGeoObject); 
-            // myMap.controls.remove();
         }
 
         function downloadJSAtOnload() {

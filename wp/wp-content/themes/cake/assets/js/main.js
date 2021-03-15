@@ -158,109 +158,31 @@ try {
 } catch (_unused4) {}
 
 try {
-  // const  = document.querySelector(".application__label-checkbox");
-  // const button = document.querySelector(".application__submit");
-  var changeCheckBox = function changeCheckBox(selectorLabel, selectorCheckOld, selectorCheckNew, buttonSelector) {
-    var checboxBlock = document.querySelector(selectorLabel);
+  var changeDisabled = function changeDisabled(checkBtnSelector, buttonSelector) {
+    console.log("fff");
+    var check = document.querySelector(checkBtnSelector);
     var button = document.querySelector(buttonSelector);
-    checboxBlock.addEventListener("click", function (e) {
-      var oldCheckBox = checboxBlock.querySelector(selectorCheckOld);
-      var newCheckBox = checboxBlock.querySelector(selectorCheckNew);
-
-      if (oldCheckBox.checked) {
-        oldCheckBox.checked = false;
-        newCheckBox.classList.remove("application__checkbox-bad-block-active");
-        button.classList.add("modal__disabled");
-        button.classList.remove("modal__submit");
-        button.setAttribute("disabled", "true");
-      } else {
-        oldCheckBox.checked = true;
-        newCheckBox.classList.add("application__checkbox-bad-block-active");
-        button.classList.remove("modal__disabled");
-        button.classList.add("modal__submit");
+    check.addEventListener("change", function () {
+      if (check.checked) {
         button.removeAttribute("disabled");
+        button.classList.add("modal__submit");
+        button.classList.remove("modal__disabled");
+      } else {
+        button.setAttribute("disabled", "true");
+        button.classList.remove("modal__submit");
+        button.classList.add("modal__disabled");
       }
     });
   };
 
   try {
-    changeCheckBox(".application__label-checkbox", ".application__checkbox-bad", ".application__checkbox-bad-block", ".application__submit");
+    changeDisabled(".application-checkbox", ".application__submit");
   } catch (_unused5) {}
 
   try {
-    changeCheckBox(".modal__label", ".modal__checkbox", ".application__checkbox-bad-block", ".modal__button");
-  } catch (_unused6) {} // checbox.addEventListener("click", (e) => {
-  //     // const oldCheckBox = checbox.querySelector(".application__checkbox-bad");
-  //     // const newCheckBox = checbox.querySelector(".application__checkbox-bad-block");
-  //     if (oldCheckBox.checked) {
-  //         oldCheckBox.checked = false;
-  //         newCheckBox.classList.remove("application__checkbox-bad-block-active");
-  //         button.classList.add("modal__disabled");
-  //         button.classList.remove("modal__submit");
-  //         button.setAttribute("disabled", "true")
-  //     } else {
-  //         oldCheckBox.checked = true;
-  //         newCheckBox.classList.add("application__checkbox-bad-block-active");
-  //         button.classList.remove("modal__disabled");
-  //         button.classList.add("modal__submit");
-  //         button.removeAttribute("disabled")
-  //     }
-  // })
-  // try {
-  // }
-
-} catch (_unused7) {} //   $('#btn-menu-mob').click(function(e) {
-//       e.preventDefault();
-//       $('.header__svg-mob').addClass('is-active');
-//       $('#menu-mobile').animate({ 
-//         right: '0px' 
-//         }, 300);
-//       $('#menu-mobile').animate({ 
-//         right: '0px' 
-//         }, 300);
-//     $('body').css('overflow', 'hidden');
-//     $('.page').animate({ 
-//         right: '190px' 
-//     }, 200); 
-// });
-// $('.menu-mobile__svg-close').click(function(e) {
-//     e.preventDefault();
-//     $('.header__svg-mob').removeClass('is-active');
-//     $('#menu-mobile').animate({ 
-//       right: '-207px' 
-//   }, 300);
-//   $('body').css('overflow', 'auto');
-//   $('.page').animate({ 
-//       right: '0px' 
-//   }, 200); 
-// });
-// // header-swiper
-// var swiper = new Swiper('#main-swiper', {
-//   fadeEffect: {
-//     crossFade: true
-//   },
-//   navigation: {
-//     nextEl: '.swiper-button-next--header',
-//     prevEl: '.swiper-button-prev--header',
-//   },
-//   pagination: {
-//     el: '.swiper-pagination',
-//     type: 'bullets',
-//     clickable: true,
-//   },
-//   loop: true,
-//   // autoplay: {
-//   //   delay: 2300,
-//   // },
-//   fadeEffect: {
-//     crossFade: true
-//   },
-//   speed: 800,
-//   watchSlidesProgress: true,
-//   watchVisibility: true,
-//   disableOnInteraction: true,
-// });
-
+    changeDisabled(".torts__checkbox", ".modal__tort");
+  } catch (_unused6) {}
+} catch (_unused7) {}
 
 $('form').on('submit', function (e) {
   e.preventDefault();
@@ -269,7 +191,7 @@ $('form').on('submit', function (e) {
   var hasRadio = true;
 
   if (action === "application_fun") {
-    var radioButtons = document.querySelectorAll(".application__checkbox");
+    var radioButtons = document.querySelectorAll(".application__radio");
     radioButtons.forEach(function (item) {
       if (item.checked) {
         hasRadio = true;
@@ -323,8 +245,6 @@ $('form').on('submit', function (e) {
 try {
   var checkbox = document.querySelector(".modal__checkbox");
   var btnSubmit = document.querySelector(".modal__button");
-  var applicationCheckBox = document.querySelector(".application__checkbox-bad");
-  var applicationSubmit = document.querySelector(".application__submit");
 
   try {
     checkbox.addEventListener("change", function () {
@@ -338,19 +258,7 @@ try {
         btnSubmit.classList.remove("modal__submit");
       }
     });
-  } catch (_unused8) {} // try {
-  //     applicationCheckBox.addEventListener("change", (e) => {
-  //         if (applicationCheckBox.checked) {
-  //             applicationSubmit.classList.remove("modal__disabled");
-  //             btnSubmit.removeAttribute("disabled");
-  //             applicationSubmit.classList.add("modal__submit");
-  //         } else {
-  //             applicationSubmit.classList.add("modal__disabled");
-  //             applicationSubmit.classList.remove("modal__submit");
-  //         }
-  //     })
-  // } catch {}
-
+  } catch (_unused8) {}
 } catch (_unused9) {}
 
 try {
@@ -366,16 +274,8 @@ try {
 } catch (_unused10) {}
 
 try {
-  var iframe = document.createElement("iframe"); // https://yandex.ru/map-widget/v1/?um=constructor%3A92636b349eb06f0cc5b9d4323ea0f1eb031d6399924e0e0c172886b57b5c1a79&amp;source=constructor
-} catch (_unused11) {}
-
-try {
-  // jQuery(function($){
   $(window).scroll(function () {
-    var bottomOffset = 1100; // console.log("top : " + $(document).scrollTop())
-    // console.log("height : " + $(document).height())
-    // console.log("minus: " + $(document).height() - bottomOffset)
-    // console.log(bottomOffset)
+    var bottomOffset = 1100;
 
     if ($(document).scrollTop() > $(document).height() - bottomOffset && !$('body').hasClass('loading')) {
       if (typeof true_posts !== "undefined") {
@@ -403,7 +303,7 @@ try {
       }
     }
   }); // });
-} catch (_unused12) {} // jQuery(function($){
+} catch (_unused11) {} // jQuery(function($){
 // 	$(window).scroll(function(){
 // 		var bottomOffset = 400; // отступ от нижней границы сайта, до которого должен доскроллить пользователь, чтобы подгрузились новые посты
 // 		var data = {
@@ -472,18 +372,11 @@ try {
       document.querySelector(".hidden__label").querySelector(".input__hidden").remove();
     }
   });
-} catch (_unused13) {}
+} catch (_unused12) {}
 
 try {
   var conts = document.querySelectorAll(".cont");
-  var inputs = document.querySelector(".application").querySelectorAll(".application-input"); // conts.forEach(item => {
-  //     item.addEventListener("click", (e) => {
-  //     const target = e.target.closest(".cont");
-  //     target.querySelector("input").focus();
-  //     target.querySelector(".placeholder").style.display = "none";
-  //     })
-  // })
-
+  var inputs = document.querySelector(".application").querySelectorAll(".application-input");
   conts.forEach(function (item) {
     item.addEventListener("click", function (e) {
       if (e.target.classList.contains("placeholder")) {
@@ -499,36 +392,7 @@ try {
       if (e.target.value.trim() == '') e.target.nextElementSibling.style.display = "block";
     });
   });
-} catch (_unused14) {}
-
-try {
-  var labels = document.querySelectorAll(".application__label");
-  labels.forEach(function (item) {
-    item.addEventListener("click", function (e) {
-      var oldCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox");
-      var newCheckBoxs = e.target.closest(".application__label").querySelector(".application__checkbox-block");
-
-      if (!oldCheckBoxs.checked) {
-        console.log("true");
-        document.querySelectorAll(".application__checkbox-block").forEach(function (element) {
-          element.classList.remove("application__checkbox-block-active");
-        });
-        document.querySelectorAll(".application__checkbox").forEach(function (el) {
-          el.checked = false;
-        });
-        newCheckBoxs.classList.add("application__checkbox-block-active");
-        oldCheckBoxs.checked = true;
-      } // if (oldCheckBoxs.checked) {
-      //     oldCheckBoxs.checked = false;
-      //     newCheckBoxs.classList.remove("application__checkbox-block-active")
-      // } else {
-      //     oldCheckBoxs.checked = true;
-      //     newCheckBoxs.classList.add("application__checkbox-block-active")
-      // }
-
-    });
-  });
-} catch (_unused15) {}
+} catch (_unused13) {}
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -541,49 +405,6 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 }
 
 try {
-  // if (!Array.prototype.forEach) {
-  //     Array.prototype.forEach = function (callback, thisArg) {
-  //       var T, k;
-  //       if (this == null) {
-  //         throw new TypeError(' this is null or not defined');
-  //       }
-  //       // 1. Положим O равным результату вызова ToObject passing the |this| value as the argument.
-  //       var O = Object(this);
-  //       // 2. Положим lenValue равным результату вызова внутреннего метода Get объекта O с аргументом "length".
-  //       // 3. Положим len равным ToUint32(lenValue).
-  //       var len = O.length >>> 0;
-  //       // 4. Если IsCallable(callback) равен false, выкинем исключение TypeError.
-  //       // Смотрите: http://es5.github.com/#x9.11
-  //       if (typeof callback !== 'function') {
-  //           throw new TypeError(callback + ' is not a function');
-  //       }
-  //       // 5. Если thisArg присутствует, положим T равным thisArg; иначе положим T равным undefined.
-  //       if (arguments.length > 1) {
-  //         T = thisArg;
-  //       }
-  //       // 6. Положим k равным 0
-  //       k = 0;
-  //       // 7. Пока k < len, будем повторять
-  //       while (k < len) {
-  //         var kValue;
-  //         // a. Положим Pk равным ToString(k).
-  //         //   Это неявное преобразование для левостороннего операнда в операторе in
-  //         // b. Положим kPresent равным результату вызова внутреннего метода HasProperty объекта O с аргументом Pk.
-  //         //   Этот шаг может быть объединён с шагом c
-  //         // c. Если kPresent равен true, то
-  //         if (k in O) {
-  //           // i. Положим kValue равным результату вызова внутреннего метода Get объекта O с аргументом Pk.
-  //           kValue = O[k];
-  //           // ii. Вызовем внутренний метод Call функции callback с объектом T в качестве значения this и
-  //           // списком аргументов, содержащим kValue, k и O.
-  //           callback.call(T, kValue, k, O);
-  //         }
-  //         // d. Увеличим k на 1.
-  //         k++;
-  //       }
-  //       // 8. Вернём undefined.
-  //     };
-  //   }
   (function (ELEMENT) {
     ELEMENT.matches = ELEMENT.matches || ELEMENT.mozMatchesSelector || ELEMENT.msMatchesSelector || ELEMENT.oMatchesSelector || ELEMENT.webkitMatchesSelector;
 
@@ -595,30 +416,7 @@ try {
         return null;
       } else return this.parentElement.closest(selector);
     };
-  })(Element.prototype); //   var mySwiper = new Swiper ('.swiper-container', {
-  //     // направление: «вертикальное», // опция вертикального переключения (по умолчанию переключение по горизонтали, если не установлено)
-  //     loop: true, // опция режима петли
-  //     // Если нужен пейджер
-  // pagination: {
-  //  el: '.swiper-pagination',
-  // },
-  //     // Если вам нужно двигаться вперед и назад
-  // navigation: {
-  //  nextEl: '.swiper-button-next',
-  //  prevEl: '.swiper-button-prev',
-  // },
-  //     // Если вам нужна полоса прокрутки
-  // scrollbar: {
-  //  el: '.swiper-scrollbar',
-  // },
-  // })
-  // const swiper = new Swiper('.swiper-container', {
-  //     navigation: {
-  //         nextEl: '.swiper-button-next',
-  //         prevEl: '.swiper-button-prev',
-  //       },
-  //   });
-
+  })(Element.prototype);
 
   var swiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
@@ -632,8 +430,7 @@ try {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     }
-  }); //   swiper.slideNext();
-  // const width = window.getComputedStyle(document.querySelector(".slider__wrapper")).width;
+  }); // const width = window.getComputedStyle(document.querySelector(".slider__wrapper")).width;
   // const wrapper = document.querySelector(".slider__wrapper");
   // const elements = document.querySelectorAll(".slider__item");
   // const content = document.querySelector(".slider__content");
@@ -732,4 +529,4 @@ try {
   //         console.log("fff");
   //     }
   // });
-} catch (_unused16) {}
+} catch (_unused14) {}

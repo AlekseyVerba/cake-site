@@ -13,8 +13,6 @@
                     <?php the_title(); ?>
                 </h1>
                 <div class="infoTorts__bread">
-                    <!-- <a href="#" class="infoTorts__home">Главная</a>
-                    <span class="infoTorts__next">Торты на заказ</span> -->
                     <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -26,9 +24,6 @@
                    <?php the_field("tort_text_one") ?>
                 </p>
                     <div class="infoTorts__br"></div>
-                    <!-- <p class="infoTorts__text infoTorts__text-two">
-                        Кондитерская udc кафе создает торты на заказ, капкейки и десерты, как настоящие произведения искусства, чтобы украсить праздничный стол и поднять настроение всем окружающим.
-                    </p> -->
                 <h6 class="infoTorts__text-bold"><?php the_field("tort_text_two_bold") ?></h6>
                 <p class="infoTorts__text">
                     <?php the_field("tort_text_two") ?>
@@ -61,7 +56,6 @@
                                         <p class="tort__order">Заказать</p>
                                     </div>
                                     <div class="tort__img-block">
-                                        <!-- <img src="<?php the_field("tort_img") ?>" alt="tort" class="tort__img"> -->
                                         <?php
                                         $per=get_field("tort_img");
                                         if ($per) {
@@ -71,12 +65,6 @@
                                                     <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 768px)">
                                                     <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
                                                 </picture>
-                                                <!-- <img 
-                                                data-sizes="auto"
-                                                data-src="<?php echo $per["sizes"]["thumbnail"] ?>"
-                                                data-srcset="<?php echo $per["sizes"]["medium"] ?> 450w,
-                                                <?php echo $per["sizes"]["medium"] ?> 768w" class="lazyload"
-                                                /> -->
                                             <?php
                                         } else {
                                             $perTwo = get_field("no_found", 41);
@@ -87,11 +75,6 @@
                                                     <img src="<?php echo $perTwo["url"] ?>" alt="item" class="lazyload"/>
                                                 </picture>
                                                 <!-- <img 
-                                                data-sizes="auto"
-                                                data-src="<?php echo $perTwo["sizes"]["medium"] ?>"
-                                                data-srcset="<?php echo $perTwo["sizes"]["medium-large"] ?> 450w,
-                                                <?php echo $perTwo["sizes"]["medium"] ?> 768w" class="lazyload"
-                                                /> -->
 
                                             <?php
                                         }
@@ -162,12 +145,11 @@
                         <label  class="hidden__label"></label>
                         <input type="text" name="phone" class="modal__input" placeholder="Ваш телефон"/>
                         <textarea rows="9" name="message" class="modal__area" placeholder="Комметарий к заказу"></textarea>
-                        <div class="modal__label" style="position: relative">
-                            <div class="application__checkbox-bad-block"></div>
-                            <input type="checkbox" name="check" class="modal__checkbox application__checkbox-bad">
-                            Согласен(а) на обработку моих персональных данных
-                        </div>
-                        <button type="submit" class="modal__button modal__disabled" disabled>отправить заявку</button>
+                        <label class="checkbox modal__label">
+                            <input type="checkbox" name="check" class="torts__checkbox"/>
+                            <div class="checkbox__text">Согласен(а) на обработку моих персональных данных</div>
+                        </label>
+                        <button type="submit" class="modal__button modal__disabled modal__tort" disabled>отправить заявку</button>
                 </form>
             </div>
         </div>

@@ -18,15 +18,6 @@
                             'walker'          => '',
                         ] );
                     ?>
-
-                    <!-- <li class="footer__item">
-                        <a href="#" class="footer__link">Меню</a>
-                        <div class="footer__line"></div>
-                    </li>
-                    <li class="footer__item">
-                        <a href="#" class="footer__link">Целые торты</a>
-                        <div class="footer__line"></div>
-                    </li> -->
                 </ul>
                <div class="footer__logo">
                     <a href="<?php the_field('vk_url') ?>">

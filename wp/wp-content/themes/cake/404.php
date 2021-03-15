@@ -7,12 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href=<?php the_field("favicon", 41); ?> sizes="32x32"/>
     <title>Ошибка</title>
-    <link rel="preload" />
-    <link rel="preload" href="assets/fonts/1440.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/3976.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/9622.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/14078.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/Lato-Regular.ttf" as="font"/>
+    <link rel="preload" href="<?php bloginfo("template_url"); ?>/assets/fonts/1440.ttf" as="font" crossorigin="anonymous"/>
+    <link rel="preload" href="<?php bloginfo("template_url"); ?>/assets/fonts/14078.ttf" as="font" crossorigin="anonymous"/>
     <?php wp_head(); ?>
 </head>
 <body>

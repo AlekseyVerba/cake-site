@@ -9,13 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href=<?php the_field("favicon"); ?> sizes="32x32"/>   
-    <link rel="preload" href="assets/fonts/1440.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/3976.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/9622.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/14078.ttf" as="font"/>
-    <link rel="preload" href="assets/fonts/Lato-Regular.ttf" as="font"/>
-    <title>cc-union.ru</title>
+    <link rel="shortcut icon" href="<?php bloginfo("template_url"); ?>/assets/images/static/fav.jpg" type="image/x-icon">    <link rel="preload" href="<?php bloginfo("template_url"); ?>/assets/fonts/1440.ttf" as="font" crossorigin="anonymous"/>
 
     <?php wp_head();?>
 
@@ -90,27 +84,6 @@
                             'walker'          => '',
                         ] );
                     ?>
-
-                <!-- <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Меню
-                    </a>
-                </li>
-                <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Целые торты
-                    </a>
-                </li>
-                <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Программа лояльности
-                    </a>
-                </li>
-                <li class="header__item-hamburger">
-                    <a href="" class="header__link-hamburger">
-                        Контакты
-                    </a>
-                </li> -->
                 <li class="header__item-hamburger">
                     <a href="<?php the_field('inst_url') ?>" class="header__network-hamburger">
                         <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/blue_instagram.png" alt="instagram" class="network">
@@ -122,16 +95,16 @@
             </ul>
         <div class="header__whiteline"></div>
     </div>
-    <div class="main" style="background: url(<?php the_field("img_back") ?>) center no-repeat;">
+    <div class="main" style="background: url(<?php echo get_field("img_back")["url"] ?>) no-repeat center">
         <div class="container">
-            <div class="main__content">
+             <div class="main__content">
                 <h1 class="main__title"><?php the_field("title_main") ?></h1>
             </div>
         </div>
         <div class="main__circle">
-            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/circle.png" alt="circle">
+            <img src="<?php echo bloginfo("template_url") ?>/assets/images/static/circle.png" alt="circle" class="lazyload">
         </div>
-    </div> 
+    </div>
     <div class="description">
         <div class="container">
             <div class="description__text">
@@ -178,9 +151,19 @@
                         $count = 3;
                     }
                     ?>
+                    <!-- <?php 
+                        if( wp_is_mobile() ) {
+                            // тут выполняем действия только для мобильных устройств.
+                            
+                        } else {
+                            ?>
+                            <img src="<?php echo $row['card_img'] ?>" alt="cake" class="lazyload cake__item-img">
+                            <?php
+                        }
+                    ?> -->
                         <div class="<?php echo $className ?> cake__item" data-element="<?php echo $count ?>" data-name="<?php echo $row['name_card'] ?>" data-info="<?php echo $row['descr_card'] ?>" data-gramm=<?php echo $row['ves_card'] ?> data-price=<?php echo $row['price_card'] ?>> 
                             <picture>
-                                <!-- <source srcset="..." media="(max-width: 830px)"> -->
+                                <!-- <source srcset="/assets" media="(max-width: 830px)"> -->
                                 <img src="<?php echo $row['card_img'] ?>" alt="cake" class="lazyload cake__item-img">
                             </picture>
                         </div>
@@ -234,89 +217,7 @@
         </div>
     </div>
 
-    <!-- <div class="slider">
-        <div class="slider__container">
-            <div class="slider__des"></div>
-            <div class="slider__buttons">
-                <button class="slider__left slider__button"></button>
-                <button class="slider__right slider__button"></button>
-            </div>
-            <div class="slider__wrapper">
-                <div class="slider__content">
-                <?php
 
-                // проверяем есть ли в повторителе данные
-                if( have_rows('slider') ):
-
-                    // перебираем данные
-                    while ( have_rows('slider') ) : the_row();
-                        // ?>
-                            <div class="slider__item">
-                                <!-- <img src="<?php the_sub_field('foto_slajdera'); ?>" alt="slider" /> -->
-                                <!-- <?php var_dump(get_sub_field('foto_slajdera')) ?> -->
-                                <!-- <picture>
-                                    <?php $per=get_sub_field('foto_slajdera'); ?>
-                                    <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
-                                    <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)">
-                                    <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
-                                </picture> -->
-                                <!-- <?php $per = get_sub_field("foto_slajdera"); ?> -->
-                                <!-- <img 
-                                
-                                
-                                data-srcset="<?php echo $per["sizes"]["medium"] ?> 300w,
-                                <?php echo $per["sizes"]["medium_large"] ?> 768w,
-                                <?php echo $per["url"] ?> 2000w" class="lazyload"
-                                /> -->
-                            <!-- </div>
-                        <?php
-
-                    endwhile;
-
-                else :
-                endif;
-
-                ?>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
-
-    
-        <!-- <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-            </div>
-                <! - Если нужен пейджер->
-            <div class="swiper-pagination"></div>
-            
-                <! - Если вам нужна навигационная кнопка->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            
-                <! - Если вам нужна полоса прокрутки->
-            <div class="swiper-scrollbar"></div>
-        </div> -->
-        <!-- <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
-      <div class="swiper-slide">Slide 10</div>
-    </div>
-    <!-- Add Pagination -->
-    <!-- <div class="swiper-pagination"></div>
-  </div> --> 
 
  <div style="position: relative; max-width: 1150px; margin: 0 auto">
  <div class="yellowBlock"></div>
@@ -336,9 +237,9 @@ while ( have_rows('slider') ) : the_row();
         <div class="swiper-slide">
             <picture>
                 <?php $per=get_sub_field('foto_slajdera'); ?>
-                <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
-                <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)">
-                <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload" />
+                <!-- <source srcset="<?php echo $per["sizes"]["medium"] ?>" media="(max-width: 300px)">
+                <source srcset="<?php echo $per["sizes"]["medium_large"] ?>" media="(max-width: 768px)"> -->
+                <img src="<?php echo $per["url"] ?>" alt="item" class="lazyload slider-img" />
             </picture>
         </div>
     <?php
@@ -417,15 +318,6 @@ endif;
                             'walker'          => '',
                         ] );
                     ?>
-
-                    <!-- <li class="footer__item">
-                        <a href="#" class="footer__link">Меню</a>
-                        <div class="footer__line"></div>
-                    </li>
-                    <li class="footer__item">
-                        <a href="#" class="footer__link">Целые торты</a>
-                        <div class="footer__line"></div>
-                    </li> -->
                 </ul>
                <div class="footer__logo">
                     <a href="<?php the_field('vk_url') ?>">
@@ -451,14 +343,6 @@ endif;
                             'walker'          => '',
                         ] );
                     ?>
-                    <!-- <li class="footer__item">
-                        <a href="#" class="footer__link">Программа лояльности</a>
-                        <div class="footer__line"></div>
-                    </li>
-                    <li class="footer__item">
-                        <a href="#" class="footer__link">Контакты</a>
-                        <div class="footer__line"></div>
-                    </li> -->
                 </ul>
            </div>
            <a href="#" class="footer__developer">
@@ -494,14 +378,6 @@ function getYaMap(){
                     myMap.behaviors.disable('drag');
                 }
 
-            // var myGeoObject = new ymaps.GeoObject({
-            //     geometry: {
-            //         type: "Point", // тип геометрии - точка
-            //         coordinates: [52.281374, 104.284550] // координаты точки
-            //     }
-            // });
-            // myMap.geoObjects.add(myGeoObject); 
-            // myMap.controls.remove();
         }
 
         function downloadJSAtOnload() {
